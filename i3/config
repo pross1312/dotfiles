@@ -245,7 +245,7 @@ exec_always --no-startup-id feh --bg-scale ~/background/main_resource.jfif
 assign [class="google-chrome"] $ws_browsers
 assign [class="Google-chrome"] $ws_browsers
 assign [class="URxvt"] $ws_terminals
-exec_always /usr/bin/sh ~/dotfiles/rxvt/change_theme.sh ~/.config/rxvt/Xresources.theme_a
+exec_always xrdb -load ~/dotfiles/Xresources.main
 exec_always setxkbmap -option ctrl:nocaps
 exec_always xmodmap -e "remove lock = Caps_Lock"
 exec_always xmodmap -e "keycode 66 = Control_L"
