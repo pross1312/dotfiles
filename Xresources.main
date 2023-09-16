@@ -1,0 +1,64 @@
+URxvt.font: xft:Iosevka Term:style=Regular:size=18
+URxvt.boldFont: xft:Iosevka Term:style=Bold:size=18
+URxvt.italicFont: xft:Iosevka Term:style=Italic:size=18
+URxvt.boldItalicfont: xft:Iosevka Term:style=Bold Italic:size=18
+URxvt.letterSpace: 0
+URxvt.lineSpace: 0
+URxvt.geometry: 92x50
+URxvt.borderWidth: 0
+URxvt.internalBorder: 0
+URxvt.externalBorder: 0
+URxvt.cursorBlink: false
+URxvt.cursorUnderline: false
+URxvt.saveline: 8192
+URxvt.scrollBar: false
+URxvt.scrollBar_right: false
+URxvt.urgentOnBell: true
+URxvt.depth: 24
+URxvt.iso14755: false
+! URxvt.keysym.S-Return:     \033[13;2u
+! URxvt.keysym.C-Return:     \033[13;5u
+URxvt.transparent: true
+URxvt.shading: 25
+URxvt.urlLauncher: xdg-open
+URxvt.underlineURLs: true!
+URxvt.urlButton: 1
+
+
+! themes
+! Special
+URxvt.foreground:   #E5E9F0
+URxvt.background:   #181818
+URxvt.cursorColor:  #E5E9F0
+
+!! black
+!URxvt.color0: #2E3440
+!URxvt.color8: #4C566A
+!
+!! red
+!URxvt.color1: #88C0D0
+!URxvt.color9: #88C0D0
+!
+! green
+URxvt.color2:  #BF616A
+URxvt.color10: #BF616A
+!
+!! yellow
+!URxvt.color3:  #5E81AC
+!URxvt.color11: #5E81AC
+!
+! blue
+URxvt.color4:  #EBCB8B
+URxvt.color12: #EBCB8B
+!
+! magenta
+URxvt.color5:  #A3BE8C
+URxvt.color13: #A3BE8C
+!
+!! cyan
+!URxvt.color6:  #D08770
+!URxvt.color14: #D08770
+!
+!! white
+!URxvt.color7:  #E5E9F0
+!URxvt.color15: #8FBCBB
