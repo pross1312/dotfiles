@@ -19,6 +19,8 @@ require("lazy").setup({
     'junegunn/vim-easy-align',
     'tikhomirov/vim-glsl',
     'tpope/vim-fugitive',
+    'bkad/CamelCaseMotion',
+    {'mg979/vim-visual-multi', branch = 'master'},
     -- {
     --     'VonHeikemen/lsp-zero.nvim',
     --     branch = 'v2.x',
