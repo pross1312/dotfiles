@@ -1,0 +1,40 @@
+
+;; ----- smex-history -----
+(
+ recompile
+ shell-command
+ compile
+ markdown-mode
+ list-packages
+ rust-mode
+ chmod
+)
+
+;; ----- smex-data -----
+(
+ (list-packages . 7)
+ (load-theme . 2)
+ (package-install . 2)
+ (load-file . 7)
+ (compile . 9)
+ (ffap . 3)
+ (shell . 1)
+ (shell-command . 2)
+ (grep . 2)
+ (grep-find . 2)
+ (goto-line . 1)
+ (expand-abbrev . 3)
+ (complete-symbol . 3)
+ (complete-tag . 1)
+ (ido-complete . 1)
+ (dabbrev-expand . 1)
+ (hippie-expand . 1)
+ (company-mode . 1)
+ (company-complete . 1)
+ (set-file-modes . 1)
+ (chmod . 1)
+ (dired-do-chmod . 1)
+ (rust-mode . 1)
+ (markdown-mode . 1)
+ (recompile . 10)
+)

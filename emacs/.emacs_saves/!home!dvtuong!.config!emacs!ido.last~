@@ -1,0 +1,53 @@
+;;; -*- coding: utf-8 -*-
+
+;; ----- ido-last-directory-list -----
+(
+ ("/home/dvtuong/dotfiles/emacs/" . "configure/")
+ ("/home/dvtuong/dotfiles/" . "emacs/")
+ ("/home/dvtuong/programming/" . "linear-algebra/")
+ ("/home/dvtuong/" . "dotfiles/")
+ ("/home/" . "dvtuong/")
+ ("/" . "home/")
+)
+
+;; ----- ido-work-directory-list -----
+(
+ "/home/dvtuong/programming/"
+ "/home/dvtuong/programming/linear-algebra/"
+ "/home/dvtuong/dotfiles/emacs/configure/"
+)
+
+;; ----- ido-work-file-list -----
+(
+ "my-config.el"
+)
+
+;; ----- ido-dir-file-cache -----
+(
+ ("/home/dvtuong/programming/linear-algebra/" (25865 1475 777779 401000) "imageout.jpeg" "k-mean" "test2.cpp" "LICENSE" "k-means.cpp" "stb_image_write.h" "IMAGE_OUTPUT.png" "image.jpeg" "makefile" "lin_al.h" "README.md" ".git/" "a.out" "stb_image.h" ".gitignore" "Test.cpp" "catout.jpg" "cat.jpg" "../" "./")
+
+ ("/home/dvtuong/dotfiles/emacs/configure/" (25865 1218 440918 959000) "my-config.el~" "my-config.el" "../" "./")
+
+ ("/home/dvtuong/dotfiles/emacs/" (25865 1222 612995 600000) "ido.last" "smex-items" ".emacs_saves/" "elpa/" "init.el~" "init.el" "auto-save-list/" "../" "./" "configure/")
+
+ ("/home/dvtuong/dotfiles/" (25864 60872 704410 671000) "emacs/" "LICENSE" "i3/" "README.md" "nvim/" ".git/" ".inputrc" ".bashrc" "../" "Xresources.main" "./")
+
+ ("/home/dvtuong/programming/" (25862 52011 604390 746000) "electron/" "odin-project/" "caro/" "search_algorithm/" "trash-detector/" "gnout/" "linear-regression/" "path_editor/" "linear-algebra/" "something-boring/" "gomoku/" "auto_skip_ad_yt/" "rubik/" "tinh_diem_chuyen_nganh.js" "genetic_car/" "../" "rubik_v2/" "./" "db_search/")
+
+ ("/home/dvtuong/.ipython/" (25782 13009 467988 995000) "profile_default/" "../" "./")
+
+ ("/home/dvtuong/" (25864 60853 911944 578000) ".thunderbird/" ".local/" ".fonts/" ".lesshst" ".npm/" ".ssh/" ".java/" ".dotnet/" "programming/" ".arduino15/" ".bash_logout" ".arduinoIDE/" "Arduino/" ".cargo/" ".android/" ".testing.backup/" ".swt/" ".ipython/" ".emulator_console_auth_token" ".gnome/" ".config/" "snap/" "AndroidStudioProjects/" "Downloads/" "GodotProject/" ".u2net/" "test/" ".nimble/" ".cache/" "Documents/" ".keras/" "Android/" ".gnupg/" ".python_history" "backup/" ".node_repl_history" ".fehbg" "Music/" ".pki/" ".gitconfig" "software/" "background/" ".inputrc" "Desktop/" ".mozilla/" "Public/" ".node-red/" ".gradle/" ".wget-hsts" ".m2/" ".profile" ".bash_history" "dotfiles/" "uni/" ".bashrc" "Videos/" ".sudo_as_admin_successful" "../" "Templates/" ".vscode/" "Pictures/" ".fontconfig/" "./")
+
+ ("/home/" (25775 2219 383769 792000) "dvtuong/" "../" "./")
+
+ ("/usr/" (25775 2221 0 0) "games/" "share/" "bin/" "src/" "lib64/" "local/" "include/" "libx32/" "lib32/" "sbin/" "libexec/" "../" "lib/" "./")
+
+ ("/usr/share/" (25861 19316 75781 434000) "usb_modeswitch/" "defaults/" "w3m/" "zenity/" "source-highlight/" "i18n/" "tracker3/" "emacs/" "polkit-1/" "grilo-plugins/" "dpkg/" "nano/" "software-properties/" "gupnp-av/" "gnome-bluetooth-3.0/" "apps/" "mythes/" "autoconf/" "eigen3/" "ca-certificates-java/" "gnome-session/" "lintian/" "glade/" "X11/" "vala/" "maven-repo/" "cmake/" "gstreamer-1.0/" "terminator/" "colord/" "aclocal/" "installed-tests/" "pipewire/" "unity/" "sgml-data/" "glib-2.0/" "p11-kit/" "mypaint-data/" "alsa-card-profile/" "gupnp-dlna-2.0/" "gnome-shell/" "grub/" "git-core/" "vim/" "pcmanfm/" "ca-certificates/" "gettext-0.21/" "gtksourceview-2.0/" "cli-common/" "rsyslog/" "libinput/" "cdbs/" "libfm/" "libwacom/" "ghostscript/" "netplan/" "vulkan/" "aspell/" "gnome-control-center/" "icons/" "wayland/" "file/" "aisleriot/" "gitweb/" "liblouisutdml/" "dotnet/" "libtool/" "fonts/" "PackageKit/" "netpbm/" "org.gnome.Characters/" "os-prober/" "dh-autoreconf/" "lightdm/" "python-apt/" "snmp/" "libdrm/" "gedit/" "gdm/" "debconf/" "openal/" "gir-1.0/" "alsa/" "gtk-doc/" "emacsen-common/" "arduino/" "m2300w/" "pam-configs/" "ubuntu-release-upgrader/" "language-tools/" "consoletrans/" "zoneinfo/" "fontconfig/" "dns/" "librevenge/" "keyrings/" "foo2qpdl/" "rhythmbox/" "liblangtag/" "groff/" "gnome-video-effects/" "extra-xdg-menus/" "secureboot/" "grub-gfxpayload-lists/" "sounds/" "pocketsphinx/" "code/" "color/" "ssl-cert/" "pnm2ppa/" "numpy3/" "application-registry/" "libgweather/" "xsessions/" "zoneinfo-icu/" "man/" "libexttextcat/" "gtksourceview-3.0/" "automake-1.16/" "evolution-data-server/" "nautilus-share/" "wayland-sessions/" "ucf/" "desktop-directories/" "pam/" "sensible-utils/" "glvnd/" "fish/" "python-wheels/" "media-player-info/" "mousetweaks/" "help/" "iptables/" "speech-dispatcher/" "orca/" "intltool-debian/" "locale-langpack/" "gtk-4.0/" "pulseaudio/" "consolefonts/" "hplip/" "dict/" "man-db/" "libreoffice/" "package-data-downloads/" "appdata/" "initramfs-tools/" "im-config/" "applications/" "icu/" "javascript/" "ibus-bamboo/" "m17n/" "goa-1.0/" "gst-plugins-base/" "po-debconf/" "base-files/" "gettext/" "cargo/" "tcltk/" "gnome-bluetooth/" "ppd/" "iso-codes/" "gvfs/" "language-selector/" "awk/" "foo2zjs/" "libdebuginfod-common/" "fwupd/" "bash-completion/" "dconf/" "xml/" "rustc/" "update-manager/" "python3/" "gnome-remote-desktop/" "misc/" "gtksourceview-4/" "ipp-usb/" "mime-info/" "session-migration/" "ibus/" "unattended-upgrades/" "liblouis/" "xml-core/" "tabset/" "gnome-mines/" "mobile-broadband-provider-info/" "plymouth/" "tracker3-miners/" "bug/" "fonts-sil-padauk/" "GConf/" "avahi/" "ubuntu-wayland/" "terminfo/" "libcaca/" "upstart/" "hyphen/" "ufw/" "thumbnailers/" "doc-base/" "mfx/" "backgrounds/" "arduino-builder/" "feh/" "gdb/" "branding/" "nautilus/" "pkgconfig/" "publicsuffix/" "readline/" "libc-bin/" "menu/" "meshlab/" "figlet/" "dbus-1/" "base-passwd/" "openvpn/" "kazam/" "mime/" "system-config-printer/" "java-wrappers/" "qt5/" "ModemManager/" "gnome-system-monitor/" "libgnomekbd/" "build-essential/" "console-setup/" "gamemode/" "rsync/" "ant/" "yelp-xsl/" "indicators/" "yelp/" "locales/" "ImageMagick-6/" "apturl/" "seahorse/" "java/" "pixmaps/" "wireplumber/" "ppp/" "aclocal-1.16/" "update-notifier/" "pyshared/" "locale/" "systemtap/" "sgml-base/" "pkg-config-dpkghook" "gtk-engines/" "gcc/" "gnome-initial-setup/" "accountsservice/" "mono/" "kde4/" "debhelper/" "enchant-2/" "file-roller/" "yudit/" "perl-openssl-defaults/" "fonts-droid-fallback/" "gnome-logs/" "transmission/" "distro-info/" "dictionaries-common/" "hunspell/" "common-licenses/" "cmake-3.22/" "evince/" "pkg-config-crosswrapper" "perl/" "language-support/" "gnome/" "themes/" "info/" "ffmpeg/" "usb-creator/" "remmina/" "drirc.d/" "gnome-todo/" "perl5/" "xdg-desktop-portal/" ".mono/" "systemd/" "mono-2.0/" "mypaint/" "gnome-settings-daemon/" "sgml/" "poppler/" "alsa-base/" "rygel/" "djvu/" "apport/" "lto-disabled-list/" "metainfo/" "dnsmasq-base/" "linux-sound-base/" "zsh/" "acpi-support/" "binfmts/" "ubuntu-drivers-common/" "doc/" "adduser/" "cups/" "ubuntu/" "eog/" "gnupg/" "ibus-table/" "fonts-sil-abyssinica/" "gnome-mahjongg/" "help-langpack/" "libthai/" "gnome-background-properties/" "cogl/" "guile/" "totem/" "libmysofa/" "debianutils/" "../" "./")
+
+ ("/usr/share/info/" (25839 61634 994845 980000) "emacs/" "dc.info.gz" "autosprintf.info.gz" "automake-1.16.info-2.gz" "time.info.gz" "automake-history.info.gz" "gnupg-card-architecture.png" "gnupg.info-2.gz" "gnupg.info.gz" "sed.info.gz" "automake-1.16.info-1.gz" "grub.info-2.gz" "find.info.gz" "find-maint.info.gz" "grub-dev.info.gz" "find.info-1.gz" "bc.info.gz" "gnupg.info-1.gz" "dir" "gettext.info.gz" "m4.info.gz" "info-stnd.info.gz" "m4.info-2.gz" "grub.info.gz" "dir.old" "diffutils.info.gz" "wget.info.gz" "grep.info.gz" "coreutils.info.gz" "ssip.info.gz" "libffi.info.gz" "gzip.info.gz" "find.info-2.gz" "ed.info.gz" "automake-1.16.info.gz" "m4.info-1.gz" "spd-say.info.gz" "gnupg-module-overview.png" "nano.info.gz" "speech-dispatcher.info.gz" "grub.info-1.gz" "rluserman.info.gz" "../" "./")
+
+ ("/usr/share/info/emacs/" (25839 61570 148702 963000) "efaq.info.gz" "../" "./")
+)
+
+;; ----- ido-unc-hosts-cache -----
+t

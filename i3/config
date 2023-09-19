@@ -241,7 +241,7 @@ exec_always xinput set-prop "MSFT0002:00 04F3:31BE Mouse" "libinput Natural Scro
 exec_always xinput set-prop "MSFT0002:00 04F3:31BE Touchpad" "libinput Tapping Enabled" 1
 exec_always xinput set-prop "MSFT0002:00 04F3:31BE Touchpad" "libinput Natural Scrolling Enabled" 1
 exec_always xinput set-prop "MSFT0002:00 04F3:31BE Touchpad" "libinput Accel Speed" .4
-exec_always --no-startup-id feh --bg-scale ~/background/main_resource.jfif
+exec_always --no-startup-id feh --bg-scale ~/background/1058953.jpg
 assign [class="google-chrome"] $ws_browsers
 assign [class="Google-chrome"] $ws_browsers
 assign [class="URxvt"] $ws_terminals
