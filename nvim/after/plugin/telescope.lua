@@ -7,11 +7,11 @@ require('telescope').setup({
             width = 0.95,
         },
         preview = {
-            timeout = 100,
+            timeout = 30,
             filesize_limit = 5,
             treesitter = false,
         },
-        path_display = {'tail'},
+        path_display = {'shorten'},
         dynamic_preview_title = true,
         vimgrep_arguments = {
             "rg",

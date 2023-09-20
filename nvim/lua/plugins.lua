@@ -1,13 +1,13 @@
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
-  vim.fn.system({
-    "git",
-    "clone",
-    "--filter=blob:none",
-    "https://github.com/folke/lazy.nvim.git",
-    "--branch=stable", -- latest stable release
-    lazypath,
-  })
+    vim.fn.system({
+        "git",
+        "clone",
+        "--filter=blob:none",
+        "https://github.com/folke/lazy.nvim.git",
+        "--branch=stable", -- latest stable release
+        lazypath,
+    })
 end
 vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
@@ -19,46 +19,62 @@ require("lazy").setup({
     'junegunn/vim-easy-align',
     'tikhomirov/vim-glsl',
     'tpope/vim-fugitive',
-    'bkad/CamelCaseMotion',
-    {'mg979/vim-visual-multi', branch = 'master'},
-    -- {
-    --     'VonHeikemen/lsp-zero.nvim',
-    --     branch = 'v2.x',
-    --     dependencies = {
-    --         -- LSP Support
-    --         {'neovim/nvim-lspconfig'},             -- Required
-    --         {'williamboman/mason.nvim'},           -- Optional
-    --         {'williamboman/mason-lspconfig.nvim'}, -- Optional
 
-    --         -- Autocompletion
-    --         {'hrsh7th/nvim-cmp'},     -- Required
-    --         {'hrsh7th/cmp-nvim-lsp'}, -- Required
-    --         {'L3MON4D3/LuaSnip'},     -- Required
-    --     }
-    -- },
---------------------------colorschemes-------------------------------
-    'ahmedabdulrahman/vim-aylin',
-    'folke/tokyonight.nvim',
-    'catppuccin/nvim',
-    'rose-pine/neovim',
-    'drewtempelmeyer/palenight.vim',
-    'blazkowolf/gruber-darker.nvim',
-    { "ellisonleao/gruvbox.nvim", priority = 1000 }
----------------------------------------------------------------------
-})
--- require('gruber-darker').setup {
---     bold = true,
---     invert = {
---         signs = false,
---         tabline = false,
---         visual = false,
---     },
---     italic = {
---         strings = false,
---         comments = true,
---         operators = false,
---         folds = true,
---     },
---     undercurl = true,
---     underline = true,
--- }
+    { 'bkad/CamelCaseMotion', config = function()
+        vim.keymap.set('n', 'w', '<Plug>CamelCaseMotion_w', {})
+        vim.keymap.set('n', 'b', '<Plug>CamelCaseMotion_b', {})
+        vim.keymap.set('n', 'e', '<Plug>CamelCaseMotion_e', {})
+        vim.keymap.set('n', 'ge', '<Plug>CamelCaseMotion_ge', {})
+        vim.keymap.set('v', 'w', '<Plug>CamelCaseMotion_w', {})
+        vim.keymap.set('v', 'b', '<Plug>CamelCaseMotion_b', {})
+        vim.keymap.set('v', 'e', '<Plug>CamelCaseMotion_e', {})
+        vim.keymap.set('v', 'ge', '<Plug>CamelCaseMotion_ge', {})
+    end },
+
+    {'mg979/vim-visual-multi', branch = 'master', config = function()
+        vim.cmd [[let g:VM_maps = {}]]
+        vim.cmd "nmap <C-J> <Plug>(VM-Add-Cursor-Down)"
+        vim.cmd "nmap <C-K> <Plug>(VM-Add-Cursor-Up)"
+        vim.cmd [[let g:VM_maps["Exit"] = '<C-c>']]
+    end },
+    -- {
+        --     'VonHeikemen/lsp-zero.nvim',
+        --     branch = 'v2.x',
+        --     dependencies = {
+            --         -- LSP Support
+            --         {'neovim/nvim-lspconfig'},             -- Required
+            --         {'williamboman/mason.nvim'},           -- Optional
+            --         {'williamboman/mason-lspconfig.nvim'}, -- Optional
+
+            --         -- Autocompletion
+            --         {'hrsh7th/nvim-cmp'},     -- Required
+            --         {'hrsh7th/cmp-nvim-lsp'}, -- Required
+            --         {'L3MON4D3/LuaSnip'},     -- Required
+            --     }
+            -- },
+            --------------------------colorschemes-------------------------------
+            'ahmedabdulrahman/vim-aylin',
+            'folke/tokyonight.nvim',
+            'catppuccin/nvim',
+            'rose-pine/neovim',
+            'drewtempelmeyer/palenight.vim',
+            'blazkowolf/gruber-darker.nvim',
+            { "ellisonleao/gruvbox.nvim" }
+            ---------------------------------------------------------------------
+        })
+        -- require('gruber-darker').setup {
+            --     bold = true,
+            --     invert = {
+                --         signs = false,
+                --         tabline = false,
+                --         visual = false,
+                --     },
+                --     italic = {
+                    --         strings = false,
+                    --         comments = true,
+                    --         operators = false,
+                    --         folds = true,
+                    --     },
+                    --     undercurl = true,
+                    --     underline = true,
+                    -- }

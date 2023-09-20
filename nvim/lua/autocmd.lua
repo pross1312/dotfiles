@@ -71,14 +71,15 @@ vim.api.nvim_create_autocmd('BufEnter', {
     end
 })
 -- remove trailing space (end of line) and newline (end of file)
-vim.api.nvim_create_autocmd('BufWritePre', {
-    pattern = '*',
-    callback = function()
-        local view = vim.fn.winsaveview()
-        vim.cmd "%s/ *$// | %s/\\n*\\%$//"
-        vim.fn.winrestview(view)
-    end
-})
+-- this break undo (make it too annoying to use)
+-- vim.api.nvim_create_autocmd('BufWritePre', {
+--     pattern = '*',
+--     callback = function()
+--         local view = vim.fn.winsaveview()
+--         vim.cmd "%s/ *$// | %s/\\n*\\%$//"
+--         vim.fn.winrestview(view)
+--     end
+-- })
 
 vim.api.nvim_create_autocmd('filetype', {
     pattern = 'netrw',
