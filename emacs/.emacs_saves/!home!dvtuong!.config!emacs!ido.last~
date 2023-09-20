@@ -12,6 +12,10 @@
 
 ;; ----- ido-work-directory-list -----
 (
+ "/home/dvtuong/programming/try-go/"
+ "/home/dvtuong/programming/path_editor/src/"
+ "/home/dvtuong/programming/path_editor/"
+ "/home/dvtuong/programming/odin-project/"
  "/home/dvtuong/programming/"
  "/home/dvtuong/programming/linear-algebra/"
  "/home/dvtuong/dotfiles/emacs/configure/"
@@ -19,11 +23,24 @@
 
 ;; ----- ido-work-file-list -----
 (
+ "main.go"
+ "main.cpp"
+ "README.md"
  "my-config.el"
 )
 
 ;; ----- ido-dir-file-cache -----
 (
+ ("/home/dvtuong/programming/try-go/" (25865 57191 645358 193000) "main.go" "../" "./")
+
+ ("/home/dvtuong/programming/path_editor/" (25865 6595 345151 879000) "config" "Makefile" "src/" "VictorMono.ttf" "README.md" "path_editor" ".git/" "Testingpath" "../" ".vscode/" "./")
+
+ ("/home/dvtuong/programming/path_editor/src/" (25865 6588 740744 392000) "PathEditor.h" "Config.cpp" "Spline.cpp" "Path.cpp" "Config.h" "main.cpp" "PathEditor.cpp" "Helper.h" "Spline.h" "Path.h" "../" "./")
+
+ ("/home/dvtuong/programming/odin-project/" (25859 61300 735902 752000) "README.md" "style.css" "index.html" ".git/" "assignment01/" "../" "./")
+
+ ("/home/dvtuong/programming/" (25865 2246 811094 47000) "electron/" "odin-project/" "caro/" "search_algorithm/" "trash-detector/" "gnout/" "linear-regression/" "path_editor/" "linear-algebra/" "something-boring/" "gomoku/" "auto_skip_ad_yt/" "rubik/" "tinh_diem_chuyen_nganh.js" "genetic_car/" "../" "rubik_v2/" "./" "db_search/")
+
  ("/home/dvtuong/programming/linear-algebra/" (25865 1475 777779 401000) "imageout.jpeg" "k-mean" "test2.cpp" "LICENSE" "k-means.cpp" "stb_image_write.h" "IMAGE_OUTPUT.png" "image.jpeg" "makefile" "lin_al.h" "README.md" ".git/" "a.out" "stb_image.h" ".gitignore" "Test.cpp" "catout.jpg" "cat.jpg" "../" "./")
 
  ("/home/dvtuong/dotfiles/emacs/configure/" (25865 1218 440918 959000) "my-config.el~" "my-config.el" "../" "./")
@@ -31,8 +48,6 @@
  ("/home/dvtuong/dotfiles/emacs/" (25865 1222 612995 600000) "ido.last" "smex-items" ".emacs_saves/" "elpa/" "init.el~" "init.el" "auto-save-list/" "../" "./" "configure/")
 
  ("/home/dvtuong/dotfiles/" (25864 60872 704410 671000) "emacs/" "LICENSE" "i3/" "README.md" "nvim/" ".git/" ".inputrc" ".bashrc" "../" "Xresources.main" "./")
-
- ("/home/dvtuong/programming/" (25862 52011 604390 746000) "electron/" "odin-project/" "caro/" "search_algorithm/" "trash-detector/" "gnout/" "linear-regression/" "path_editor/" "linear-algebra/" "something-boring/" "gomoku/" "auto_skip_ad_yt/" "rubik/" "tinh_diem_chuyen_nganh.js" "genetic_car/" "../" "rubik_v2/" "./" "db_search/")
 
  ("/home/dvtuong/.ipython/" (25782 13009 467988 995000) "profile_default/" "../" "./")
 

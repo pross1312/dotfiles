@@ -1,26 +1,26 @@
 
 ;; ----- smex-history -----
 (
- recompile
- shell-command
+ mark-paragraph
  compile
- markdown-mode
+ go-mode
  list-packages
- rust-mode
- chmod
+ package-install
+ grep
+ shell-command
 )
 
 ;; ----- smex-data -----
 (
- (list-packages . 7)
+ (list-packages . 8)
  (load-theme . 2)
- (package-install . 2)
+ (package-install . 3)
  (load-file . 7)
- (compile . 9)
+ (compile . 13)
  (ffap . 3)
  (shell . 1)
  (shell-command . 2)
- (grep . 2)
+ (grep . 3)
  (grep-find . 2)
  (goto-line . 1)
  (expand-abbrev . 3)
@@ -36,5 +36,7 @@
  (dired-do-chmod . 1)
  (rust-mode . 1)
  (markdown-mode . 1)
- (recompile . 10)
+ (recompile . 11)
+ (go-mode . 1)
+ (mark-paragraph . 1)
 )

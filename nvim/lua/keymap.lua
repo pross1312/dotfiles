@@ -3,9 +3,7 @@ local map = vim.keymap.set
 local extra = require 'extra-function'
 map('n', '<C-c>', '<Esc>')
 map('i', '<C-c>', '<Esc>')
-map('c', '<C-c>', '<Esc>')
 map('v', '<C-c>', '<Esc>')
-map('x', '<C-c>', '<Esc>')
 
 map('x', '<leader>a', '<Plug>(EasyAlign)', {silent = true})
 map('n', '<leader>a', '<Plug>(EasyAlign)', {silent = true})
@@ -81,17 +79,3 @@ map('i', '<C-k>', '<Up>', {})
 map('i', '<C-j>', '<Down>', {})
 map('i', '<M-h>', '<S-Left>', {})
 map('i', '<M-l>', '<S-Right>', {})
-
-map('n', 'w', '<Plug>CamelCaseMotion_w', {})
-map('n', 'b', '<Plug>CamelCaseMotion_b', {})
-map('n', 'e', '<Plug>CamelCaseMotion_e', {})
-map('n', 'ge', '<Plug>CamelCaseMotion_ge', {})
-map('v', 'w', '<Plug>CamelCaseMotion_w', {})
-map('v', 'b', '<Plug>CamelCaseMotion_b', {})
-map('v', 'e', '<Plug>CamelCaseMotion_e', {})
-map('v', 'ge', '<Plug>CamelCaseMotion_ge', {})
-
-vim.cmd [[let g:VM_maps = {}]]
-vim.cmd "nmap <M-j> <Plug>(VM-Add-Cursor-Down)"
-vim.cmd "nmap <M-k> <Plug>(VM-Add-Cursor-Up)"
-vim.cmd [[let g:VM_maps["Exit"] = '<C-c>']]

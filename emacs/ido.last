@@ -5,17 +5,19 @@
  ("/home/dvtuong/dotfiles/emacs/" . "configure/")
  ("/home/dvtuong/dotfiles/" . "emacs/")
  ("/home/dvtuong/programming/" . "linear-algebra/")
- ("/home/dvtuong/" . "dotfiles/")
+ ("/home/dvtuong/" . "programming/")
  ("/home/" . "dvtuong/")
  ("/" . "home/")
 )
 
 ;; ----- ido-work-directory-list -----
 (
+ "/home/dvtuong/programming/genetic_car/src/"
+ "/home/dvtuong/programming/"
+ "/home/dvtuong/programming/try-go/"
  "/home/dvtuong/programming/path_editor/src/"
  "/home/dvtuong/programming/path_editor/"
  "/home/dvtuong/programming/odin-project/"
- "/home/dvtuong/programming/"
  "/home/dvtuong/programming/linear-algebra/"
  "/home/dvtuong/dotfiles/emacs/configure/"
 )
@@ -23,19 +25,32 @@
 ;; ----- ido-work-file-list -----
 (
  "main.cpp"
+ "main.go"
  "README.md"
  "my-config.el"
 )
 
 ;; ----- ido-dir-file-cache -----
 (
+ ("/home/dvtuong/programming/genetic_car/src/" (25855 9802 842318 386000) "Ray.h" "Car.h" "Ray.cpp" "Config.cpp" "Spline.cpp" "NeuralNetwork.cpp" "lin_al.h" "Path.cpp" "Car.cpp" "Config.h" "main.cpp" "Eye.cpp" "Helper.h" "Spline.h" "Eye.h" "Path.h" "NeuralNetwork.h" "../" ".vscode/" "./")
+
+ ("/home/dvtuong/programming/genetic_car/" (25837 34447 339423 28000) "config" "CMakeLists.txt" "resources/" "temp1" "src/" "README.md" "build/" ".git/" ".gitignore" "BestCar" "../" "./")
+
+ ("/home/dvtuong/programming/" (25865 54469 945107 411000) "electron/" "odin-project/" "caro/" "search_algorithm/" "try-go/" "trash-detector/" "gnout/" "linear-regression/" "path_editor/" "linear-algebra/" "something-boring/" "gomoku/" "auto_skip_ad_yt/" "rubik/" "tinh_diem_chuyen_nganh.js" "genetic_car/" "../" "rubik_v2/" "./" "db_search/")
+
+ ("/home/dvtuong/" (25865 59336 423944 542000) ".thunderbird/" ".local/" ".fonts/" ".lesshst" ".npm/" ".ssh/" ".java/" ".dotnet/" "programming/" ".arduino15/" ".bash_logout" ".arduinoIDE/" "Arduino/" ".cargo/" ".android/" ".testing.backup/" ".swt/" ".ipython/" ".emulator_console_auth_token" ".gnome/" ".config/" "snap/" "AndroidStudioProjects/" "Downloads/" "GodotProject/" ".u2net/" "test/" ".nimble/" ".cache/" "Documents/" ".keras/" "Android/" ".gnupg/" ".python_history" "backup/" ".node_repl_history" ".fehbg" "Music/" ".pki/" ".gitconfig" "software/" "background/" ".inputrc" "Desktop/" ".mozilla/" "Public/" ".node-red/" ".gradle/" ".wget-hsts" ".m2/" ".profile" ".bash_history" "dotfiles/" "uni/" ".bashrc" "Videos/" ".sudo_as_admin_successful" "../" "Templates/" ".vscode/" "Pictures/" ".fontconfig/" "./")
+
+ ("/home/dvtuong/software/" (25865 54186 732029 830000) "pdfcrack/" "gf/" "SDL_image-release-2.6.3/" "dbeaver/" "android-studio/" "raylib/" "env/" "VerletSFML-Multithread/" "SDL-release-2.28.1/" "nim-2.0.0/" "neovim/" "arduino-ide_nightly-20230815_Linux_64bit/" "Gepe3D/" "lazygit/" "go/" "raylib.env" "godot/" "eigen/" "boomer/" "Chess-Challenge/" "SDL_ttf-release-2.20.2/" "../" "neovide/" "./")
+
+ ("/home/dvtuong/software/godot/" (25865 53739 466900 659000) "Godot_v4.1.1-stable_linux.x86_64" "../" "./")
+
+ ("/home/dvtuong/programming/try-go/" (25865 57191 645358 193000) "main.go" "../" "./")
+
  ("/home/dvtuong/programming/path_editor/" (25865 6595 345151 879000) "config" "Makefile" "src/" "VictorMono.ttf" "README.md" "path_editor" ".git/" "Testingpath" "../" ".vscode/" "./")
 
  ("/home/dvtuong/programming/path_editor/src/" (25865 6588 740744 392000) "PathEditor.h" "Config.cpp" "Spline.cpp" "Path.cpp" "Config.h" "main.cpp" "PathEditor.cpp" "Helper.h" "Spline.h" "Path.h" "../" "./")
 
  ("/home/dvtuong/programming/odin-project/" (25859 61300 735902 752000) "README.md" "style.css" "index.html" ".git/" "assignment01/" "../" "./")
-
- ("/home/dvtuong/programming/" (25865 2246 811094 47000) "electron/" "odin-project/" "caro/" "search_algorithm/" "trash-detector/" "gnout/" "linear-regression/" "path_editor/" "linear-algebra/" "something-boring/" "gomoku/" "auto_skip_ad_yt/" "rubik/" "tinh_diem_chuyen_nganh.js" "genetic_car/" "../" "rubik_v2/" "./" "db_search/")
 
  ("/home/dvtuong/programming/linear-algebra/" (25865 1475 777779 401000) "imageout.jpeg" "k-mean" "test2.cpp" "LICENSE" "k-means.cpp" "stb_image_write.h" "IMAGE_OUTPUT.png" "image.jpeg" "makefile" "lin_al.h" "README.md" ".git/" "a.out" "stb_image.h" ".gitignore" "Test.cpp" "catout.jpg" "cat.jpg" "../" "./")
 
@@ -46,8 +61,6 @@
  ("/home/dvtuong/dotfiles/" (25864 60872 704410 671000) "emacs/" "LICENSE" "i3/" "README.md" "nvim/" ".git/" ".inputrc" ".bashrc" "../" "Xresources.main" "./")
 
  ("/home/dvtuong/.ipython/" (25782 13009 467988 995000) "profile_default/" "../" "./")
-
- ("/home/dvtuong/" (25864 60853 911944 578000) ".thunderbird/" ".local/" ".fonts/" ".lesshst" ".npm/" ".ssh/" ".java/" ".dotnet/" "programming/" ".arduino15/" ".bash_logout" ".arduinoIDE/" "Arduino/" ".cargo/" ".android/" ".testing.backup/" ".swt/" ".ipython/" ".emulator_console_auth_token" ".gnome/" ".config/" "snap/" "AndroidStudioProjects/" "Downloads/" "GodotProject/" ".u2net/" "test/" ".nimble/" ".cache/" "Documents/" ".keras/" "Android/" ".gnupg/" ".python_history" "backup/" ".node_repl_history" ".fehbg" "Music/" ".pki/" ".gitconfig" "software/" "background/" ".inputrc" "Desktop/" ".mozilla/" "Public/" ".node-red/" ".gradle/" ".wget-hsts" ".m2/" ".profile" ".bash_history" "dotfiles/" "uni/" ".bashrc" "Videos/" ".sudo_as_admin_successful" "../" "Templates/" ".vscode/" "Pictures/" ".fontconfig/" "./")
 
  ("/home/" (25775 2219 383769 792000) "dvtuong/" "../" "./")
 

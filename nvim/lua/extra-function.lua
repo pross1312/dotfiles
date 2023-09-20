@@ -58,6 +58,7 @@ function m.switch_term()
 end
 
 function m.run_cmd(data)
+    if vim.opt.autowrite then vim.cmd "w" end
     if not data.fargs[1] and vim.g.run_cmd then
         vim.cmd(string.format("split | term %s", vim.g.run_cmd))
     elseif data.fargs[1] then
@@ -68,4 +69,11 @@ function m.run_cmd(data)
     end
 end
 
+function m.delete_trailing()
+    local view = vim.fn.winsaveview()
+    vim.cmd "%s/ *$// | %s/\\n*\\%$//"
+    vim.fn.winrestview(view)
+end
+
 return m
+
