@@ -29,5 +29,5 @@ require("gruvbox").setup({
 --        cterm=bold gui=bold guifg=#d3869b
     },
     dim_inactive = false,
-    transparent_mode = true,
+    transparent_mode = not vim.g.neovide
 })
