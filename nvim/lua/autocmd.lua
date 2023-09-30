@@ -1,51 +1,28 @@
 vim.g.ibus_vn_engine = 'Bamboo'
 vim.g.ibus_eng_engine = 'BambooUs'
 vim.g.prev_ibus_engine = vim.g.ibus_eng_engine
-vim.g.disable_ibus_error = false
-vim.g.has_ibus = true -- asume we have it
-local function ibus_engine_on(engine)
-    if not vim.g.has_ibus then return end
-    if (type(engine) ~= 'string') then error(string.format('Invalid type %s', type(engine))) end
-    local output = vim.system({"ibus", "engine"}):wait()
-    if output.code ~= 0 or output.signal ~= 0 then
-        if not vim.g.disable_ibus_error then
-            print('Something wrong happen with `ibus engine` cmd')
-            vim.g.has_ibus = false
-        end
-        return
-    end
-    local cur_engine = output.stdout:sub(1, #output.stdout - 1)
-    if cur_engine ~= engine then
-        vim.g.prev_ibus_engine = cur_engine
-        output = vim.system({'ibus', 'engine', engine}):wait()
-        if output.stderr ~= nil and output.stderr ~= '' then
-            print(string.format('Something wrong happen when execute `ibus engine %s` cmd', engine))
-            vim.g.has_ibus = false
-        end
-    end
-end
-
+local extra_fn = require('extra-function')
 vim.api.nvim_create_augroup('IbusHandler', {clear = true})
 vim.api.nvim_create_autocmd('CmdlineEnter', {
-    callback = function(_) ibus_engine_on(vim.g.ibus_eng_engine) end,
+    callback = function(_) extra_fn.turn_ibus_engine_on(vim.g.ibus_eng_engine) end,
     group = 'IbusHandler'
 })
 vim.api.nvim_create_autocmd('CmdlineLeave', {
-    callback = function(_) ibus_engine_on(vim.g.ibus_eng_engine) end,
+    callback = function(_) extra_fn.turn_ibus_engine_on(vim.g.ibus_eng_engine) end,
     group = 'IbusHandler'
 })
 vim.api.nvim_create_autocmd('VimEnter', {
-    callback = function(_) ibus_engine_on(vim.g.ibus_eng_engine) end,
+    callback = function(_) extra_fn.turn_ibus_engine_on(vim.g.ibus_eng_engine) end,
     group = 'IbusHandler'
 })
 vim.api.nvim_create_autocmd('InsertEnter', {
     pattern = '*',
-    callback = function(_) ibus_engine_on(vim.g.prev_ibus_engine) end,
+    callback = function(_) extra_fn.turn_ibus_engine_on(vim.g.prev_ibus_engine) end,
     group = 'IbusHandler'
 })
 vim.api.nvim_create_autocmd('InsertLeave', {
     pattern = '*',
-    callback = function(_) ibus_engine_on(vim.g.ibus_eng_engine) end,
+    callback = function(_) extra_fn.turn_ibus_engine_on(vim.g.ibus_eng_engine) end,
     group = 'IbusHandler'
 })
 vim.api.nvim_create_autocmd('VimEnter', {
