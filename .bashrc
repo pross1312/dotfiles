@@ -583,3 +583,5 @@ function __setprompt
 }
 PROMPT_COMMAND='__setprompt'
 export VIMDIR='~/.config/nvim'
+
+xset b off # disable beep sound
