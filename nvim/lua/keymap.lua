@@ -1,9 +1,7 @@
 local map = vim.keymap.set
 
 local extra = require 'extra-function'
-map('n', '<C-c>', '<Esc>')
 map('i', '<C-c>', '<Esc>')
-map('v', '<C-c>', '<Esc>')
 
 map('x', '<leader>a', '<Plug>(EasyAlign)', {silent = true})
 map('n', '<leader>a', '<Plug>(EasyAlign)', {silent = true})
@@ -14,6 +12,7 @@ map('n', '<m-l>', '<c-w>l', {})
 map('n', '<esc>', '<Cmd>nohlsearch<CR>', {silent = true, noremap = true})
 map('n', '<c-s>', '<c-^>', {silent = true})
 map('n', '<m-m>',  '<cmd>Run<cr>', {silent = true})
+map('i', '<c-r>',  '<c-r><c-o>', {silent = true})
 -- map('n', '<c-s>', extra.swap_header_src, {silent = true})
 -- map('n', '!', '^', {silent = true})
 --map('n', '<c-t>', function()
@@ -64,18 +63,5 @@ end, {silent = true})
 -- command mode mapping
 map('c', '<C-a>', '<Home>', {})
 map('c', '<C-e>', '<End>', {})
-map('c', '<C-h>', '<Left>', {})
-map('c', '<C-l>', '<Right>', {})
-map('c', '<M-h>', '<S-Left>', {})
-map('c', '<M-l>', '<S-Right>', {})
 map('c', '<C-k>', '<C-F>D<C-C>', {})
 map('c', '<C-_>', "lua require('telescope.builtin').command_history()<CR>", {})
-
-map('i', '<C-a>', '<Home>', {})
-map('i', '<C-e>', '<End>', {})
-map('i', '<C-h>', '<Left>', {})
-map('i', '<C-l>', '<Right>', {})
-map('i', '<C-k>', '<Up>', {})
-map('i', '<C-j>', '<Down>', {})
-map('i', '<M-h>', '<S-Left>', {})
-map('i', '<M-l>', '<S-Right>', {})
