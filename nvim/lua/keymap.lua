@@ -22,6 +22,7 @@ map('i', '<c-r>',  '<c-r><c-o>', {silent = true})
 --        print('No buf found')
 --    end
 --end, {silent = true})
+map('n', 'p', 'p`]', {silent = true})
 map('n', '<c-t>', extra.switch_term, {silent = true})
 map('t', '<c-t>', extra.switch_term, {silent = true})
 map('n', '<c-m-l>', '<Cmd>vertical res +5<cr>', {silent = true})

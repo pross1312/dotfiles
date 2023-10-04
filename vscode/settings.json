@@ -1,0 +1,179 @@
+{
+    "window.titleBarStyle": "custom",
+    "[plaintext]": {
+        "editor.acceptSuggestionOnEnter": "off",
+    },
+    "workbench.sideBar.location": "right",
+    "editor.fontSize": 20,
+    "editor.fontFamily": "Iosevka Term",
+    "terminal.integrated.fontWeight": "normal",
+    "editor.fontWeight": "normal",
+    "files.autoSave": "onFocusChange",
+    "editor.inlayHints.enabled": "off",
+    // "maven.terminal.useJavaHome": true,
+    // "C_Cpp.formatting": "vcFormat",
+    // "java.configuration.runtimes": [
+    //     {
+    //         "name": "JavaSE-19",
+    //         "path": "C:\\Program Files\\Java\\jdk-19",
+    //         "default": true,
+    //     },
+    // ],
+    // "java.import.gradle.java.home": "",
+    // "java.jdt.ls.java.home": "C:\\Program Files\\Java\\jdk-19",
+    // "java.completion.enabled": true,
+    // "java.completion.filteredTypes": [
+    //     "com.sun.*",
+    //     "sun.*",
+    //     "jdk.*",
+    //     "org.graalvm.*",
+    //     "io.micrometer.shaded.*"
+    // ],
+    // "terminal.explorerKind": "external",
+    "terminal.external.windowsExec": "wt.exe",
+    "[cpp]": {
+        "editor.wordBasedSuggestions": false,
+        "editor.suggest.insertMode": "replace",
+        "editor.semanticHighlighting.enabled": true,
+    },
+    "editor.detectIndentation": true,
+    "workbench.colorTheme": "Andromeda Italic",
+    "security.workspace.trust.untrustedFiles": "open",
+    // "python.autoComplete.extraPaths": [
+    //     "c:\\users\\dvtuong\\appdata\\roaming\\python\\python310\\site-packages\\*",
+    // ],
+    // "python.analysis.extraPaths": [
+    //     "c:\\users\\dvtuong\\appdata\\roaming\\python\\python310\\site-packages\\*",
+    // ],
+    // "python.defaultInterpreterPath": "C:\\Program Files\\Python310\\python.exe",
+    "python.analysis.autoImportCompletions": true,
+    "notebook.output.textLineLimit": 100,
+    "C_Cpp.vcFormat.indent.lambdaBracesWhenParameter": false,
+    "C_Cpp.vcFormat.newLine.beforeOpenBrace.function": "newLine",
+    "C_Cpp.errorSquiggles": "enabled",
+    "[python]": {
+        "editor.formatOnType": true
+    },
+    "files.autoSaveDelay": 2000,
+    "editor.tokenColorCustomizations": {
+        "textMateRules": [
+            {
+                "scope": "variable.parameter.cpp",
+                "settings": {
+                    "fontStyle": ""
+                }
+            }
+        ]
+    },
+    "github.gitProtocol": "ssh",
+    "git.openRepositoryInParentFolders": "prompt",
+    // "C_Cpp.vcFormat.newLine.beforeOpenBrace.lambda": "sameLine",
+    // "C_Cpp.vcFormat.newLine.beforeOpenBrace.namespace": "newLine",
+    // "C_Cpp.vcFormat.newLine.beforeOpenBrace.type": "newLine",
+    // "git.path": "D:\\Git\\bin\\git.exe",
+    // "C_Cpp.default.compilerPath": "C:\\msys64\\mingw64\\bin\\g++.exe",
+    "terminal.integrated.profiles.windows": {
+        "PowerShell": {
+            "source": "PowerShell",
+            "icon": "terminal-powershell"
+        },
+        "Command Prompt": {
+            "path": [
+                "${env:windir}\\Sysnative\\cmd.exe",
+                "${env:windir}\\System32\\cmd.exe"
+            ],
+            "args": [],
+            "icon": "terminal-cmd"
+        },
+        "Git Bash": {
+            "source": "Git Bash"
+        },
+        "bash (MSYS2)": {
+            "path": "C:\\msys64\\usr\\bin\\bash.exe",
+            "args": [
+                "--login",
+                "-i"
+            ]
+        },
+        "Windows PowerShell": {
+            "path": "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe"
+        }
+    },
+    "terminal.integrated.defaultProfile.windows": "Windows PowerShell",
+    // "editor.cursorStyle": "block",
+    "oneDarkPro.bold": false,
+    "window.zoomLevel": 1,
+    "vim.easymotion": true,
+    "vim.incsearch": true,
+    "vim.useSystemClipboard": true,
+    "vim.useCtrlKeys": true,
+    "vim.hlsearch": true,
+    "vim.insertModeKeyBindings": [
+        {
+            "before": ["<C-c>"],
+            "after": ["<Esc>"]
+        },
+        {
+            "before": ["j", "j"],
+            "after": ["<Esc>"]
+        }
+    ],
+    "vim.visualModeKeyBindings": [
+        {
+            "before": ["<C-n>"],
+            "after": ["g", "b"],
+        },
+        {
+            "before": ["<C-c>"],
+            "after": ["<Esc>"]
+        },
+    ],
+    "vim.normalModeKeyBindingsNonRecursive": [
+        {
+            "before": ["<leader>", "d"],
+            "after": ["d", "d"]
+        },
+        {
+            "before": ["<C-J>"],
+            "after": ["<C-up>"]
+        },
+        {
+            "before": ["<C-c>"],
+            "after": ["<Esc>"]
+        },
+        {
+            "before": ["<C-c>"],
+            "commands": [":nohl"],
+            "silent": true,
+        },
+        {
+            "before": ["<C-n>"],
+            "after": ["g", "b"],
+        },
+        // {
+        //     "before": ["A-k"],
+        //     "when": "editorTextFocus",
+        //     "commands": ["editor.action.insertCursorAbove"],
+        // },
+        // {
+        //     "before": ["<A-j>"],
+        //     "when": "editorTextFocus",
+        //     "commands": ["editor.action.insertCursorBelow"],
+        // },
+        {
+            "before": ["<leader>", " "],
+            "commands": ["workbench.action.quickOpen"],
+            "silent": true,
+        }
+    ],
+    "vim.leader": "<space>",
+    "vim.handleKeys": {
+        "<tab>": false,
+        // "<C-n>": false,
+        "<C-p>": false,
+    },
+    "workbench.colorCustomizations": {
+        // "editor.lineHighlightBackground": "#00000000",
+    },
+    "editor.lineNumbers": "relative",
+}
