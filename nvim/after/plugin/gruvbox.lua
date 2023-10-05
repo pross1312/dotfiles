@@ -20,13 +20,13 @@ require("gruvbox").setup({
     overrides = {
         CursorLine = { bg = "" },
         CursorLineNr = { bg = "" },
+        ["Todo"] = my_info,
         ["@text.todo.comment"] = my_info,
         ["@text.note.comment"] = my_info,
         ["@text.danger.comment"] = my_info,
         ["@text.warning.comment"] = my_info,
         ["@punctuation.delimiter.comment"] = my_info,
---        Cursor = { bg = "#C3A40C" },
---        cterm=bold gui=bold guifg=#d3869b
+       Cursor = { bg = "#C3A40C" },
     },
     dim_inactive = false,
     transparent_mode = not vim.g.neovide

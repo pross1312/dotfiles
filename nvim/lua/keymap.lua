@@ -2,6 +2,7 @@ local map = vim.keymap.set
 
 local extra = require 'extra-function'
 map('i', '<C-c>', '<Esc>')
+map('n', '<C-c>', '<Esc>')
 
 map('x', '<leader>a', '<Plug>(EasyAlign)', {silent = true})
 map('n', '<leader>a', '<Plug>(EasyAlign)', {silent = true})
@@ -19,8 +20,7 @@ map('i', '<c-r>',  '<c-r><c-o>', {silent = true})
 --    if vim.g.pre_buffer then
 --        vim.cmd("buffer " .. vim.g.pre_buffer)
 --    else
---        print('No buf found')
---    end
+--        print('No buf found') end
 --end, {silent = true})
 map('n', 'p', 'p`]', {silent = true})
 map('n', '<c-t>', extra.switch_term, {silent = true})

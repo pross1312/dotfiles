@@ -38,43 +38,43 @@ require("lazy").setup({
         vim.cmd [[let g:VM_maps["Exit"] = '<C-c>']]
     end },
     -- {
-        --     'VonHeikemen/lsp-zero.nvim',
-        --     branch = 'v2.x',
-        --     dependencies = {
-            --         -- LSP Support
-            --         {'neovim/nvim-lspconfig'},             -- Required
-            --         {'williamboman/mason.nvim'},           -- Optional
-            --         {'williamboman/mason-lspconfig.nvim'}, -- Optional
+    --     'VonHeikemen/lsp-zero.nvim',
+    --     branch = 'v2.x',
+    --     dependencies = {
+    --         -- LSP Support
+    --         {'neovim/nvim-lspconfig'},             -- Required
+    --         {'williamboman/mason.nvim'},           -- Optional
+    --         {'williamboman/mason-lspconfig.nvim'}, -- Optional
 
-            --         -- Autocompletion
-            --         {'hrsh7th/nvim-cmp'},     -- Required
-            --         {'hrsh7th/cmp-nvim-lsp'}, -- Required
-            --         {'L3MON4D3/LuaSnip'},     -- Required
-            --     }
-            -- },
-            --------------------------colorschemes-------------------------------
-            'ahmedabdulrahman/vim-aylin',
-            'folke/tokyonight.nvim',
-            'catppuccin/nvim',
-            'rose-pine/neovim',
-            'drewtempelmeyer/palenight.vim',
-            'blazkowolf/gruber-darker.nvim',
-            { "ellisonleao/gruvbox.nvim" }
-            ---------------------------------------------------------------------
-        })
-        -- require('gruber-darker').setup {
-            --     bold = true,
-            --     invert = {
-                --         signs = false,
-                --         tabline = false,
-                --         visual = false,
-                --     },
-                --     italic = {
-                    --         strings = false,
-                    --         comments = true,
-                    --         operators = false,
-                    --         folds = true,
-                    --     },
-                    --     undercurl = true,
-                    --     underline = true,
-                    -- }
+    --         -- Autocompletion
+    --         {'hrsh7th/nvim-cmp'},     -- Required
+    --         {'hrsh7th/cmp-nvim-lsp'}, -- Required
+    --         {'L3MON4D3/LuaSnip'},     -- Required
+    --     }
+    -- },
+    --------------------------colorschemes-------------------------------
+    'ahmedabdulrahman/vim-aylin',
+    'folke/tokyonight.nvim',
+    'catppuccin/nvim',
+    'rose-pine/neovim',
+    'drewtempelmeyer/palenight.vim',
+    'blazkowolf/gruber-darker.nvim',
+    { "ellisonleao/gruvbox.nvim" }
+    ---------------------------------------------------------------------
+})
+-- require('gruber-darker').setup {
+--     bold = true,
+--     invert = {
+--         signs = false,
+--         tabline = false,
+--         visual = false,
+--     },
+--     italic = {
+--         strings = false,
+--         comments = true,
+--         operators = false,
+--         folds = true,
+--     },
+--     undercurl = true,
+--     underline = true,
+-- }
