@@ -4,6 +4,9 @@
 set input-meta on
 set output-meta on
 
+# Show auto-completion list automatically, without double tab
+set show-all-if-ambiguous On
+
 # To allow the use of 8bit-characters like the german umlauts, uncomment
 # the line below. However this makes the meta key not work as a meta key,
 # which is annoying to those which don't need to type in 8-bit characters.
@@ -18,7 +21,7 @@ set output-meta on
 
 # do not bell on tab-completion
 # set bell-style none
-# set bell-style visible
+set bell-style visible
 
 # some defaults / modifications for the emacs mode
 

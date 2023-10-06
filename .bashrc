@@ -1,6 +1,5 @@
 #!/bin/bash
 # https://gist.github.com/zachbrowne/8bc414c9f30192067831fafebd14255c
-iatest=$(expr index "$-" i)
 
 #######################################################
 # SOURCED ALIAS'S AND SCRIPTS BY zachbrowne.me
@@ -11,19 +10,19 @@ if [ -f /etc/bashrc ]; then
     . /etc/bashrc
 fi
 
+if [ -f /home/dvtuong/.profile ]; then
+    . /home/dvtuong/.profile
+fi
+
 # Enable bash programmable completion features in interactive shells
 if [ -f /usr/share/bash-completion/bash_completion ]; then
     . /usr/share/bash-completion/bash_completion
-elif [ -f /etc/bash_completion ]; then
-    . /etc/bash_completion
+elif [ -f /etc/bash_completion ]; then . /etc/bash_completion
 fi
 
 #######################################################
 # EXPORTS
 #######################################################
-
-# Disable the bell
-if [[ $iatest > 0 ]]; then bind "set bell-style visible"; fi
 
 # Expand the history size
 export HISTFILESIZE=10000
@@ -38,12 +37,6 @@ shopt -s checkwinsize
 # Causes bash to append to history instead of overwriting it so if you start a new terminal, you have old session history
 shopt -s histappend
 PROMPT_COMMAND='history -a'
-
-# Allow ctrl-S for history navigation (with ctrl-R)
-stty -ixon
-
-# Show auto-completion list automatically, without double tab
-if [[ $iatest > 0 ]]; then bind "set show-all-if-ambiguous On"; fi
 
 # Set the default editor
 export EDITOR=vim
@@ -584,4 +577,5 @@ function __setprompt
 PROMPT_COMMAND='__setprompt'
 export VIMDIR='~/.config/nvim'
 
-xset b off # disable beep sound
+# Allow ctrl-S for history navigation (with ctrl-R)
+stty -ixon
