@@ -1,8 +1,12 @@
 local map = vim.keymap.set
 
 local extra = require 'extra-function'
-map('i', '<C-c>', '<Esc>')
-map('n', '<C-c>', '<Esc>')
+
+map('n', '<C-c>', '<Nop>', {})
+map('v', '<C-c>', '<Nop>', {})
+map('i', '<C-c>', '<Nop>', {})
+
+map('i', '<C-s>', '<Cmd>write<CR>', {})
 
 map('x', '<leader>a', '<Plug>(EasyAlign)', {silent = true})
 map('n', '<leader>a', '<Plug>(EasyAlign)', {silent = true})
@@ -10,7 +14,7 @@ map('n', '<m-h>', '<c-w>h', {})
 map('n', '<m-j>', '<c-w>j', {})
 map('n', '<m-k>', '<c-w>k', {})
 map('n', '<m-l>', '<c-w>l', {})
-map('n', '<esc>', '<Cmd>nohlsearch<CR>', {silent = true, noremap = true})
+map('n', '<esc>', '<Cmd>nohlsearch<CR>', {silent = true})
 map('n', '<c-s>', '<c-^>', {silent = true})
 map('n', '<m-m>',  '<cmd>Run<cr>', {silent = true})
 map('i', '<c-r>',  '<c-r><c-o>', {silent = true})
@@ -60,7 +64,6 @@ map('n', '<leader>jc', function()
         print('No directory found')
     end
 end, {silent = true})
-
 -- command mode mapping
 map('c', '<C-a>', '<Home>', {})
 map('c', '<C-e>', '<End>', {})
