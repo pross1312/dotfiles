@@ -35,7 +35,7 @@ require("lazy").setup({
         vim.cmd [[let g:VM_maps = {}]]
         vim.cmd "nmap <C-J> <Plug>(VM-Add-Cursor-Down)"
         vim.cmd "nmap <C-K> <Plug>(VM-Add-Cursor-Up)"
-        vim.cmd [[let g:VM_maps["Exit"] = '<C-c>']]
+        -- vim.cmd [[let g:VM_maps["Exit"] = '<C-c>']]
     end },
     -- {
     --     'VonHeikemen/lsp-zero.nvim',

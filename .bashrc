@@ -579,3 +579,4 @@ export VIMDIR='~/.config/nvim'
 
 # Allow ctrl-S for history navigation (with ctrl-R)
 stty -ixon
+xset b off
