@@ -2,9 +2,9 @@ local map = vim.keymap.set
 
 local extra = require 'extra-function'
 
-map('n', '<C-c>', '<Nop>', {})
-map('v', '<C-c>', '<Nop>', {})
-map('i', '<C-c>', '<Nop>', {})
+-- map('n', '<C-c>', '<Esc>', {})
+map('v', '<C-c>', '<Esc>', {})
+map('i', '<C-c>', '<Esc>', {})
 
 map('i', '<C-s>', '<Cmd>write<CR>', {})
 
