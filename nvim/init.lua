@@ -3,7 +3,7 @@ require 'options'
 require 'keymap'
 require 'autocmd'
 
-vim.cmd 'colorscheme gruvbox'
+vim.cmd 'colorscheme carbonfox'
 vim.cmd 'cabbrev mkae make'
 
 local extra_func = require 'extra-function'
