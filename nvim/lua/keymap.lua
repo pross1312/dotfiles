@@ -68,4 +68,5 @@ end, {silent = true})
 map('c', '<C-a>', '<Home>', {})
 map('c', '<C-e>', '<End>', {})
 map('c', '<C-k>', '<C-F>D<C-C>', {})
-map('c', '<C-_>', "lua require('telescope.builtin').command_history()<CR>", {})
+if vim.g.neovide then map('c', '<C-/>', "lua require('telescope.builtin').command_history()<CR>", {})
+else map('c', '<C-_>', "lua require('telescope.builtin').command_history()<CR>", {}) end

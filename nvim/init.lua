@@ -3,7 +3,7 @@ require 'options'
 require 'keymap'
 require 'autocmd'
 
-vim.cmd 'colorscheme carbonfox'
+vim.cmd 'colorscheme gruvbox'
 vim.cmd 'cabbrev mkae make'
 
 local extra_func = require 'extra-function'
@@ -21,6 +21,10 @@ vim.api.nvim_create_user_command('Dtrailing', extra_func.delete_trailing, {bang 
 
 vim.api.nvim_create_user_command('Qfix', function()
     vim.cmd "vsplit | vertical resize 55 | copen | set nowrap | wincmd k | close"
+end, {bang = true, bar = true})
+
+vim.api.nvim_create_user_command('RemoveAllBuffers', function()
+    extra_func.remove_all_buffers()
 end, {bang = true, bar = true})
 
 vim.api.nvim_create_user_command('HtmlInit', function()
