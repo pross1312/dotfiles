@@ -22,7 +22,7 @@ require("gruvbox").setup({
         CursorLineNr = { bg = "" },
         LineNr = { bg = "" },
         SignColumn = { bg = "#0a0a0a" },
-        ["Todo"] = my_info,
+        ["Todo"] = { bg = "", fg = "" },
 --         ["@text.todo.comment"] = my_info,
 --         ["@text.note.comment"] = my_info,
 --         ["@text.danger.comment"] = my_info,
