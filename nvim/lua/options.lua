@@ -40,10 +40,10 @@ vim.o.cmdheight            = 1
 vim.opt.listchars['trail'] = '·'
 vim.opt.listchars          = "tab:  ,trail:·,nbsp:+"
 vim.opt.hlsearch           = false
-vim.opt.scrolloff          = 8
+vim.opt.scrolloff          = 10
 vim.opt.signcolumn         = "yes"
 vim.o.laststatus           = 0
-vim.o.wrap                 = true
+vim.o.wrap                 = false
 vim.opt.matchpairs:append '<:>'
 vim.opt.isfname:append("@-@")
 -- vim.opt.updatetime = 50

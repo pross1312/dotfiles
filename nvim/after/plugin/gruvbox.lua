@@ -1,8 +1,7 @@
 local my_info = { bold = true, bg = "#4f1227", fg = "#ff224b" } -- FIXME: TODO: NOTE:
 require("gruvbox").setup({
     undercurl = true,
-    underline = false,
-    bold = true,
+    underline = false, bold = true,
     italic = {
         strings = false,
         comments = false,
@@ -18,8 +17,11 @@ require("gruvbox").setup({
     contrast = "", -- can be "hard", "soft" or empty string
     palette_overrides = {},
     overrides = {
+        Normal = { bg = "#0a0a0a" },
         CursorLine = { bg = "" },
         CursorLineNr = { bg = "" },
+        LineNr = { bg = "" },
+        SignColumn = { bg = "#0a0a0a" },
         ["Todo"] = my_info,
 --         ["@text.todo.comment"] = my_info,
 --         ["@text.note.comment"] = my_info,

@@ -57,6 +57,20 @@ function m.switch_term()
     end
 end
 
+function m.remove_all_buffers()
+    local term_pattern = 'term://.+/bin/bash$'
+    if vim.fn.bufexists(vim.g.extra_term) == 0 or not vim.fn.bufname(vim.g.extra_term):match(term_pattern) then
+        vim.cmd "term"
+        vim.g.extra_term = vim.fn.bufnr()
+    end
+    vim.keymap.set('t', '<m-k>', 'cd ' .. vim.fn.getcwd() .. '<cr>', {silent = true}) -- to quickly jump to current directory
+    vim.cmd("buffer " .. vim.g.extra_term)
+    local buffers = vim.fn.getbufinfo({buflisted = true}) -- list all buffers
+    for i, v in pairs(buffers) do
+        if v.bufnr ~= vim.g.extra_term then vim.cmd(string.format("bd %d", v.bufnr)) end
+    end
+end
+
 function m.run_cmd(data)
     if vim.opt.autowrite then vim.cmd "w" end
     if not data.fargs[1] and vim.g.run_cmd then
