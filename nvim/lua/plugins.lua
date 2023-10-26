@@ -60,7 +60,7 @@ require("lazy").setup({
     'ahmedabdulrahman/vim-aylin',
     'folke/tokyonight.nvim',
     'catppuccin/nvim',
-    'rose-pine/neovim',
+    {'rose-pine/neovim', name = "rosepine"},
     'drewtempelmeyer/palenight.vim',
     'blazkowolf/gruber-darker.nvim',
     { "ellisonleao/gruvbox.nvim" },

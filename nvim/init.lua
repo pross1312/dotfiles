@@ -3,11 +3,17 @@ require 'options'
 require 'keymap'
 require 'autocmd'
 
-vim.cmd 'colorscheme gruvbox'
 vim.cmd 'cabbrev mkae make'
+function set_color(name)
+    vim.cmd('colorscheme ' .. name)
+    vim.cmd 'hi clear CursorLine'
+end
+set_color('aylin')
 
 local extra_func = require 'extra-function'
 vim.api.nvim_create_user_command('Run', extra_func.run_cmd, {bang = true, bar = true, nargs = '?', complete = 'file'})
+
+vim.api.nvim_create_user_command('Color', function(data) set_color(data.fargs[1]) end, {bang = true, bar = true, nargs = 1, complete = 'color'})
 
 vim.api.nvim_create_user_command('Scratch', function()
     vim.cmd(string.format("b %s", vim.api.nvim_create_buf(true, true)))
