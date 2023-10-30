@@ -1,7 +1,7 @@
-URxvt.font: xft:Iosevka Term:style=Regular:size=18
-URxvt.boldFont: xft:Iosevka Term:style=Bold:size=18
-URxvt.italicFont: xft:Iosevka Term:style=Italic:size=18
-URxvt.boldItalicfont: xft:Iosevka Term:style=Bold Italic:size=18
+URxvt.font: xft:Iosevka Term:style=Regular:size=18:antialias=true
+URxvt.boldFont: xft:Iosevka Term:style=Bold:size=18:antialias=true
+URxvt.italicFont: xft:Iosevka Term:style=Italic:size=18:antialias=true
+URxvt.boldItalicfont: xft:Iosevka Term:style=Bold Italic:size=18:antialias=true
 URxvt.letterSpace: 0
 URxvt.lineSpace: 0
 URxvt.geometry: 92x50
@@ -13,7 +13,7 @@ URxvt.cursorUnderline: false
 URxvt.saveline: 8192
 URxvt.scrollBar: false
 URxvt.scrollBar_right: false
-URxvt.urgentOnBell: true
+URxvt.urgentOnBell: false
 URxvt.depth: 24
 URxvt.iso14755: false
 ! URxvt.keysym.S-Return:     \033[13;2u
