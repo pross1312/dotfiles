@@ -17,11 +17,11 @@ require("gruvbox").setup({
     contrast = "", -- can be "hard", "soft" or empty string
     palette_overrides = {},
     overrides = {
-        Normal = { bg = "#0a0a0a" },
+        Normal = { bg = "#111111" },
         CursorLine = { bg = "" },
         CursorLineNr = { bg = "" },
         LineNr = { bg = "" },
-        SignColumn = { bg = "#0a0a0a" },
+        SignColumn = { bg = "" },
         ["Todo"] = { bg = "", fg = "" },
 --         ["@text.todo.comment"] = my_info,
 --         ["@text.note.comment"] = my_info,
