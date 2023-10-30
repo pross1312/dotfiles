@@ -85,7 +85,7 @@ end
 
 function m.delete_trailing()
     local view = vim.fn.winsaveview()
-    vim.cmd "%s/ *$// | %s/\\n*\\%$//"
+    vim.cmd "%s/ *$// | %s/\\n*\\%$// | nohl"
     vim.fn.winrestview(view)
 end
 

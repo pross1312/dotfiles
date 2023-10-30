@@ -34,12 +34,14 @@ require("lazy").setup({
         "folke/todo-comments.nvim",
         dependencies = { "nvim-lua/plenary.nvim" }
     },
-    {'mg979/vim-visual-multi', branch = 'master', config = function()
+    {'mg979/vim-visual-multi', branch = 'master', lazy = false, priority = 101, config = function()
         vim.g.VM_silent_exit = 1
         vim.cmd [[let g:VM_maps = {}]]
         vim.cmd "nmap <M-n> <Plug>(VM-Add-Cursor-Down)"
         vim.cmd "nmap <M-p> <Plug>(VM-Add-Cursor-Up)"
         vim.cmd [[let g:VM_maps['Exit'] = '<C-c>']]
+        vim.cmd "hi MyMultiCursor guibg=#777777 gui=bold"
+        vim.cmd [[let g:VM_Mono_hl   = 'MyMultiCursor']]
     end },
     -- {
     --     'VonHeikemen/lsp-zero.nvim',
@@ -59,12 +61,12 @@ require("lazy").setup({
     --------------------------colorschemes-------------------------------
     'ahmedabdulrahman/vim-aylin',
     'folke/tokyonight.nvim',
-    'catppuccin/nvim',
+    { 'catppuccin/nvim', priority = 100 },
     {'rose-pine/neovim', name = "rosepine"},
     'drewtempelmeyer/palenight.vim',
     'blazkowolf/gruber-darker.nvim',
     { "ellisonleao/gruvbox.nvim" },
-    { "EdenEast/nightfox.nvim", lazy = false },
+    { "EdenEast/nightfox.nvim" },
     ---------------------------------------------------------------------
 })
 -- require('gruber-darker').setup {

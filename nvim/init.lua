@@ -7,8 +7,10 @@ vim.cmd 'cabbrev mkae make'
 function set_color(name)
     vim.cmd('colorscheme ' .. name)
     vim.cmd 'hi clear CursorLine'
+    vim.cmd 'hi clear Todo' -- use todo-comments plugin instead
 end
-set_color('aylin')
+
+set_color('catppuccin-mocha')
 
 local extra_func = require 'extra-function'
 vim.api.nvim_create_user_command('Run', extra_func.run_cmd, {bang = true, bar = true, nargs = '?', complete = 'file'})
