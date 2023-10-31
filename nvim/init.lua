@@ -2,20 +2,22 @@ require 'plugins'
 require 'options'
 require 'keymap'
 require 'autocmd'
-
 vim.cmd 'cabbrev mkae make'
 function set_color(name)
     vim.cmd('colorscheme ' .. name)
     vim.cmd 'hi clear CursorLine'
     vim.cmd 'hi clear Todo' -- use todo-comments plugin instead
+    vim.cmd "hi MyMultiCursor guibg=#777777 gui=bold"
 end
 
-set_color('catppuccin-mocha')
+set_color 'tokyonight-night'
 
 local extra_func = require 'extra-function'
 vim.api.nvim_create_user_command('Run', extra_func.run_cmd, {bang = true, bar = true, nargs = '?', complete = 'file'})
 
-vim.api.nvim_create_user_command('Color', function(data) set_color(data.fargs[1]) end, {bang = true, bar = true, nargs = 1, complete = 'color'})
+vim.api.nvim_create_user_command('Color',
+            function(data) set_color(data.fargs[1]) end,
+            {bang = true, bar = true, nargs = 1, complete = 'color'})
 
 vim.api.nvim_create_user_command('Scratch', function()
     vim.cmd(string.format("b %s", vim.api.nvim_create_buf(true, true)))
