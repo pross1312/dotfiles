@@ -45,7 +45,7 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec --no-startup-id urxvt -title terminal
+bindsym $mod+Return exec --no-startup-id st
 # bindsym $mod+Return exec terminator
 
 # kill focused window

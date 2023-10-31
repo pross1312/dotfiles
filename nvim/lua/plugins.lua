@@ -40,7 +40,6 @@ require("lazy").setup({
         vim.cmd "nmap <M-n> <Plug>(VM-Add-Cursor-Down)"
         vim.cmd "nmap <M-p> <Plug>(VM-Add-Cursor-Up)"
         vim.cmd [[let g:VM_maps['Exit'] = '<C-c>']]
-        vim.cmd "hi MyMultiCursor guibg=#777777 gui=bold"
         vim.cmd [[let g:VM_Mono_hl   = 'MyMultiCursor']]
     end },
     -- {
