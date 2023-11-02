@@ -36,7 +36,7 @@ vim.api.nvim_create_autocmd('VimEnter', {
 vim.api.nvim_create_autocmd({'TermOpen', 'BufEnter'}, {
     pattern = "term://*/bin/bash",
     callback = function(_)
-        vim.keymap.set('t', '<esc>', '<c-bslash><c-n>', {silent = true, buffer = true})
+        -- vim.keymap.set('t', '<esc>', '<c-bslash><c-n>', {silent = true, buffer = true})
         -- vim.keymap.set('t', '<c-m>', 'pwd<CR><c-bslash><c-n>G?^\\/.\\+$<CR>yy<esc>:cd <C-r>"<CR>i', {silent = true, buffer = true})
         vim.keymap.set('t', '<m-j>', '<C-a><C-k>pwd<CR><c-bslash><c-n>G$?^\\/.\\+$<CR>yy:cd <C-r>"<CR>', {silent = true, buffer = true})
     end
