@@ -93,35 +93,63 @@ char *termname = "st-256color";
  */
 unsigned int tabspaces = 8;
 /* Terminal colors (16 first used in escape sequence) */
-static const char *colorname[] = {
-	/* 8 normal colors */
-	[0] = "#2E3440",
-	[1] = "red3",
-	[2] = "green3",
-	[3] = "yellow3",
-	[4] = "#EBCB8B",
-	[5] = "#A3BE8C",
-	[6] = "cyan3",
-	[7] = "gray90",
 
-	/* 8 bright colors */
-	[8] = "#4C566A",
-	[9] = "red",
-	[10] = "green",
-	[11] = "yellow",
-	[12] = "#EBCB8B",
-	[13] = "#A3BE8C",
-	[14] = "cyan",
-	[15] = "white",
+static const char *colorname[] = { // tokyonight
+    [0] = "#15161e",
+    [1] = "#f7768e",
+    [2] = "#9ece6a",
+    [3] = "#e0af68",
+    [4] = "#7aa2f7",
+    [5] = "#bb9af7",
+    [6] = "#7dcfff",
+    [7] = "#a9b1d6",
+    [8] = "#414868",
+    [9] = "#f7768e",
+    [10] = "#9ece6a",
+    [11] = "#e0af68",
+    [12] = "#7aa2f7",
+    [13] = "#bb9af7",
+    [14] = "#7dcfff",
+    [15] = "#c0caf5",
 
 	[255] = 0,
 
 	/* more colors can be added after 255 to use with DefaultXX */
 	"#cccccc",
 	"#555555",
-	"#e5e9f0", /* default foreground colour */
-	"#181818", /* default background colour */
+	"#c0caf5", /* default foreground colour */
+	"#1a1b26", /* default background colour */
 };
+
+// static const char *colorname[] = {
+// 	/* 8 normal colors */
+// 	[0] = "#2E3440",
+// 	[1] = "red3",
+// 	[2] = "green3",
+// 	[3] = "yellow3",
+// 	[4] = "#EBCB8B",
+// 	[5] = "#A3BE8C",
+// 	[6] = "cyan3",
+// 	[7] = "gray90",
+// 
+// 	/* 8 bright colors */
+// 	[8] = "#4C566A",
+// 	[9] = "red",
+// 	[10] = "green",
+// 	[11] = "yellow",
+// 	[12] = "#EBCB8B",
+// 	[13] = "#A3BE8C",
+// 	[14] = "cyan",
+// 	[15] = "white",
+// 
+// 	[255] = 0,
+// 
+// 	/* more colors can be added after 255 to use with DefaultXX */
+// 	"#cccccc",
+// 	"#555555",
+// 	"#e5e9f0", /* default foreground colour */
+// 	"#181818", /* default background colour */
+// };
 
 /*
  * Default colors (colorname index)
