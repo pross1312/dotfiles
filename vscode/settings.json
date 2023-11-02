@@ -1,17 +1,14 @@
 {
+    "workbench.colorTheme": "Activate UMBRA protocol",
     "window.titleBarStyle": "custom",
-    "[plaintext]": {
-        "editor.acceptSuggestionOnEnter": "off",
-    },
     "workbench.sideBar.location": "right",
     "editor.fontSize": 20,
     "editor.fontFamily": "Iosevka Term",
-    "terminal.integrated.fontWeight": "normal",
-    "editor.fontWeight": "normal",
+    "terminal.integrated.fontSize": 20,
+    "terminal.integrated.fontFamily": "Iosevka Term",
     "files.autoSave": "onFocusChange",
     "editor.inlayHints.enabled": "off",
-    // "maven.terminal.useJavaHome": true,
-    // "C_Cpp.formatting": "vcFormat",
+    // "maven.terminal.useJavaHome": true, // "C_Cpp.formatting": "vcFormat",
     // "java.configuration.runtimes": [
     //     {
     //         "name": "JavaSE-19",
@@ -30,14 +27,6 @@
     //     "io.micrometer.shaded.*"
     // ],
     // "terminal.explorerKind": "external",
-    "terminal.external.windowsExec": "wt.exe",
-    "[cpp]": {
-        "editor.wordBasedSuggestions": false,
-        "editor.suggest.insertMode": "replace",
-        "editor.semanticHighlighting.enabled": true,
-    },
-    "editor.detectIndentation": true,
-    "workbench.colorTheme": "Andromeda Italic",
     "security.workspace.trust.untrustedFiles": "open",
     // "python.autoComplete.extraPaths": [
     //     "c:\\users\\dvtuong\\appdata\\roaming\\python\\python310\\site-packages\\*",
@@ -67,42 +56,7 @@
     },
     "github.gitProtocol": "ssh",
     "git.openRepositoryInParentFolders": "prompt",
-    // "C_Cpp.vcFormat.newLine.beforeOpenBrace.lambda": "sameLine",
-    // "C_Cpp.vcFormat.newLine.beforeOpenBrace.namespace": "newLine",
-    // "C_Cpp.vcFormat.newLine.beforeOpenBrace.type": "newLine",
-    // "git.path": "D:\\Git\\bin\\git.exe",
-    // "C_Cpp.default.compilerPath": "C:\\msys64\\mingw64\\bin\\g++.exe",
-    "terminal.integrated.profiles.windows": {
-        "PowerShell": {
-            "source": "PowerShell",
-            "icon": "terminal-powershell"
-        },
-        "Command Prompt": {
-            "path": [
-                "${env:windir}\\Sysnative\\cmd.exe",
-                "${env:windir}\\System32\\cmd.exe"
-            ],
-            "args": [],
-            "icon": "terminal-cmd"
-        },
-        "Git Bash": {
-            "source": "Git Bash"
-        },
-        "bash (MSYS2)": {
-            "path": "C:\\msys64\\usr\\bin\\bash.exe",
-            "args": [
-                "--login",
-                "-i"
-            ]
-        },
-        "Windows PowerShell": {
-            "path": "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe"
-        }
-    },
     "terminal.integrated.defaultProfile.windows": "Windows PowerShell",
-    // "editor.cursorStyle": "block",
-    "oneDarkPro.bold": false,
-    "window.zoomLevel": 1,
     "vim.easymotion": true,
     "vim.incsearch": true,
     "vim.useSystemClipboard": true,
@@ -142,7 +96,7 @@
             "after": ["<Esc>"]
         },
         {
-            "before": ["<C-c>"],
+            "before": ["<C-l>"],
             "commands": [":nohl"],
             "silent": true,
         },
@@ -176,4 +130,18 @@
         // "editor.lineHighlightBackground": "#00000000",
     },
     "editor.lineNumbers": "relative",
+    "window.zoomLevel": 1,
+    "editor.guides.indentation": false,
+    "editor.occurrencesHighlight": false,
+    "editor.renderLineHighlight": "none",
+    "editor.matchBrackets": "near",
+    "editor.autoClosingBrackets": "never",
+    "editor.autoClosingQuotes": "never",
+    "workbench.statusBar.visible": false,
+    "editor.cursorBlinking": "solid",
+    "editor.acceptSuggestionOnEnter": "off",
+    "editor.wordBasedSuggestions": false,
+    "editor.suggest.insertMode": "replace",
+    "editor.semanticHighlighting.enabled": true,
+    "editor.detectIndentation": true,
 }
