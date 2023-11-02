@@ -80,3 +80,4 @@ end, {bang = true, bar = true})
 if vim.g.neovide then
     require 'gui-options'
 end
+vim.cmd(string.format("source %s/vim-plugins/vim-cool/plugin/cool.vim", vim.fn.stdpath("config")))

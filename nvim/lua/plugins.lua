@@ -42,21 +42,21 @@ require("lazy").setup({
         vim.cmd [[let g:VM_maps['Exit'] = '<C-c>']]
         vim.cmd [[let g:VM_Mono_hl   = 'MyMultiCursor']]
     end },
-    -- {
-    --     'VonHeikemen/lsp-zero.nvim',
-    --     branch = 'v2.x',
-    --     dependencies = {
-    --         -- LSP Support
-    --         {'neovim/nvim-lspconfig'},             -- Required
-    --         {'williamboman/mason.nvim'},           -- Optional
-    --         {'williamboman/mason-lspconfig.nvim'}, -- Optional
+    {
+        'VonHeikemen/lsp-zero.nvim',
+        branch = 'v3.x',
+        dependencies = {
+            -- LSP Support
+            {'neovim/nvim-lspconfig'},             -- Required
+            {'williamboman/mason.nvim'},           -- Optional
+            {'williamboman/mason-lspconfig.nvim'}, -- Optional
 
-    --         -- Autocompletion
-    --         {'hrsh7th/nvim-cmp'},     -- Required
-    --         {'hrsh7th/cmp-nvim-lsp'}, -- Required
-    --         {'L3MON4D3/LuaSnip'},     -- Required
-    --     }
-    -- },
+            -- Autocompletion
+            {'hrsh7th/nvim-cmp'},     -- Required
+            {'hrsh7th/cmp-nvim-lsp'}, -- Required
+            {'L3MON4D3/LuaSnip'},     -- Required
+        }
+    },
     --------------------------colorschemes-------------------------------
     'ahmedabdulrahman/vim-aylin',
     'folke/tokyonight.nvim',
@@ -66,6 +66,9 @@ require("lazy").setup({
     'blazkowolf/gruber-darker.nvim',
     { "ellisonleao/gruvbox.nvim" },
     { "EdenEast/nightfox.nvim" },
+    { "uloco/bluloco.nvim",
+       dependencies = 'rktjmp/lush.nvim',
+    },
     ---------------------------------------------------------------------
 })
 -- require('gruber-darker').setup {
