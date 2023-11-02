@@ -41,6 +41,7 @@ vim.opt.listchars['trail'] = '·'
 vim.opt.listchars          = "tab:  ,trail:·,nbsp:+"
 vim.opt.hlsearch           = true
 vim.opt.scrolloff          = 10
+vim.g.scrolloff            = 10 -- save to fix weird bug in switch term
 vim.opt.signcolumn         = "yes"
 vim.o.laststatus           = 0
 vim.o.wrap                 = false
