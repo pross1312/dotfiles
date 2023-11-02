@@ -114,11 +114,6 @@
         //     "when": "editorTextFocus",
         //     "commands": ["editor.action.insertCursorBelow"],
         // },
-        {
-            "before": ["<leader>", " "],
-            "commands": ["workbench.action.quickOpen"],
-            "silent": true,
-        }
     ],
     "vim.leader": "<space>",
     "vim.handleKeys": {
