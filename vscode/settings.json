@@ -104,6 +104,11 @@
             "before": ["<C-n>"],
             "after": ["g", "b"],
         },
+        {
+            "before": ["<leader>", " "],
+            "commands": ["workbench.action.quickOpen"],
+            "silent": true,
+        }
         // {
         //     "before": ["A-k"],
         //     "when": "editorTextFocus",
@@ -132,7 +137,6 @@
     "editor.matchBrackets": "near",
     "editor.autoClosingBrackets": "never",
     "editor.autoClosingQuotes": "never",
-    "workbench.statusBar.visible": false,
     "editor.cursorBlinking": "solid",
     "editor.acceptSuggestionOnEnter": "off",
     "editor.wordBasedSuggestions": false,
