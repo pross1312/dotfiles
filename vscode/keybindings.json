@@ -35,6 +35,19 @@
         "command": "-workbench.action.files.newUntitledFile"
     },
     {
+        "key": "space space",
+        "command": "workbench.action.quickOpen",
+        "when": "!textInputFocus"
+    },
+    {
+        "key": "ctrl+p",
+        "command": "workbench.action.quickOpenNavigatePrevious",
+    },
+    {
+        "key": "ctrl+n",
+        "command": "workbench.action.quickOpenNavigateNext"
+    },
+    {
         "key": "ctrl+p",
         "command": "selectPrevSuggestion",
         "when": "suggestWidgetMultipleSuggestions && suggestWidgetVisible && textInputFocus || suggestWidgetVisible && textInputFocus && !suggestWidgetHasFocusedSuggestion"
@@ -43,17 +56,5 @@
         "key": "ctrl+n",
         "command": "selectNextSuggestion",
         "when": "suggestWidgetMultipleSuggestions && suggestWidgetVisible && textInputFocus || suggestWidgetVisible && textInputFocus && !suggestWidgetHasFocusedSuggestion"
-    },
-    {
-        "key": "space space",
-        "command": "workbench.action.quickOpen"
-    },
-    {
-        "key": "ctrl+p",
-        "command": "workbench.action.quickOpenNavigatePrevious"
-    },
-    {
-        "key": "ctrl+n",
-        "command": "workbench.action.quickOpenNavigateNext"
     }
 ]
