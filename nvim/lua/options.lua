@@ -44,6 +44,7 @@ vim.opt.scrolloff          = 10
 vim.g.scrolloff            = 10 -- save to fix weird bug in switch term
 vim.opt.signcolumn         = "yes"
 vim.o.laststatus           = 0
+vim.cmd "set statusline=%{repeat('─',winwidth('.'))}"
 vim.o.wrap                 = false
 vim.opt.matchpairs:append '<:>'
 vim.opt.isfname:append("@-@")

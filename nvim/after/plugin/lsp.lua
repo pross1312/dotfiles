@@ -21,4 +21,7 @@ require('mason-lspconfig').setup({
         lsp_zero.default_setup,
     },
 })
-
+require'lspconfig'.jdtls.setup{
+    cmd = { 'jdtls' },
+    root_dir = function() return vim.fs.dirname(vim.fs.find({'gradlew', '.git', 'mvnw'}, { upward = true })[1]) end,
+}
