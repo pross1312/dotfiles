@@ -5,12 +5,21 @@ require 'autocmd'
 vim.cmd 'cabbrev mkae make'
 function set_color(name)
     vim.cmd('colorscheme ' .. name)
+    if name == "codeschool" then
+        vim.cmd "hi Normal guifg=#efefef"
+        vim.cmd "hi clear SignColumn"
+        vim.cmd "hi CursorLineNr guibg=NONE"
+    end
+    vim.cmd "hi! link VertSplit Normal"
+    vim.cmd "hi! link StatusLine Normal"
+    vim.cmd "hi! link StatusLineNC Normal"
     vim.cmd 'hi clear CursorLine'
     vim.cmd 'hi clear Todo' -- use todo-comments plugin instead
     vim.cmd "hi MyMultiCursor guibg=#777777 gui=bold"
 end
 
-set_color 'tokyonight-night'
+vim.g.codeschool_contrast_dark = "hard"
+set_color 'codeschool'
 
 local extra_func = require 'extra-function'
 vim.api.nvim_create_user_command('Run', extra_func.run_cmd, {bang = true, bar = true, nargs = '?', complete = 'file'})
