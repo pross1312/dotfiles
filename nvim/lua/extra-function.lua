@@ -55,7 +55,8 @@ function m.switch_term()
         end
         if vim.g.prev_term_mode == 't' then
             vim.cmd "startinsert"
-            vim.opt.scrolloff = vim.g.scrolloff -- switch to terminal mode break scrolloff for some reasons
+            vim.opt.scrolloff = vim.g.scrolloff.h -- switch to terminal mode break scrolloff for some reasons
+            vim.opt.sidescrolloff = vim.g.scrolloff.w -- switch to terminal mode break scrolloff for some reasons
         end
     end
 end

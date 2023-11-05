@@ -22,7 +22,7 @@ static const char *colorname[] = { // tokyonight
 	"#cccccc",
 	"#555555",
 	"#c0caf5", /* default foreground colour */
-	"#1a1b26", /* default background colour */
+	"#121212", /* default background colour */
 };
 unsigned int defaultfg = 258;
 unsigned int defaultbg = 259;

@@ -40,8 +40,12 @@ vim.o.cmdheight            = 1
 vim.opt.listchars['trail'] = '·'
 vim.opt.listchars          = "tab:  ,trail:·,nbsp:+"
 vim.opt.hlsearch           = true
-vim.opt.scrolloff          = 10
-vim.g.scrolloff            = 10 -- save to fix weird bug in switch term
+vim.g.scrolloff            = { -- save to fix weird bug in switch term
+    h = 10,
+    w = 15,
+}
+vim.opt.scrolloff          = vim.g.scrolloff.h
+vim.opt.sidescrolloff      = vim.g.scrolloff.w
 vim.opt.signcolumn         = "yes"
 vim.o.laststatus           = 0
 vim.cmd "set statusline=%{repeat('─',winwidth('.'))}"

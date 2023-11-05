@@ -3,7 +3,7 @@
     "window.titleBarStyle": "custom",
     "workbench.sideBar.location": "right",
     "editor.fontSize": 20,
-    "editor.fontFamily": "Iosevka Term",
+    "editor.fontFamily": "JetBrains Mono",
     "terminal.integrated.fontSize": 20,
     "terminal.integrated.fontFamily": "Iosevka Term",
     "files.autoSave": "onFocusChange",
@@ -125,6 +125,7 @@
         "<tab>": false,
         // "<C-n>": false,
         "<C-p>": false,
+        "<C-k>": false,
     },
     "workbench.colorCustomizations": {
         // "editor.lineHighlightBackground": "#00000000",
@@ -143,4 +144,5 @@
     "editor.suggest.insertMode": "replace",
     "editor.semanticHighlighting.enabled": true,
     "editor.detectIndentation": true,
+    "redhat.telemetry.enabled": false,
 }

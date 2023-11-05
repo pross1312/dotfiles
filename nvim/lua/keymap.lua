@@ -7,9 +7,12 @@ map('v', '<C-c>', '<Esc>', {})
 map('i', '<C-c>', '<Esc>', {})
 
 map('i', '<C-s>', '<Cmd>write<CR>', {})
+map('i', '<M-i>', vim.lsp.buf.hover, {silent = true})
+
 
 map('x', '<leader>a', '<Plug>(EasyAlign)', {silent = true})
 map('n', '<leader>a', '<Plug>(EasyAlign)', {silent = true})
+map('n', '<C-G>', '1<C-G>', {silent = true})
 map('n', '<m-h>', '<c-w>h', {})
 map('n', '<m-j>', '<c-w>j', {})
 map('n', '<m-k>', '<c-w>k', {})
