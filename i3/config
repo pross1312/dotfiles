@@ -13,7 +13,7 @@ set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:System San Francisco Display 10
+font pango:JetBrains Mono 10
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
@@ -174,33 +174,34 @@ mode "resize" {
 
     # back to normal: Enter or Escape or $mod+r
     bindsym Return mode "default"
-    bindsym Escape mode "default"
+    bindsym  mode "default"
     bindsym $mod+r mode "default"
 }
 
 bindsym $mod+r mode "resize"
 
-set $bg-color 	         #2f343f
+set $bg-color 	         #212121
 set $inactive-bg-color   #2f343f
-set $text-color          #f3f4f5
-set $inactive-text-color #676E7D
-set $urgent-bg-color     #E53935
+set $active-border-color #999999
+set $text-color          #ffffff
+set $inactive-text-color #888888
+set $urgent-bg-color     #aa3935
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 #                        border             background          text                 indicator
-# client.focused          $bg-color           $bg-color           $text-color          #2f343f
-# client.unfocused        $inactive-bg-color  $inactive-bg-color  $inactive-text-color #00ff00
-# client.focused_inactive $inactive-bg-color  $inactive-bg-color  $inactive-text-color #00ff00
-# client.urgent           $urgent-bg-color    $urgent-bg-color    $text-color          #00ff00
+client.focused          $bg-color           $bg-color           $text-color          #2f343f
+client.unfocused        $inactive-bg-color  $inactive-bg-color  $inactive-text-color #00ff00
+client.focused_inactive $inactive-bg-color  $inactive-bg-color  $inactive-text-color #00ff00
+client.urgent           $urgent-bg-color    $urgent-bg-color    $text-color          #00ff00
 hide_edge_borders both
 bar {
     status_command sh ~/.config/i3/status.sh
     colors {
-        # background $bg-color
-        # separator #757575
-        # focused_workspace  $bg-color          $bg-color          $text-color
-        # inactive_workspace $inactive-bg-color $inactive-bg-color $inactive-text-color
-        # urgent_workspace   $urgent-bg-color   $urgent-bg-color   $text-color
+        background $bg-color
+        separator #757575
+        focused_workspace  $active-border-color   $bg-color          $text-color
+        inactive_workspace $inactive-bg-color     $inactive-bg-color $inactive-text-color
+        urgent_workspace   $urgent-bg-color       $urgent-bg-color   $text-color
     }
 }
 # # Sreen brightness controls
@@ -233,21 +234,21 @@ mode "$mode_system" {
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
-bindsym $mod+Control+b exec ~/software/boomer/boomer
-bindsym Control+Shift+s exec /usr/bin/bash ~/.config/i3/change_ibus.sh
-bindsym Print exec gnome-screenshot -f /tmp/test && xclip -i /tmp/test -selection clipboard -target image/png
-bindsym --release Shift+Print exec gnome-screenshot -afB /tmp/test && xclip -i /tmp/test -selection clipboard -target image/png
-exec_always xinput set-prop "MSFT0002:00 04F3:31BE Mouse" "libinput Natural Scrolling Enabled" 0
-exec_always xinput set-prop "MSFT0002:00 04F3:31BE Touchpad" "libinput Tapping Enabled" 1
-exec_always xinput set-prop "MSFT0002:00 04F3:31BE Touchpad" "libinput Natural Scrolling Enabled" 1
-exec_always xinput set-prop "MSFT0002:00 04F3:31BE Touchpad" "libinput Accel Speed" .4
-exec_always --no-startup-id feh --bg-scale ~/background/q86gk8diabg51.webp
+bindsym $mod+Control+b exec --no-startup-id ~/software/boomer/boomer
+bindsym Control+Shift+s exec --no-startup-id /usr/bin/bash ~/.config/i3/change_ibus.sh
+bindsym Print exec --no-startup-id gnome-screenshot -f /tmp/test && xclip -i /tmp/test -selection clipboard -target image/png
+bindsym --release Shift+Print exec --no-startup-id gnome-screenshot -afB /tmp/test && xclip -i /tmp/test -selection clipboard -target image/png
+exec_always --no-startup-id xinput set-prop "MSFT0002:00 04F3:31BE Mouse" "libinput Natural Scrolling Enabled" 0
+exec_always --no-startup-id xinput set-prop "MSFT0002:00 04F3:31BE Touchpad" "libinput Tapping Enabled" 1
+exec_always --no-startup-id xinput set-prop "MSFT0002:00 04F3:31BE Touchpad" "libinput Natural Scrolling Enabled" 1
+exec_always --no-startup-id xinput set-prop "MSFT0002:00 04F3:31BE Touchpad" "libinput Accel Speed" .4
+exec_always --no-startup-id /usr/bin/feh --bg-scale ~/background/q86gk8diabg51.webp
 # assign [class="google-chrome"] $ws_browsers
 # assign [class="Google-chrome"] $ws_browsers
 # assign [class="URxvt"] $ws_terminals
-exec_always xrdb -load ~/dotfiles/Xresources.main
-exec_always setxkbmap -option ctrl:nocaps
-exec_always xmodmap -e "remove lock = Caps_Lock"
-exec_always xmodmap -e "keycode 66 = Control_L"
-exec_always xmodmap -e "add control = Control_L"
+exec_always --no-startup-id xrdb -load ~/dotfiles/Xresources.main
+exec_always --no-startup-id setxkbmap -option ctrl:nocaps
+exec_always --no-startup-id xmodmap -e "remove lock = Caps_Lock"
+exec_always --no-startup-id xmodmap -e "keycode 66 = Control_L"
+exec_always --no-startup-id xmodmap -e "add control = Control_L"
 exec_always --no-startup-id "picom --config /home/dvtuong/.config/picom/picom.conf"

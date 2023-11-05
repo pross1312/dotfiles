@@ -66,9 +66,7 @@ require("lazy").setup({
     'blazkowolf/gruber-darker.nvim',
     { "ellisonleao/gruvbox.nvim" },
     { "EdenEast/nightfox.nvim" },
-    { "uloco/bluloco.nvim",
-       dependencies = 'rktjmp/lush.nvim',
-    },
+    {"adisen99/codeschool.nvim", dependencies = {"rktjmp/lush.nvim"}}
     ---------------------------------------------------------------------
 })
 -- require('gruber-darker').setup {
