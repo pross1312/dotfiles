@@ -41,7 +41,7 @@ vim.opt.listchars['trail'] = '·'
 vim.opt.listchars          = "tab:  ,trail:·,nbsp:+"
 vim.opt.hlsearch           = true
 vim.g.scrolloff            = { -- save to fix weird bug in switch term
-    h = 10,
+    h = 8,
     w = 15,
 }
 vim.opt.scrolloff          = vim.g.scrolloff.h
@@ -56,8 +56,9 @@ vim.opt.isfname:append("@-@")
 -- vim.opt.iskeyword = "@,48-57,192-255"
 
 vim.g.mapleader             = ' '
-vim.g.netrw_keepdir         = 1
 vim.g.netrw_winsize         = 20
 vim.g.netrw_banner          = 0
+vim.g.netrw_keepdir         = 1
+vim.g.netrw_browse_split    = 0
 vim.g.netrw_localcopydircmd = 'cp -r'
 vim.g.rustfmt_fail_silently = 1

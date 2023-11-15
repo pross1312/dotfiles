@@ -174,14 +174,14 @@ mode "resize" {
 
     # back to normal: Enter or Escape or $mod+r
     bindsym Return mode "default"
-    bindsym  mode "default"
+    bindsym Control+c mode "default"
     bindsym $mod+r mode "default"
 }
 
 bindsym $mod+r mode "resize"
 
-set $bg-color 	         #212121
-set $inactive-bg-color   #2f343f
+set $bg-color 	         #252525
+set $inactive-bg-color   #101010
 set $active-border-color #999999
 set $text-color          #ffffff
 set $inactive-text-color #888888
@@ -199,7 +199,7 @@ bar {
     colors {
         background $bg-color
         separator #757575
-        focused_workspace  $active-border-color   $bg-color          $text-color
+        focused_workspace  $bg-color              $bg-color          $text-color
         inactive_workspace $inactive-bg-color     $inactive-bg-color $inactive-text-color
         urgent_workspace   $urgent-bg-color       $urgent-bg-color   $text-color
     }
@@ -252,3 +252,6 @@ exec_always --no-startup-id xmodmap -e "remove lock = Caps_Lock"
 exec_always --no-startup-id xmodmap -e "keycode 66 = Control_L"
 exec_always --no-startup-id xmodmap -e "add control = Control_L"
 exec_always --no-startup-id "picom --config /home/dvtuong/.config/picom/picom.conf"
+
+# to turn off capslock in extreme case
+# python -c 'from ctypes import *; X11 = cdll.LoadLibrary("libX11.so.6"); display = X11.XOpenDisplay(None); X11.XkbLockModifiers(display, c_uint(0x0100), c_uint(2), c_uint(0)); X11.XCloseDisplay(display)'

@@ -37,10 +37,8 @@ map('n', '<c-m-l>', '<Cmd>vertical res +5<cr>', {silent = true})
 map('n', '<c-m-h>', '<Cmd>vertical res -5<cr>', {silent = true})
 map('n', '<c-m-j>', '<Cmd>horizontal res -5<cr>', {silent = true})
 map('n', '<c-m-k>', '<Cmd>horizontal res +5<cr>', {silent = true})
-map('n', '<leader>nd', '<Cmd>Lexplore<cr>', {silent = true})
+map('n', '<C-p>', '<CMD>Lexplore<CR>', {silent = true})
 map('n', '<leader>nf', '<Cmd>Lexplore %:p:h<cr>', {silent = true})
-map('v', '<leader>p', '"_dP', {silent = true})
-map('v', '<leader>d', '"_d', {silent = true})
 
 local telescope = require('telescope.builtin')
 map('n', '<leader> ', telescope.find_files, {silent = true})
@@ -74,3 +72,8 @@ map('c', '<C-e>', '<End>', {})
 map('c', '<C-k>', '<C-F>D<C-C>', {})
 if vim.g.neovide then map('c', '<C-/>', "lua require('telescope.builtin').command_history()<CR>", {})
 else map('c', '<C-_>', "lua require('telescope.builtin').command_history()<CR>", {}) end
+for i=1,9 do
+    map('n', string.format('<M-%d>', i), i .. 'gt', {})
+    map('i', string.format('<M-%d>', i), '<Esc>'.. i .. 'gt', {})
+end
+map('n', '<leader>t', '<cmd>tabnew<cr>', {})

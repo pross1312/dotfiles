@@ -21,7 +21,26 @@ require('mason-lspconfig').setup({
         lsp_zero.default_setup,
     },
 })
-require'lspconfig'.jdtls.setup{
-    cmd = { 'jdtls' },
-    root_dir = function() return vim.fs.dirname(vim.fs.find({'gradlew', '.git', 'mvnw'}, { upward = true })[1]) end,
-}
+local lsp = require('lspconfig')
+local function setup_lsp(server, opts)
+    local conf = lsp[server]
+    conf.setup(opts)
+    local try_add = conf.manager.try_add
+    conf.manager.try_add = function (bufnr)
+        if not vim.b.large_buf then
+            return try_add(bufnr)
+        end
+    end
+end
+
+setup_lsp(
+    "tsserver",
+    { on_attach = on_attach, root_dir = lsp.util.root_pattern({"package.json", ".git"}), capabilities = capabilities }
+)
+setup_lsp(
+    "jdtls",
+    {
+        cmd = { 'jdtls' },
+        root_dir = function() return vim.fs.dirname(vim.fs.find({'gradlew', '.git', 'mvnw'}, { upward = true })[1]) end,
+    }
+)
