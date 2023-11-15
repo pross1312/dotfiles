@@ -58,7 +58,7 @@ vim.opt.isfname:append("@-@")
 vim.g.mapleader             = ' '
 vim.g.netrw_winsize         = 20
 vim.g.netrw_banner          = 0
-vim.g.netrw_keepdir         = 1
+vim.g.netrw_keepdir         = 0
 vim.g.netrw_browse_split    = 0
 vim.g.netrw_localcopydircmd = 'cp -r'
 vim.g.rustfmt_fail_silently = 1
