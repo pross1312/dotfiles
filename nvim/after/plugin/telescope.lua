@@ -2,16 +2,19 @@ require('telescope').setup({
     defaults = {
         layout_strategy = 'horizontal',
         layout_config = {
-            preview_width = 0.7,
+            horizontal = {
+                preview_cutoff = 80,
+            },
+            preview_width = 0.5,
             height = 0.95,
             width = 0.95,
         },
         preview = {
-            timeout = 30,
+            timeout = 50,
             filesize_limit = 5,
             treesitter = false,
         },
-        path_display = {'shorten'},
+        path_display = {'shorten', shorten = { len = 1, exclude = {-2, -1, -3} }},
         dynamic_preview_title = true,
         vimgrep_arguments = {
             "rg",

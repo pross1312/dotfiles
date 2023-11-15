@@ -33,7 +33,7 @@ function m.switch_term()
     local buffers = vim.fn.getbufinfo({buflisted = true}) -- list all buffers
     if in_term then
         vim.g.prev_term_mode = vim.fn.mode()
-        if vim.g.pre_buffer then
+        if vim.g.pre_buffer and vim.fn.buflisted(vim.g.pre_buffer) == 1 then
             if #buffers == 1 and vim.fn.bufname(vim.g.pre_buffer):match(term_pattern) then vim.cmd("buffer " .. vim.api.nvim_create_buf(true, false))
             elseif vim.fn.bufexists(vim.g.pre_buffer) == 1 then vim.cmd("buffer " .. vim.g.pre_buffer)
             else vim.g.pre_buffer = nil
