@@ -74,6 +74,7 @@ if vim.g.neovide then map('c', '<C-/>', "lua require('telescope.builtin').comman
 else map('c', '<C-_>', "lua require('telescope.builtin').command_history()<CR>", {}) end
 for i=1,9 do
     map('n', string.format('<M-%d>', i), i .. 'gt', {})
+    map('t', string.format('<M-%d>', i), '<c-bslash><c-n>' .. i .. 'gti', {})
     map('i', string.format('<M-%d>', i), '<Esc>'.. i .. 'gt', {})
 end
 map('n', '<leader>t', '<cmd>tabnew<cr>', {})

@@ -63,25 +63,30 @@ require("lazy").setup({
     { 'catppuccin/nvim', priority = 100 },
     {'rose-pine/neovim', name = "rosepine"},
     'drewtempelmeyer/palenight.vim',
-    'blazkowolf/gruber-darker.nvim',
+    { 'blazkowolf/gruber-darker.nvim',
+        opts = {
+            bold = true,
+            invert = {
+                signs = false,
+                tabline = false,
+                visual = false,
+            },
+            italic = {
+                strings = false,
+                comments = true,
+                operators = false,
+                folds = false,
+            },
+            undercurl = true,
+            underline = true,
+        },
+        config = function()
+            vim.cmd [[hi! Cursor guibg=#ffffff guifg=#000000 ]]
+            vim.cmd [[hi! TermCursor guibg=#ffffff guifg=#000000 ]]
+        end
+    },
     { "ellisonleao/gruvbox.nvim" },
     { "EdenEast/nightfox.nvim" },
     {"adisen99/codeschool.nvim", dependencies = {"rktjmp/lush.nvim"}}
     ---------------------------------------------------------------------
 })
--- require('gruber-darker').setup {
---     bold = true,
---     invert = {
---         signs = false,
---         tabline = false,
---         visual = false,
---     },
---     italic = {
---         strings = false,
---         comments = true,
---         operators = false,
---         folds = true,
---     },
---     undercurl = true,
---     underline = true,
--- }
