@@ -81,9 +81,13 @@ vim.api.nvim_create_autocmd('FileType', {
     callback = function()
         local map = vim.keymap.set
         -- vim.cmd 'nnoremap <buffer> cd  :execute "cd ".b:netrw_curdir<cr>:pwd<cr>'
-        map("n", "n", function()
-            local file = vim.fn.input("Enter file name: ", "", "file")
-            netrw_split_open(file)
+        map("n", "<C-n>", function()
+            local file = vim.fn.input({
+                prompt = "File: ",
+                completion = "file",
+                cancelreturn = nil,
+            })
+            if file ~= "" then netrw_split_open(file) end
         end, {silent = true, buffer = true})
         map("n", "<CR>", function()
             local file = vim.call('netrw#Call', 'NetrwGetWord')

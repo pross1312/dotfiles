@@ -19,7 +19,7 @@ function set_color(name)
 end
 
 vim.g.codeschool_contrast_dark = "hard"
-set_color 'codeschool'
+set_color 'gruber-darker'
 
 local extra_func = require 'extra-function'
 vim.api.nvim_create_user_command('Run', extra_func.run_cmd, {bang = true, bar = true, nargs = '?', complete = 'file'})

@@ -28,14 +28,15 @@ end
 
 vim.g.prev_term_mode = 'n'
 function m.switch_term()
-    local term_pattern = 'term://.+/bin/bash$'
+    local term_pattern = 'MainTerminal'
     local in_term = vim.api.nvim_buf_get_name(0):match(term_pattern)
     local buffers = vim.fn.getbufinfo({buflisted = true}) -- list all buffers
     if in_term then
         vim.g.prev_term_mode = vim.fn.mode()
         if vim.g.pre_buffer and vim.fn.buflisted(vim.g.pre_buffer) == 1 then
             if #buffers == 1 and vim.fn.bufname(vim.g.pre_buffer):match(term_pattern) then vim.cmd("buffer " .. vim.api.nvim_create_buf(true, false))
-            elseif vim.fn.bufexists(vim.g.pre_buffer) == 1 then vim.cmd("buffer " .. vim.g.pre_buffer)
+            elseif vim.fn.bufexists(vim.g.pre_buffer) == 1 then
+                vim.cmd("buffer " .. vim.g.pre_buffer)
             else vim.g.pre_buffer = nil
             end
         else
@@ -51,6 +52,9 @@ function m.switch_term()
             vim.cmd("buffer " .. vim.g.extra_term)
         else
             vim.cmd "term"
+            vim.cmd "file MainTerminal"
+            vim.cmd "hi Cursor guifg=#000000 guibg=#ffffff"
+            vim.cmd "hi! link TermCursor Cursor"
             vim.g.extra_term = vim.fn.bufnr()
         end
         if vim.g.prev_term_mode == 't' then
@@ -71,10 +75,11 @@ function m.remove_all_buffers()
     for i, v in pairs(buffers) do
         if v.bufnr ~= vim.g.extra_term then vim.cmd(string.format("bd %d", v.bufnr)) end
     end
+    vim.cmd "LspRestart"
 end
 
 function m.run_cmd(data)
-    if vim.opt.autowrite then vim.cmd "w" end
+    if vim.opt.autowrite and vim.bo.buftype == "" then vim.cmd "w" end
     if not data.fargs[1] and vim.g.run_cmd then
         vim.cmd(string.format("split | term %s", vim.g.run_cmd))
     elseif data.fargs[1] then
