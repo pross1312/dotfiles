@@ -575,8 +575,35 @@ function __setprompt
     PS4='\[${DARKGRAY}\]+\[${NOCOLOR}\] '
 }
 PROMPT_COMMAND='__setprompt'
-export VIMDIR='~/.config/nvim'
+export VIMDIR=~/.config/nvim
 
 # Allow ctrl-S for history navigation (with ctrl-R)
 stty -ixon
 xset b off
+function fcd {
+    cd $(find . \( \
+        -name ".git" -o \
+        -name ".dotnet" -o \
+        -name "debug" -o \
+        -name "bin" -o \
+        -name "obj" -o \
+        -name ".idea" -o \
+        -name ".fleet" -o \
+        -name "node_modules" -o \
+        -name "volumes" -o \
+        -name ".terraform" -o \
+        -name "Library" -o \
+        -name "Pictures" -o \
+        -name "Documents" -o \
+        -name ".local" -o \
+        -name ".nuget" -o \
+        -name ".npm" -o \
+        -name ".vscode" -o \
+        -name ".rustup" -o \
+        -name ".cargo" -o \
+        -name ".quokka" -o \
+        -name ".vscode-insiders" \
+        \) -prune -false -o -type d -print | fzf)
+    }
+export FZF_DEFAULT_OPTS='-i --height=75%'
+alias f='fcd'

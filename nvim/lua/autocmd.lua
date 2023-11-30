@@ -38,7 +38,14 @@ vim.api.nvim_create_autocmd({'TermOpen', 'BufEnter'}, {
     callback = function(_)
         -- vim.keymap.set('t', '<esc>', '<c-bslash><c-n>', {silent = true, buffer = true})
         -- vim.keymap.set('t', '<c-m>', 'pwd<CR><c-bslash><c-n>G?^\\/.\\+$<CR>yy<esc>:cd <C-r>"<CR>i', {silent = true, buffer = true})
-        vim.keymap.set('t', '<m-j>', '<C-a><C-k>pwd<CR><c-bslash><c-n>G$?^\\/.\\+$<CR>yy:cd <C-r>"<CR>', {silent = true, buffer = true})
+        vim.cmd "set nobuflisted"
+        vim.keymap.set('n', '<m-s>', ':split | term<cr>', {buffer = true, silent = true})
+        vim.keymap.set('n', '<m-v>', ':vertical split | term<cr>', {buffer = true, silent = true})
+        vim.keymap.set('n', '<m- >', function()
+            require("extra-function").switch_term()
+            require("telescope.builtin").find_files()
+        end, {buffer = true, silent = true}) -- to quickly jump to current directory
+        vim.keymap.set('n', '<C-o> ', '<nop>', {buffer = true, silent = true}) -- to quickly jump to current directory
     end
 })
 vim.api.nvim_create_autocmd('BufEnter', {
@@ -58,15 +65,15 @@ vim.api.nvim_create_autocmd('BufEnter', {
 --     end
 -- })
 vim.api.nvim_create_augroup('NetrwGroup', {clear = true})
-vim.api.nvim_create_autocmd('VimEnter', {
-    pattern = "*",
-    callback = function()
-        if vim.fn.argc() == 0 then
-            vim.cmd "Explore"
-        end
-    end,
-    group = 'NetrwGroup'
-})
+-- vim.api.nvim_create_autocmd('VimEnter', {
+--     pattern = "*",
+--     callback = function()
+--         if vim.fn.argc() == 0 then
+--             vim.cmd "Explore"
+--         end
+--     end,
+--     group = 'NetrwGroup'
+-- })
 function netrw_split_open(file)
     local last_window = vim.fn.winnr('$') == vim.fn.winnr()
     if vim.fn.isdirectory(file) == 1  or not last_window then
@@ -120,4 +127,11 @@ vim.api.nvim_create_autocmd({ "BufWinEnter" }, {
     end,
     group = aug,
     pattern = "*",
+})
+local switch_term = vim.api.nvim_create_augroup("switch_term", { clear = true })
+vim.api.nvim_create_autocmd('VimEnter', { -- remove temp view that switch_term use
+    callback = function(_)
+        extra_fn.clean_term()
+    end,
+    group = switch_term
 })

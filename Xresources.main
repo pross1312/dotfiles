@@ -27,38 +27,35 @@ URxvt.urlButton: 1
 
 ! themes
 ! Special
-URxvt.foreground:   #E5E9F0
-URxvt.background:   #181818
-URxvt.cursorColor:  #E5E9F0
+! URxvt.foreground:   #E5E9F0
+! URxvt.background:   #181818
+! URxvt.cursorColor:  #E5E9F0
 
-!! black
-!URxvt.color0: #2E3440
-!URxvt.color8: #4C566A
-!
-!! red
-!URxvt.color1: #88C0D0
-!URxvt.color9: #88C0D0
-!
-! green
-URxvt.color2:  #BF616A
-URxvt.color10: #BF616A
-!
-!! yellow
-!URxvt.color3:  #5E81AC
-!URxvt.color11: #5E81AC
-!
-! blue
-URxvt.color4:  #EBCB8B
-URxvt.color12: #EBCB8B
-!
-! magenta
-URxvt.color5:  #A3BE8C
-URxvt.color13: #A3BE8C
-!
-!! cyan
-!URxvt.color6:  #D08770
-!URxvt.color14: #D08770
-!
-!! white
-!URxvt.color7:  #E5E9F0
-!URxvt.color15: #8FBCBB
+! URxvt.color2:  #BF616A
+! URxvt.color10: #BF616A
+! URxvt.color4:  #EBCB8B
+! URxvt.color12: #EBCB8B
+! URxvt.color5:  #A3BE8C
+! URxvt.color13: #A3BE8C
+
+! tokyonight-night
+URxvt*background: #1a1b26
+URxvt*foreground: #c0caf5
+
+URxvt*color0: #15161e
+URxvt*color1: #f7768e
+URxvt*color2: #9ece6a
+URxvt*color3: #e0af68
+URxvt*color4: #7aa2f7
+URxvt*color5: #bb9af7
+URxvt*color6: #7dcfff
+URxvt*color7: #a9b1d6
+
+URxvt*color8: #414868
+URxvt*color9: #f7768e
+URxvt*color10: #9ece6a
+URxvt*color11: #e0af68
+URxvt*color12: #7aa2f7
+URxvt*color13: #bb9af7
+URxvt*color14: #7dcfff
+URxvt*color15: #c0caf5
