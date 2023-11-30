@@ -26,43 +26,49 @@ function m.swap_header_src()
     if swap_file then vim.cmd(string.format("e %s", swap_file)) end
 end
 
-vim.g.prev_term_mode = 'n'
+local term_view_file = vim.fn.stdpath("cache") .. "/term_temp_view"
+local main_view_file = vim.fn.stdpath("cache") .. "/main_temp_view"
+local prev_term_mode = 't'
 function m.switch_term()
-    local term_pattern = 'MainTerminal'
+    local term_pattern = 'term://.+/bin/bash$'
     local in_term = vim.api.nvim_buf_get_name(0):match(term_pattern)
-    local buffers = vim.fn.getbufinfo({buflisted = true}) -- list all buffers
     if in_term then
-        vim.g.prev_term_mode = vim.fn.mode()
-        if vim.g.pre_buffer and vim.fn.buflisted(vim.g.pre_buffer) == 1 then
-            if #buffers == 1 and vim.fn.bufname(vim.g.pre_buffer):match(term_pattern) then vim.cmd("buffer " .. vim.api.nvim_create_buf(true, false))
-            elseif vim.fn.bufexists(vim.g.pre_buffer) == 1 then
-                vim.cmd("buffer " .. vim.g.pre_buffer)
-            else vim.g.pre_buffer = nil
-            end
+        vim.cmd("mksession! " ..term_view_file)
+        if vim.fn.empty(vim.fn.glob(main_view_file)) == 0 then
+            prev_term_mode = vim.fn.mode()
+            vim.cmd("so " .. main_view_file)
         else
-            print('No buffer found')
+            vim.cmd "only"
+            vim.cmd "Sc"
         end
     else
-        vim.g.pre_buffer = vim.fn.bufnr()
-        vim.keymap.set('t', '<m-k>', 'cd ' .. vim.fn.getcwd() .. '<cr>', {silent = true}) -- to quickly jump to current directory
-        if vim.fn.bufexists(vim.g.extra_term) == 0 or not vim.fn.bufname(vim.g.extra_term):match(term_pattern) then
-            vim.g.extra_term = nil
+        vim.keymap.set('t', '<m-o>', 'cd ' .. vim.fn.getcwd() .. '<cr>', {silent = true}) -- to quickly jump to current directory
+        vim.cmd("mksession! " .. main_view_file)
+        if vim.fn.empty(vim.fn.glob(term_view_file)) == 0 then
+            local buffers = vim.fn.getbufinfo({buflisted = true}) -- list all buffers
+            vim.cmd("so " ..term_view_file)
+            if prev_term_mode == 't' then
+                vim.cmd "startinsert"
+                vim.opt.scrolloff = vim.g.scrolloff.h -- switch to terminal mode break scrolloff for some reasons
+                vim.opt.sidescrolloff = vim.g.scrolloff.w -- switch to terminal mode break scrolloff for some reasons
+            end
+            return
         end
-        if vim.g.extra_term then
-            vim.cmd("buffer " .. vim.g.extra_term)
-        else
-            vim.cmd "term"
-            vim.cmd "file MainTerminal"
-            vim.cmd "hi Cursor guifg=#000000 guibg=#ffffff"
-            vim.cmd "hi! link TermCursor Cursor"
-            vim.g.extra_term = vim.fn.bufnr()
-        end
-        if vim.g.prev_term_mode == 't' then
+        vim.cmd "only"
+        vim.cmd "term"
+        vim.cmd "hi Cursor guifg=#000000 guibg=#ffffff"
+        vim.cmd "hi! link TermCursor Cursor"
+        if prev_term_mode == 't' then
             vim.cmd "startinsert"
             vim.opt.scrolloff = vim.g.scrolloff.h -- switch to terminal mode break scrolloff for some reasons
             vim.opt.sidescrolloff = vim.g.scrolloff.w -- switch to terminal mode break scrolloff for some reasons
         end
     end
+end
+
+function m.clean_term()
+    vim.system({"rm", "-f",term_view_file}):wait()
+    vim.system({"rm", "-f", main_view_file}):wait()
 end
 
 function m.remove_all_buffers()
@@ -73,9 +79,12 @@ function m.remove_all_buffers()
     end
     local buffers = vim.fn.getbufinfo({buflisted = true}) -- list all buffers
     for i, v in pairs(buffers) do
-        if v.bufnr ~= vim.g.extra_term then vim.cmd(string.format("bd %d", v.bufnr)) end
+        if not v.name:match(term_pattern) then
+            vim.cmd(string.format("bd %d", v.bufnr))
+        end
     end
     vim.cmd "LspRestart"
+    vim.system({"rm", "-f", main_view_file}):wait()
 end
 
 function m.run_cmd(data)

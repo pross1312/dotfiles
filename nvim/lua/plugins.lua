@@ -32,7 +32,8 @@ require("lazy").setup({
     end },
     {
         "folke/todo-comments.nvim",
-        dependencies = { "nvim-lua/plenary.nvim" }
+        dependencies = { "nvim-lua/plenary.nvim" },
+        lazy = true,
     },
     {'mg979/vim-visual-multi', branch = 'master', lazy = false, priority = 101, config = function()
         vim.g.VM_silent_exit = 1
@@ -58,7 +59,6 @@ require("lazy").setup({
         }
     },
     --------------------------colorschemes-------------------------------
-    'ahmedabdulrahman/vim-aylin',
     'folke/tokyonight.nvim',
     { 'catppuccin/nvim', priority = 100 },
     {'rose-pine/neovim', name = "rosepine"},
@@ -87,6 +87,54 @@ require("lazy").setup({
     },
     { "ellisonleao/gruvbox.nvim" },
     { "EdenEast/nightfox.nvim" },
-    {"adisen99/codeschool.nvim", dependencies = {"rktjmp/lush.nvim"}}
+    {"adisen99/codeschool.nvim", dependencies = {"rktjmp/lush.nvim"}},
+    {"polirritmico/monokai-nightasty.nvim", config=function()
+        require("monokai-nightasty").setup({
+            dark_style_background = "transparent", -- default, dark, transparent, #color
+            light_style_background = "default", -- default, dark, transparent, #color
+            terminal_colors = true, -- Set the colors used when opening a `:terminal`
+            color_headers = true, -- Enable header colors for each header level (h1, h2, etc.)
+            hl_styles = {
+                -- Style to be applied to different syntax groups. See `:help nvim_set_hl`
+                comments = { italic = false },
+                keywords = { italic = false },
+                functions = {},
+                variables = {},
+                -- Background styles for sidebars (panels) and floating windows:
+                floats = "transparent", -- default, dark, transparent
+                sidebars = "transparent", -- default, dark, transparent
+            },
+            -- sidebars = { "qf", "help" }, -- Set a darker background on sidebar-like windows. For example: `["qf", "vista_kind", "terminal", "packer"]`
+
+            hide_inactive_statusline = false, -- Hide inactive statuslines and replace them with a thin border instead. Should work with the standard **StatusLine** and **LuaLine**.
+            dim_inactive = false, -- dims inactive windows
+            lualine_bold = false, -- Lualine headers will be bold or regular.
+            lualine_style = "default", -- "dark", "light" or "default" (Follows dark/light style)
+
+            --- You can override specific color/highlights. Current values in `extras/palettes`
+
+            ---@param colors ColorScheme
+            on_colors = function(colors)
+                -- colors.border = colors.grey
+                -- colors.comment = "#2d7e79"
+            end,
+
+            ---@param highlights Highlights
+            -- TODO: jqwoiejoiwq
+            -- NOTE:
+            -- FIXME:
+            ---@param colors ColorScheme
+            on_highlights = function(highlights, colors)
+                -- highlights.TelescopeNormal = { fg = colors.magenta, bg = colors.charcoal }
+                highlights.WinSeparator = { fg = colors.grey }
+                highlights.TodoFgTODO = {fg = "#8a8a8a" }
+                highlights.TodoFgNOTE = {fg = "#8a8a8a" }
+                highlights.TodoFgFIX = {fg = "#8a8a8a" }
+                highlights.TodoBgTODO = {bg = "#BF0606", fg = "#560303", style = "bold"}
+                highlights.TodoBgNOTE = {bg = "#BF0606", fg = "#560303", style = "bold"}
+                highlights.TodoBgFIX = {bg = "#BF0606", fg = "#560303", style = "bold"}
+            end,
+        })
+    end},
     ---------------------------------------------------------------------
 })

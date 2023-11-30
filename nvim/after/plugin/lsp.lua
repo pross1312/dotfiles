@@ -24,6 +24,7 @@ require('mason-lspconfig').setup({
 local lsp = require('lspconfig')
 local function setup_lsp(server, opts)
     local conf = lsp[server]
+    if not conf then return end
     conf.setup(opts)
     local try_add = conf.manager.try_add
     conf.manager.try_add = function (bufnr)

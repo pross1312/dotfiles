@@ -1,5 +1,5 @@
-require 'plugins'
 require 'options'
+require 'plugins'
 require 'keymap'
 require 'autocmd'
 vim.cmd 'cabbrev mkae make'
@@ -10,16 +10,34 @@ function set_color(name)
         vim.cmd "hi clear SignColumn"
         vim.cmd "hi CursorLineNr guibg=NONE"
     end
-    vim.cmd "hi! link VertSplit Normal"
-    vim.cmd "hi! link StatusLine Normal"
-    vim.cmd "hi! link StatusLineNC Normal"
+    vim.cmd "hi! clear TermCursorNC"
+    vim.cmd "hi! link VertSplit normal"
+    vim.cmd "hi! link StatusLine normal"
+    vim.cmd "hi! link StatusLineNC normal"
     vim.cmd 'hi clear CursorLine'
-    vim.cmd 'hi clear Todo' -- use todo-comments plugin instead
+    vim.cmd 'hi clear todo' -- use todo-comments plugin instead
     vim.cmd "hi MyMultiCursor guibg=#777777 gui=bold"
+    -- terminal config
+    vim.g.terminal_color_0 = "#7D8EB0"
+    vim.g.terminal_color_1 = "#f7768e"
+    vim.g.terminal_color_2 = "#9ece6a"
+    vim.g.terminal_color_3 = "#e0af68"
+    vim.g.terminal_color_4 = "#7aa2f7"
+    vim.g.terminal_color_5 = "#bb9af7"
+    vim.g.terminal_color_6 = "#7dcfff"
+    vim.g.terminal_color_7 = "#a9b1d6"
+    vim.g.terminal_color_8 = "#7D8EB0"
+    vim.g.terminal_color_9 = "#f7768e"
+    vim.g.terminal_color_10 = "#9ece6a"
+    vim.g.terminal_color_11 = "#e0af68"
+    vim.g.terminal_color_12 = "#7aa2f7"
+    vim.g.terminal_color_13 = "#bb9af7"
+    vim.g.terminal_color_14 = "#7dcfff"
+    vim.g.terminal_color_15 = "#c0caf5"
 end
 
 vim.g.codeschool_contrast_dark = "hard"
-set_color 'gruber-darker'
+set_color 'monokai-nightasty'
 
 local extra_func = require 'extra-function'
 vim.api.nvim_create_user_command('Run', extra_func.run_cmd, {bang = true, bar = true, nargs = '?', complete = 'file'})
@@ -28,22 +46,27 @@ vim.api.nvim_create_user_command('Color',
             function(data) set_color(data.fargs[1]) end,
             {bang = true, bar = true, nargs = 1, complete = 'color'})
 
-vim.api.nvim_create_user_command('Scratch', function()
-    vim.cmd(string.format("b %s", vim.api.nvim_create_buf(true, true)))
-end, {bang = true, bar = true})
 
 vim.api.nvim_create_user_command('Scratch', function()
-    vim.cmd(string.format("b %s", vim.api.nvim_create_buf(true, true)))
+    vim.cmd(string.format("b %s", vim.api.nvim_create_buf(false, true)))
+end, {bang = true, bar = true})
+
+vim.api.nvim_create_user_command('Write', function()
+    vim.cmd "write"
 end, {bang = true, bar = true})
 
 vim.api.nvim_create_user_command('Dtrailing', extra_func.delete_trailing, {bang = true, bar = true})
 
 vim.api.nvim_create_user_command('Qfix', function()
-    vim.cmd "vsplit | vertical resize 55 | copen | set nowrap | wincmd k | close"
+    vim.cmd "vsplit | vertical resize 65 | copen | set nowrap | wincmd k | close"
 end, {bang = true, bar = true})
 
 vim.api.nvim_create_user_command('RemoveAllBuffers', function()
     extra_func.remove_all_buffers()
+end, {bang = true, bar = true})
+
+vim.api.nvim_create_user_command('Cleanterm', function()
+    extra_func.clean_term()
 end, {bang = true, bar = true})
 
 vim.api.nvim_create_user_command('HtmlInit', function()
