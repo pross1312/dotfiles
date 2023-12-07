@@ -34,7 +34,7 @@ function m.switch_term()
     local in_term = vim.api.nvim_buf_get_name(0):match(term_pattern)
     if in_term then
         vim.cmd("mksession! " ..term_view_file)
-        if vim.fn.empty(vim.fn.glob(main_view_file)) == 0 then
+        if vim.fn.empty(vim.fn.filereadable(main_view_file)) == 0 then
             prev_term_mode = vim.fn.mode()
             vim.cmd("so " .. main_view_file)
         else
@@ -42,9 +42,10 @@ function m.switch_term()
             vim.cmd "Sc"
         end
     else
+        if vim.opt.autowrite and vim.bo.buftype == "" then vim.cmd "wa" end
         vim.keymap.set('t', '<m-o>', 'cd ' .. vim.fn.getcwd() .. '<cr>', {silent = true}) -- to quickly jump to current directory
         vim.cmd("mksession! " .. main_view_file)
-        if vim.fn.empty(vim.fn.glob(term_view_file)) == 0 then
+        if vim.fn.empty(vim.fn.filereadable(term_view_file)) == 0 then
             local buffers = vim.fn.getbufinfo({buflisted = true}) -- list all buffers
             vim.cmd("so " ..term_view_file)
             if prev_term_mode == 't' then
@@ -66,9 +67,20 @@ function m.switch_term()
     end
 end
 
+function m.setup_term()
+    if vim.fn.filereadable(term_view_file) == 1 then
+        local i = 0
+        while vim.fn.filereadable(term_view_file .. i) == 1 do
+            i = i + 1
+        end
+        term_view_file = term_view_file .. i
+        main_view_file = main_view_file .. i
+    end
+end
+
 function m.clean_term()
-    vim.system({"rm", "-f",term_view_file}):wait()
-    vim.system({"rm", "-f", main_view_file}):wait()
+    os.remove(term_view_file)
+    os.remove(main_view_file)
 end
 
 function m.remove_all_buffers()
@@ -88,7 +100,7 @@ function m.remove_all_buffers()
 end
 
 function m.run_cmd(data)
-    if vim.opt.autowrite and vim.bo.buftype == "" then vim.cmd "w" end
+    if vim.opt.autowrite and vim.bo.buftype == "" then vim.cmd "wa" end
     if not data.fargs[1] and vim.g.run_cmd then
         vim.cmd(string.format("split | term %s", vim.g.run_cmd))
     elseif data.fargs[1] then
