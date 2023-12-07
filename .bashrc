@@ -605,5 +605,8 @@ function fcd {
         -name ".vscode-insiders" \
         \) -prune -false -o -type d -print | fzf)
     }
-export FZF_DEFAULT_OPTS='-i --height=75%'
+export FZF_DEFAULT_OPTS='-i --height=50%'
+export JAVA_HOME=/usr/lib/jvm/java-19-openjdk-amd64
+export PATH="/home/dvtuong/.local/bin:$PATH"
 alias f='fcd'
+# . "$HOME/.cargo/env"

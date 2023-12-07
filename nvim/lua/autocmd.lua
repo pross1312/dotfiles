@@ -131,6 +131,12 @@ vim.api.nvim_create_autocmd({ "BufWinEnter" }, {
 local switch_term = vim.api.nvim_create_augroup("switch_term", { clear = true })
 vim.api.nvim_create_autocmd('VimEnter', { -- remove temp view that switch_term use
     callback = function(_)
+        extra_fn.setup_term()
+    end,
+    group = switch_term
+})
+vim.api.nvim_create_autocmd('VimLeave', { -- remove temp view that switch_term use
+    callback = function(_)
         extra_fn.clean_term()
     end,
     group = switch_term
