@@ -79,10 +79,12 @@ require("lazy").setup({
             },
             undercurl = true,
             underline = true,
+            highlights = {
+                TelescopeNormal = {bg = "NONE"},
+                Normal = {bg = "NONE"}
+            }
         },
         config = function()
-            vim.cmd [[hi! Cursor guibg=#ffffff guifg=#000000 ]]
-            vim.cmd [[hi! TermCursor guibg=#ffffff guifg=#000000 ]]
         end
     },
     { "ellisonleao/gruvbox.nvim" },
@@ -127,12 +129,6 @@ require("lazy").setup({
             on_highlights = function(highlights, colors)
                 -- highlights.TelescopeNormal = { fg = colors.magenta, bg = colors.charcoal }
                 highlights.WinSeparator = { fg = colors.grey }
-                highlights.TodoFgTODO = {fg = "#8a8a8a" }
-                highlights.TodoFgNOTE = {fg = "#8a8a8a" }
-                highlights.TodoFgFIX = {fg = "#8a8a8a" }
-                highlights.TodoBgTODO = {bg = "#BF0606", fg = "#560303", style = "bold"}
-                highlights.TodoBgNOTE = {bg = "#BF0606", fg = "#560303", style = "bold"}
-                highlights.TodoBgFIX = {bg = "#BF0606", fg = "#560303", style = "bold"}
             end,
         })
     end},

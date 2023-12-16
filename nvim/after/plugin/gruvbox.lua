@@ -17,7 +17,7 @@ require("gruvbox").setup({
     contrast = "", -- can be "hard", "soft" or empty string
     palette_overrides = {},
     overrides = {
-        Normal = { bg = "#111111" },
+        Normal = { bg = "" },
         CursorLine = { bg = "" },
         CursorLineNr = { bg = "" },
         LineNr = { bg = "" },

@@ -1,3 +1,4 @@
+vim.cmd "let g:ftplugin_sql_omni_key = '<C-1>'"
 vim.cmd.syntax 'on'
 vim.cmd.filetype 'plugin indent on'
 vim.o.background           = 'dark'
@@ -52,7 +53,7 @@ vim.cmd "set statusline=%{repeat('─',winwidth('.'))}"
 vim.o.wrap                 = false
 vim.opt.matchpairs:append '<:>'
 vim.opt.isfname:append("@-@")
-vim.opt.sessionoptions = "blank,buffers,folds,help,tabpages,winsize,winpos,terminal,localoptions,options"
+vim.opt.sessionoptions = "blank,buffers,folds,help,tabpages,winsize,winpos,terminal,localoptions,options,curdir"
 -- vim.opt.updatetime = 50
 -- vim.opt.iskeyword = "@,48-57,192-255"
 
@@ -65,4 +66,3 @@ vim.g.netrw_localcopydircmd = 'cp -r'
 vim.g.rustfmt_fail_silently = 1
 
 vim.cmd "set undofile"
-

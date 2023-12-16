@@ -225,7 +225,7 @@ bindsym $mod+Shift+Escape mode "$mode_system"
 mode "$mode_system" {
     bindsym l exec --no-startup-id $Locker, mode "default"
     bindsym e exec --no-startup-id i3-msg exit, mode "default"
-    bindsym s exec --no-startup-id systemctl suspend, mode "default"
+    bindsym s exec --no-startup-id "i3lock -i ~/background/space.jpg", mode default; exec --no-startup-id /bin/systemctl suspend, mode "default"
     bindsym h exec --no-startup-id systemctl hibernate, mode "default"
     bindsym r exec --no-startup-id systemctl reboot, mode "default"
     bindsym Shift+s exec --no-startup-id systemctl poweroff -i, mode "default"
@@ -242,7 +242,7 @@ exec_always --no-startup-id xinput set-prop "MSFT0002:00 04F3:31BE Mouse" "libin
 exec_always --no-startup-id xinput set-prop "MSFT0002:00 04F3:31BE Touchpad" "libinput Tapping Enabled" 1
 exec_always --no-startup-id xinput set-prop "MSFT0002:00 04F3:31BE Touchpad" "libinput Natural Scrolling Enabled" 1
 exec_always --no-startup-id xinput set-prop "MSFT0002:00 04F3:31BE Touchpad" "libinput Accel Speed" .4
-exec_always --no-startup-id /usr/bin/feh --bg-scale ~/background/q86gk8diabg51.webp
+exec_always --no-startup-id /usr/bin/feh --bg-scale ~/background/space.jpg
 # assign [class="google-chrome"] $ws_browsers
 # assign [class="Google-chrome"] $ws_browsers
 # assign [class="URxvt"] $ws_terminals
@@ -251,7 +251,7 @@ exec_always --no-startup-id setxkbmap -option ctrl:nocaps
 exec_always --no-startup-id xmodmap -e "remove lock = Caps_Lock"
 exec_always --no-startup-id xmodmap -e "keycode 66 = Control_L"
 exec_always --no-startup-id xmodmap -e "add control = Control_L"
-exec_always --no-startup-id "picom --config /home/dvtuong/.config/picom/picom.conf"
+exec_always --no-startup-id "picom --config /home/dvtuong/dotfiles/picom/picom.conf"
 
 # to turn off capslock in extreme case
 # python -c 'from ctypes import *; X11 = cdll.LoadLibrary("libX11.so.6"); display = X11.XOpenDisplay(None); X11.XkbLockModifiers(display, c_uint(0x0100), c_uint(2), c_uint(0)); X11.XCloseDisplay(display)'
