@@ -11,12 +11,23 @@ function set_color(name)
         vim.cmd "hi CursorLineNr guibg=NONE"
     end
     vim.cmd "hi! clear TermCursorNC"
+    vim.cmd "hi! clear Cursor"
+    vim.cmd "hi! clear TermCursor"
     vim.cmd "hi! link VertSplit normal"
     vim.cmd "hi! link StatusLine normal"
     vim.cmd "hi! link StatusLineNC normal"
     vim.cmd 'hi clear CursorLine'
-    vim.cmd 'hi clear todo' -- use todo-comments plugin instead
+    vim.cmd "hi! MatchParen guifg=#ff0000 guibg=none"
+    vim.cmd "hi! Cursor guibg=#ffffff guifg=#000000"
+    vim.cmd "hi! link TermCursor Cursor"
+    vim.cmd "hi Normal guifg=#ffffff"
     vim.cmd "hi MyMultiCursor guibg=#777777 gui=bold"
+    vim.cmd "hi! TodoFgTODO guifg=#8a8a8"
+    vim.cmd "hi! TodoFgNOTE guifg=#8a8a8"
+    vim.cmd "hi! TodoFgFIX guifg=#8a8a8"
+    vim.cmd "hi! TodoBgTODO guibg=#BF0606 guifg=#560303 gui=bold"
+    vim.cmd "hi! TodoBgNOTE guibg=#BF0606 guifg=#560303 gui=bold"
+    vim.cmd "hi! TodoBgFIX guibg=#BF0606 guifg=#560303 gui=bold"
     -- terminal config
     vim.g.terminal_color_0 = "#7D8EB0"
     vim.g.terminal_color_1 = "#f7768e"
@@ -37,7 +48,7 @@ function set_color(name)
 end
 
 vim.g.codeschool_contrast_dark = "hard"
-set_color 'monokai-nightasty'
+set_color 'gruvbox'
 
 local extra_func = require 'extra-function'
 vim.api.nvim_create_user_command('Run', extra_func.run_cmd, {bang = true, bar = true, nargs = '?', complete = 'file'})

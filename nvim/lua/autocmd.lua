@@ -41,6 +41,7 @@ vim.api.nvim_create_autocmd({'TermOpen', 'BufEnter'}, {
         vim.cmd "set nobuflisted"
         vim.keymap.set('n', '<m-s>', ':split | term<cr>', {buffer = true, silent = true})
         vim.keymap.set('n', '<m-v>', ':vertical split | term<cr>', {buffer = true, silent = true})
+        vim.keymap.set('n', '<c-s>', extra_fn.switch_term, {silent = true, buffer = true})
         vim.keymap.set('n', '<m- >', function()
             require("extra-function").switch_term()
             require("telescope.builtin").find_files()
