@@ -1,52 +1,9 @@
-vim.g.ibus_vn_engine = 'Bamboo'
-vim.g.ibus_eng_engine = 'BambooUs'
-vim.g.prev_ibus_engine = vim.g.ibus_eng_engine
-local extra_fn = require('extra-function')
-vim.api.nvim_create_augroup('IbusHandler', {clear = true})
-vim.api.nvim_create_autocmd('CmdlineEnter', {
-    callback = function(_) extra_fn.turn_ibus_engine_on(vim.g.ibus_eng_engine) end,
-    group = 'IbusHandler'
-})
-vim.api.nvim_create_autocmd('CmdlineLeave', {
-    callback = function(_) extra_fn.turn_ibus_engine_on(vim.g.ibus_eng_engine) end,
-    group = 'IbusHandler'
-})
-vim.api.nvim_create_autocmd('VimEnter', {
-    callback = function(_) extra_fn.turn_ibus_engine_on(vim.g.ibus_eng_engine) end,
-    group = 'IbusHandler'
-})
-vim.api.nvim_create_autocmd('InsertEnter', {
-    pattern = '*',
-    callback = function(_) extra_fn.turn_ibus_engine_on(vim.g.prev_ibus_engine) end,
-    group = 'IbusHandler'
-})
-vim.api.nvim_create_autocmd('InsertLeave', {
-    pattern = '*',
-    callback = function(_) extra_fn.turn_ibus_engine_on(vim.g.ibus_eng_engine) end,
-    group = 'IbusHandler'
-})
 vim.api.nvim_create_autocmd('VimEnter', {
     callback = function(_)
         vim.g.root_dir = vim.fn.getcwd()
         if vim.g.root_dir ~= vim.fn.expand('%:p:h') then
             vim.g.alter_dir = vim.fn.expand('%:p:h')
         end
-    end
-})
-vim.api.nvim_create_autocmd({'TermOpen', 'BufEnter'}, {
-    pattern = "term://*/bin/bash",
-    callback = function(_)
-        -- vim.keymap.set('t', '<esc>', '<c-bslash><c-n>', {silent = true, buffer = true})
-        -- vim.keymap.set('t', '<c-m>', 'pwd<CR><c-bslash><c-n>G?^\\/.\\+$<CR>yy<esc>:cd <C-r>"<CR>i', {silent = true, buffer = true})
-        vim.cmd "set nobuflisted"
-        vim.keymap.set('n', '<m-s>', ':split | term<cr>', {buffer = true, silent = true})
-        vim.keymap.set('n', '<m-v>', ':vertical split | term<cr>', {buffer = true, silent = true})
-        vim.keymap.set('n', '<c-s>', extra_fn.switch_term, {silent = true, buffer = true})
-        vim.keymap.set('n', '<m- >', function()
-            require("extra-function").switch_term()
-            require("telescope.builtin").find_files()
-        end, {buffer = true, silent = true}) -- to quickly jump to current directory
-        vim.keymap.set('n', '<C-o> ', '<nop>', {buffer = true, silent = true}) -- to quickly jump to current directory
     end
 })
 vim.api.nvim_create_autocmd('BufEnter', {
@@ -128,17 +85,4 @@ vim.api.nvim_create_autocmd({ "BufWinEnter" }, {
     end,
     group = aug,
     pattern = "*",
-})
-local switch_term = vim.api.nvim_create_augroup("switch_term", { clear = true })
-vim.api.nvim_create_autocmd('VimEnter', { -- remove temp view that switch_term use
-    callback = function(_)
-        extra_fn.setup_term()
-    end,
-    group = switch_term
-})
-vim.api.nvim_create_autocmd('VimLeave', { -- remove temp view that switch_term use
-    callback = function(_)
-        extra_fn.clean_term()
-    end,
-    group = switch_term
 })
