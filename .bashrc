@@ -610,3 +610,7 @@ export JAVA_HOME=/usr/lib/jvm/java-19-openjdk-amd64
 export PATH="/home/dvtuong/.local/bin:$PATH"
 alias f='fcd'
 # . "$HOME/.cargo/env"
+lazygit() { # work around for symlinks
+    cd $(readlink -f .)
+    /usr/local/bin/lazygit "$@"
+}

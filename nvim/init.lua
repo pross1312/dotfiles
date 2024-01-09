@@ -2,14 +2,12 @@ require 'options'
 require 'plugins'
 require 'keymap'
 require 'autocmd'
+require 'terminal'
+require 'ibus'
+vim.cmd(string.format("source %s/vim-plugins/vim-cool/plugin/cool.vim", vim.fn.stdpath("config")))
 vim.cmd 'cabbrev mkae make'
 function set_color(name)
     vim.cmd('colorscheme ' .. name)
-    if name == "codeschool" then
-        vim.cmd "hi Normal guifg=#efefef"
-        vim.cmd "hi clear SignColumn"
-        vim.cmd "hi CursorLineNr guibg=NONE"
-    end
     vim.cmd "hi! clear TermCursorNC"
     vim.cmd "hi! clear Cursor"
     vim.cmd "hi! clear TermCursor"
@@ -47,11 +45,37 @@ function set_color(name)
     vim.g.terminal_color_15 = "#c0caf5"
 end
 
-vim.g.codeschool_contrast_dark = "hard"
 set_color 'onedark'
 
 local extra_func = require 'extra-function'
 vim.api.nvim_create_user_command('Run', extra_func.run_cmd, {bang = true, bar = true, nargs = '?', complete = 'file'})
+-- vim.api.nvim_create_user_command('GConflict', function()
+--     vim.cmd [[vimgrep "<<<<<<< HEAD\(.*\n\)*=======\(.*\n\)*>>>>>>> .*\n" **/*]]
+
+vim.api.nvim_create_user_command('Conflict', function()
+    local obj = vim.system({"git", "--no-pager", "diff", "--no-color", "--check", "--relative"}, {text = true}):wait();
+    if obj.code == 0 then
+        print("No conflict found !!!")
+    elseif obj.code == 2 then
+        local lines = vim.split(vim.trim(obj.stdout), "\n")
+        local current_file_lines = nil
+        local count = 0
+        local qf_list = {}
+        for i, line in pairs(lines) do
+            local f_name, f_line, ignored = unpack(vim.split(line, ":"))
+            if count == 0 then
+                local bufnr = vim.fn.bufadd(f_name)
+                vim.fn.setbufline(bufnr, f_line, "")
+                qf_list[#qf_list + 1] = {bufnr = bufnr, lnum = f_line, col = 1}
+            end
+            count = (count + 1)%3
+        end
+        vim.fn.setqflist(qf_list)
+        vim.cmd "cfirst"
+    elseif obj.code ~= 2 then
+        print(vim.split(obj.stderr, "\n")[1])
+    end
+end, {bar = true, nargs = 0})
 
 vim.api.nvim_create_user_command('Color',
             function(data) set_color(data.fargs[1]) end,
@@ -76,11 +100,7 @@ vim.api.nvim_create_user_command('RemoveAllBuffers', function()
     extra_func.remove_all_buffers()
 end, {bang = true, bar = true})
 
-vim.api.nvim_create_user_command('Cleanterm', function()
-    extra_func.clean_term()
-end, {bang = true, bar = true})
-
-vim.api.nvim_create_user_command('HtmlInit', function()
+vim.api.nvim_create_user_command('HTMLInit', function()
     vim.api.nvim_buf_set_text(0, 0, 0, 0, 0, {
     '<!DOCTYPE html>',
     '<html lang="en">',
@@ -123,4 +143,3 @@ end, {bang = true, bar = true})
 if vim.g.neovide then
     require 'gui-options'
 end
-vim.cmd(string.format("source %s/vim-plugins/vim-cool/plugin/cool.vim", vim.fn.stdpath("config")))

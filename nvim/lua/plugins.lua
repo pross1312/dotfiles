@@ -29,10 +29,10 @@ require("lazy").setup({
         -- vim.g.lazygit_config_file_path = {} -- table of custom config file paths
     end
     },
-    'rust-lang/rust.vim',
+    {'rust-lang/rust.vim', lazy = true},
     -- 'nvim-lualine/lualine.nvim',
-    'junegunn/vim-easy-align',
-    'tikhomirov/vim-glsl',
+    {'junegunn/vim-easy-align', lazy = true},
+    {'tikhomirov/vim-glsl', lazy = true},
     -- 'tpope/vim-fugitive',
 
     { 'bkad/CamelCaseMotion', config = function()
@@ -50,7 +50,7 @@ require("lazy").setup({
         dependencies = { "nvim-lua/plenary.nvim" },
         lazy = true,
     },
-    {'mg979/vim-visual-multi', branch = 'master', lazy = false, priority = 101, config = function()
+    {'mg979/vim-visual-multi', branch = 'master', priority = 101, config = function()
         vim.g.VM_silent_exit = 1
         vim.cmd [[let g:VM_maps = {}]]
         vim.cmd "nmap <M-n> <Plug>(VM-Add-Cursor-Down)"
@@ -60,6 +60,7 @@ require("lazy").setup({
     end },
     {
         'VonHeikemen/lsp-zero.nvim',
+        lazy = true,
         branch = 'v3.x',
         dependencies = {
             -- LSP Support
@@ -74,16 +75,16 @@ require("lazy").setup({
         }
     },
     --------------------------colorschemes-------------------------------
-    'folke/tokyonight.nvim',
-    { 'catppuccin/nvim', priority = 100 },
-    {'rose-pine/neovim', name = "rosepine"},
-    'drewtempelmeyer/palenight.vim',
-    {'navarasu/onedark.nvim', opts = {
+    {'folke/tokyonight.nvim', lazy = true},
+    { 'catppuccin/nvim', lazy = true },
+    {'rose-pine/neovim', name = "rosepine", lazy = true},
+    'drewtempelmeyer/palenight.vim', lazy = true,
+    {'navarasu/onedark.nvim', lazy = true, opts = {
         -- -- Main options --
         style = 'darker', -- Default theme style. Choose between 'dark', 'darker', 'cool', 'deep', 'warm', 'warmer' and 'light'
-        -- transparent = false,  -- Show/hide background
-        -- term_colors = true, -- Change terminal color as per the selected theme style
-        -- ending_tildes = false, -- Show the end-of-buffer tildes. By default they are hidden
+        transparent = false,  -- Show/hide background
+        term_colors = true, -- Change terminal color as per the selected theme style
+        -- ending_tildes = true, -- Show the end-of-buffer tildes. By default they are hidden
         -- cmp_itemkind_reverse = false, -- reverse item kind highlights in cmp menu
 
         -- -- toggle theme style ---
@@ -117,7 +118,7 @@ require("lazy").setup({
         --     background = true,    -- use background color for virtual text
         -- },
     }},
-    { 'blazkowolf/gruber-darker.nvim',
+    { 'blazkowolf/gruber-darker.nvim', lazy = true,
         opts = {
             bold = true,
             invert = {
@@ -141,10 +142,16 @@ require("lazy").setup({
         config = function()
         end
     },
-    { "ellisonleao/gruvbox.nvim" },
-    { "EdenEast/nightfox.nvim" },
-    {"adisen99/codeschool.nvim", dependencies = {"rktjmp/lush.nvim"}},
-    {"polirritmico/monokai-nightasty.nvim", config=function()
+    { "ellisonleao/gruvbox.nvim", lazy = true},
+    { "EdenEast/nightfox.nvim", lazy = true },
+    {"adisen99/codeschool.nvim", lazy = true, dependencies = {"rktjmp/lush.nvim"}, config = function()
+        print("CHECKING")
+        vim.cmd "hi Normal guifg=#efefef"
+        vim.cmd "hi clear SignColumn"
+        vim.cmd "hi CursorLineNr guibg=NONE"
+        vim.g.codeschool_contrast_dark = "hard"
+    end},
+    {"polirritmico/monokai-nightasty.nvim", lazy = true, config=function()
         require("monokai-nightasty").setup({
             dark_style_background = "transparent", -- default, dark, transparent, #color
             light_style_background = "default", -- default, dark, transparent, #color

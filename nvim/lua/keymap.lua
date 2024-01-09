@@ -30,10 +30,7 @@ map('i', '<c-r>',  '<c-r><c-o>', {silent = true})
 --    else
 --        print('No buf found') end
 --end, {silent = true})
-map('n', 'p', 'p`]', {silent = true})
-map('n', '<c-t>', extra.switch_term, {silent = true})
-map('t', '<c-t>', extra.switch_term, {silent = true})
-map('t', '<c-s>', extra.switch_term, {silent = true})
+map('n', 'p', 'p`]', {silent = true}) -- jump to end after pasting text
 map('n', '<c-m-l>', '<Cmd>vertical res +5<cr>', {silent = true})
 map('n', '<c-m-h>', '<Cmd>vertical res -5<cr>', {silent = true})
 map('n', '<c-m-j>', '<Cmd>horizontal res -5<cr>', {silent = true})
@@ -77,13 +74,3 @@ for i=1,9 do
     map('i', string.format('<M-%d>', i), '<Esc>'.. i .. 'gt', {})
 end
 map('n', '<leader>t', '<cmd>tabnew<cr>', {})
-map('t', '<m- >', function()
-    require("extra-function").switch_term()
-    require("telescope.builtin").find_files()
-end, {})
-map('t', '<m-h>', '<c-bslash><c-n><c-w>hi', {})
-map('t', '<m-j>', '<c-bslash><c-n><c-w>ji', {})
-map('t', '<m-k>', '<c-bslash><c-n><c-w>ki', {})
-map('t', '<m-l>', '<c-bslash><c-n><c-w>li', {})
-map('t', '<m-s>', '<c-bslash><c-n>:split | term<cr>i', {silent = true})
-map('t', '<m-v>', '<c-bslash><c-n>:vertical split | term<cr>i', {silent = true})
