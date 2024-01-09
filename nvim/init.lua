@@ -13,8 +13,8 @@ function set_color(name)
     vim.cmd "hi! clear TermCursorNC"
     vim.cmd "hi! clear Cursor"
     vim.cmd "hi! clear TermCursor"
-    vim.cmd "hi! link VertSplit normal"
-    vim.cmd "hi! link StatusLine normal"
+    vim.cmd "hi! link WinSeparator normal"
+    vim.cmd "hi! link StatusLine WinSeperator"
     vim.cmd "hi! link StatusLineNC normal"
     vim.cmd 'hi clear CursorLine'
     vim.cmd "hi! MatchParen guifg=#ff0000 guibg=none"
@@ -48,7 +48,7 @@ function set_color(name)
 end
 
 vim.g.codeschool_contrast_dark = "hard"
-set_color 'gruvbox'
+set_color 'onedark'
 
 local extra_func = require 'extra-function'
 vim.api.nvim_create_user_command('Run', extra_func.run_cmd, {bang = true, bar = true, nargs = '?', complete = 'file'})

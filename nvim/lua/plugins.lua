@@ -13,12 +13,27 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
     {'nvim-telescope/telescope.nvim', branch = '0.1.x', dependencies = { 'nvim-lua/plenary.nvim' }}, -- tag = '0.1.3', },
     {"nvim-treesitter/nvim-treesitter", build = ":TSUpdate"},
-    -- 'kdheepak/lazygit.nvim',
+    {'kdheepak/lazygit.nvim', config = function()
+        vim.g.lazygit_floating_window_winblend = 0 -- transparency of floating window
+        vim.g.lazygit_floating_window_scaling_factor = 1 -- scaling factor for floating window
+        vim.g.lazygit_floating_window_border_chars = {'╭','─', '╮', '│', '╯','─', '╰', '│'} -- customize lazygit popup window border characters
+        vim.g.lazygit_floating_window_use_plenary = 0 -- use plenary.nvim to manage floating window if available
+        vim.g.lazygit_use_neovim_remote = 1 -- fallback to 0 if neovim-remote is not installed
+
+        vim.g.lazygit_use_custom_config_file_path = 1 -- config file path is evaluated if this value is 1
+        vim.g.lazygit_config_file_path = vim.fn.expand("$HOME/dotfiles/lazygit.yml") -- custom config file path
+        vim.api.nvim_create_user_command('G', function()
+            vim.cmd "LazyGit"
+        end, {bang = true, bar = true})
+        -- OR
+        -- vim.g.lazygit_config_file_path = {} -- table of custom config file paths
+    end
+    },
     'rust-lang/rust.vim',
     -- 'nvim-lualine/lualine.nvim',
     'junegunn/vim-easy-align',
     'tikhomirov/vim-glsl',
-    'tpope/vim-fugitive',
+    -- 'tpope/vim-fugitive',
 
     { 'bkad/CamelCaseMotion', config = function()
         vim.keymap.set('n', 'w', '<Plug>CamelCaseMotion_w', {})
@@ -63,6 +78,45 @@ require("lazy").setup({
     { 'catppuccin/nvim', priority = 100 },
     {'rose-pine/neovim', name = "rosepine"},
     'drewtempelmeyer/palenight.vim',
+    {'navarasu/onedark.nvim', opts = {
+        -- -- Main options --
+        style = 'darker', -- Default theme style. Choose between 'dark', 'darker', 'cool', 'deep', 'warm', 'warmer' and 'light'
+        -- transparent = false,  -- Show/hide background
+        -- term_colors = true, -- Change terminal color as per the selected theme style
+        -- ending_tildes = false, -- Show the end-of-buffer tildes. By default they are hidden
+        -- cmp_itemkind_reverse = false, -- reverse item kind highlights in cmp menu
+
+        -- -- toggle theme style ---
+        -- toggle_style_key = nil, -- keybind to toggle theme style. Leave it nil to disable it, or set it to a string, for example "<leader>ts"
+        -- toggle_style_list = {'dark', 'darker', 'cool', 'deep', 'warm', 'warmer', 'light'}, -- List of styles to toggle between
+
+        -- -- Change code style ---
+        -- -- Options are italic, bold, underline, none
+        -- -- You can configure multiple style with comma separated, For e.g., keywords = 'italic,bold'
+        -- code_style = {
+        --     comments = 'italic',
+        --     keywords = 'none',
+        --     functions = 'none',
+        --     strings = 'none',
+        --     variables = 'none'
+        -- },
+
+        -- -- Lualine options --
+        -- lualine = {
+        --     transparent = false, -- lualine center bar transparency
+        -- },
+
+        -- -- Custom Highlights --
+        -- colors = {}, -- Override default colors
+        -- highlights = {}, -- Override highlight groups
+
+        -- -- Plugins Config --
+        -- diagnostics = {
+        --     darker = true, -- darker colors for diagnostic
+        --     undercurl = true,   -- use undercurl instead of underline for diagnostics
+        --     background = true,    -- use background color for virtual text
+        -- },
+    }},
     { 'blazkowolf/gruber-darker.nvim',
         opts = {
             bold = true,

@@ -26,8 +26,10 @@ function m.swap_header_src()
     if swap_file then vim.cmd(string.format("e %s", swap_file)) end
 end
 
-local term_view_file = vim.fn.stdpath("cache") .. "/term_temp_view"
-local main_view_file = vim.fn.stdpath("cache") .. "/main_temp_view"
+local term_root_dir = vim.fn.stdpath("cache") .. "/term_cache"
+local term_dir = term_root_dir .. "/0"
+local term_view_file = term_dir .. "/term_temp_view"
+local main_view_file = term_dir .. "/main_temp_view"
 local prev_term_mode = 't'
 function m.switch_term()
     local term_pattern = 'term://.+/bin/bash$'
@@ -66,21 +68,24 @@ function m.switch_term()
         end
     end
 end
-
 function m.setup_term()
-    if vim.fn.filereadable(term_view_file) == 1 then
-        local i = 0
+    if vim.fn.isdirectory(term_root_dir) ~= 1 then
+        vim.fn.mkdir(term_root_dir)
+    end
+    if vim.fn.isdirectory(term_dir) == 1 then
+        local i = 1
         while vim.fn.filereadable(term_view_file .. i) == 1 do
             i = i + 1
         end
-        term_view_file = term_view_file .. i
-        main_view_file = main_view_file .. i
+        term_dir = term_root_dir .. "/" .. i
     end
+    term_view_file = term_dir .. "/term_temp_view"
+    main_view_file = term_dir .. "/main_temp_view"
+    vim.fn.mkdir(term_dir)
 end
 
 function m.clean_term()
-    os.remove(term_view_file)
-    os.remove(main_view_file)
+    vim.system({"rm", "-rf", term_dir}):wait()
 end
 
 function m.remove_all_buffers()
