@@ -80,6 +80,7 @@ require("lazy").setup({
     {'rose-pine/neovim', name = "rosepine", lazy = true},
     'drewtempelmeyer/palenight.vim', lazy = true,
     {'navarasu/onedark.nvim', lazy = true, opts = {
+    {'navarasu/onedark.nvim', lazy = false, priority = 1000, opts = {
         -- -- Main options --
         style = 'darker', -- Default theme style. Choose between 'dark', 'darker', 'cool', 'deep', 'warm', 'warmer' and 'light'
         transparent = false,  -- Show/hide background

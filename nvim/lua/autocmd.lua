@@ -1,9 +1,10 @@
 vim.api.nvim_create_autocmd('VimEnter', {
     callback = function(_)
-        vim.g.root_dir = vim.fn.getcwd()
-        if vim.g.root_dir ~= vim.fn.expand('%:p:h') then
-            vim.g.alter_dir = vim.fn.expand('%:p:h')
+        local buf_name = vim.fn.bufname(0)
+        if vim.fn.isdirectory(buf_name) == 1 then
+            vim.cmd("cd "..buf_name)
         end
+        vim.g.root_dir = vim.fn.getcwd()
     end
 })
 vim.api.nvim_create_autocmd('BufEnter', {

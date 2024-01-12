@@ -79,18 +79,6 @@ end
 
 -- **KEY MAP**
 vim.keymap.set('n', '<c-t>', switch_term, {silent = true})
-vim.keymap.set('t', '<c-t>', switch_term, {silent = true})
-vim.keymap.set('t', '<c-s>', switch_term, {silent = true})
-vim.keymap.set('t', '<m- >', function()
-    require("extra-function").switch_term()
-    require("telescope.builtin").find_files()
-end, {})
-vim.keymap.set('t', '<m-h>', '<c-bslash><c-n><c-w>hi', {})
-vim.keymap.set('t', '<m-j>', '<c-bslash><c-n><c-w>ji', {})
-vim.keymap.set('t', '<m-k>', '<c-bslash><c-n><c-w>ki', {})
-vim.keymap.set('t', '<m-l>', '<c-bslash><c-n><c-w>li', {})
-vim.keymap.set('t', '<m-s>', '<c-bslash><c-n>:split | term<cr>i', {silent = true})
-vim.keymap.set('t', '<m-v>', '<c-bslash><c-n>:vertical split | term<cr>i', {silent = true})
 
 
 -- **AUTO COMMAND**
@@ -113,6 +101,18 @@ vim.api.nvim_create_autocmd({'TermOpen', 'BufEnter'}, {
         -- vim.keymap.set('t', '<esc>', '<c-bslash><c-n>', {silent = true, buffer = true})
         -- vim.keymap.set('t', '<c-m>', 'pwd<CR><c-bslash><c-n>G?^\\/.\\+$<CR>yy<esc>:cd <C-r>"<CR>i', {silent = true, buffer = true})
         vim.cmd "set nobuflisted"
+        vim.keymap.set('t', '<m- >', function()
+            switch_term()
+            require("telescope.builtin").find_files()
+        end, {buffer = true})
+        vim.keymap.set('t', '<c-t>', switch_term, {silent = true, buffer = true})
+        vim.keymap.set('t', '<c-s>', switch_term, {silent = true, buffer = true})
+        vim.keymap.set('t', '<m-h>', '<c-bslash><c-n><c-w>hi', {buffer = true})
+        vim.keymap.set('t', '<m-j>', '<c-bslash><c-n><c-w>ji', {buffer = true})
+        vim.keymap.set('t', '<m-k>', '<c-bslash><c-n><c-w>ki', {buffer = true})
+        vim.keymap.set('t', '<m-l>', '<c-bslash><c-n><c-w>li', {buffer = true})
+        vim.keymap.set('t', '<m-s>', '<c-bslash><c-n>:split | term<cr>i', {silent = true})
+        vim.keymap.set('t', '<m-v>', '<c-bslash><c-n>:vertical split | term<cr>i', {silent = true})
         vim.keymap.set('n', '<m-s>', ':split | term<cr>', {buffer = true, silent = true})
         vim.keymap.set('n', '<m-v>', ':vertical split | term<cr>', {buffer = true, silent = true})
         vim.keymap.set('n', '<c-s>', switch_term, {silent = true, buffer = true})
