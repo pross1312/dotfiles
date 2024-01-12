@@ -1,4 +1,3 @@
-vim.g.alter_dir = vim.fn.fnamemodify(os.getenv('MYVIMRC'), ':p:h')
 local m = {}
 function m.swap_header_src()
     local file_path = vim.fn.expand('%');

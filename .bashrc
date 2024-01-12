@@ -605,11 +605,23 @@ function fcd {
         -name ".vscode-insiders" \
         \) -prune -false -o -type d -print | fzf)
     }
-export FZF_DEFAULT_OPTS='-i --height=50%'
+export FZF_DEFAULT_OPTS='-i --height=100%'
 export JAVA_HOME=/usr/lib/jvm/java-19-openjdk-amd64
 export PATH="/home/dvtuong/.local/bin:$PATH"
 alias f='fcd'
 # . "$HOME/.cargo/env"
+fd() { # NOTE: find and open directory in vim ( open project )
+    if ! command -v fdfind &> /dev/null
+    then
+        echo "<fdfind> could not be found\nUse switch to <find>"
+        result=$(find . -name target -prune -o -name node_modules -prune -o -not -path '*/.*' -type d| fzf)
+    else
+        result=$(fdfind --type d | fzf)
+    fi
+    if [[ $result != "" ]] then
+        vim $result
+    fi
+}
 lazygit() { # work around for symlinks
     cd $(readlink -f .)
     /usr/local/bin/lazygit "$@"
