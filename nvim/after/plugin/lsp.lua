@@ -6,6 +6,10 @@ lsp_zero.on_attach(function(client, bufnr)
     client.server_capabilities.semanticTokensProvider = nil
     vim.diagnostic.disable(bufnr)
     lsp_zero.default_keymaps({buffer = bufnr})
+    local opts = {buffer = bufnr, remap = true}
+
+    vim.keymap.set("n", "<leader>fr", function() vim.lsp.buf.references() end, opts)
+    vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
 end)
 lsp_zero.set_sign_icons({
     error = '',
@@ -38,6 +42,7 @@ setup_lsp(
     "tsserver",
     { on_attach = on_attach, root_dir = lsp.util.root_pattern({"package.json", ".git"}), capabilities = capabilities }
 )
+vim.keymap.set("n", "<leader>vrr", function() vim.lsp.buf.references() end, opts)
 setup_lsp(
     "jdtls",
     {

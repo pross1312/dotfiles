@@ -1,5 +1,5 @@
 #!/bin/bash
-# https://gist.github.com/zachbrowne/8bc414c9f30192067831fafebd14255c
+# *** https://gist.github.com/zachbrowne/8bc414c9f30192067831fafebd14255c ***
 
 #######################################################
 # SOURCED ALIAS'S AND SCRIPTS BY zachbrowne.me
@@ -137,9 +137,6 @@ alias h="history | grep "
 # Search running processes
 alias p="ps aux | grep "
 alias topcpu="/bin/ps -eo pcpu,pid,user,args | sort -k 1 -r | head -10"
-
-# Search files in the current folder
-alias f="find . | grep "
 
 # Count all files (recursively) in the current folder
 alias countfiles="for t in files links directories; do echo \`find . -type \${t:0:1} | wc -l\` \$t; done 2> /dev/null"
@@ -610,7 +607,19 @@ export JAVA_HOME=/usr/lib/jvm/java-19-openjdk-amd64
 export PATH="/home/dvtuong/.local/bin:$PATH"
 alias f='fcd'
 # . "$HOME/.cargo/env"
-fd() { # NOTE: find and open directory in vim ( open project )
+cfd() { # NOTE: find and open directory in vim ( open project )
+    if ! command -v fdfind &> /dev/null
+    then
+        echo "<fdfind> could not be found\nUse switch to <find>"
+        result=$(find . -name target -prune -o -name node_modules -prune -o -not -path '*/.*' -type d| fzf)
+    else
+        result=$(fdfind --type d | fzf)
+    fi
+    if [[ $result != "" ]] then
+        cd $result
+    fi
+}
+vfd() { # NOTE: find and open directory in vim ( open project )
     if ! command -v fdfind &> /dev/null
     then
         echo "<fdfind> could not be found\nUse switch to <find>"

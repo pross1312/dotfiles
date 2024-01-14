@@ -24,15 +24,6 @@ vim.api.nvim_create_autocmd('BufEnter', {
 --     end
 -- })
 vim.api.nvim_create_augroup('NetrwGroup', {clear = true})
--- vim.api.nvim_create_autocmd('VimEnter', {
---     pattern = "*",
---     callback = function()
---         if vim.fn.argc() == 0 then
---             vim.cmd "Explore"
---         end
---     end,
---     group = 'NetrwGroup'
--- })
 function netrw_split_open(file)
     local last_window = vim.fn.winnr('$') == vim.fn.winnr()
     if vim.fn.isdirectory(file) == 1  or not last_window then
