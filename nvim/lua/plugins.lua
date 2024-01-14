@@ -13,27 +13,38 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
     {'nvim-telescope/telescope.nvim', branch = '0.1.x', dependencies = { 'nvim-lua/plenary.nvim' }}, -- tag = '0.1.3', },
     {"nvim-treesitter/nvim-treesitter", build = ":TSUpdate"},
-    {'kdheepak/lazygit.nvim', config = function()
-        vim.g.lazygit_floating_window_winblend = 0 -- transparency of floating window
-        vim.g.lazygit_floating_window_scaling_factor = 1 -- scaling factor for floating window
-        vim.g.lazygit_floating_window_border_chars = {'╭','─', '╮', '│', '╯','─', '╰', '│'} -- customize lazygit popup window border characters
-        vim.g.lazygit_floating_window_use_plenary = 0 -- use plenary.nvim to manage floating window if available
-        vim.g.lazygit_use_neovim_remote = 1 -- fallback to 0 if neovim-remote is not installed
+    -- {
+    --     "NeogitOrg/neogit",
+    --     dependencies = {
+    --         "nvim-lua/plenary.nvim",         -- required
+    --         -- "sindrets/diffview.nvim",        -- optional - Diff integration
 
-        vim.g.lazygit_use_custom_config_file_path = 1 -- config file path is evaluated if this value is 1
-        vim.g.lazygit_config_file_path = vim.fn.expand("$HOME/dotfiles/lazygit.yml") -- custom config file path
-        vim.api.nvim_create_user_command('G', function()
-            vim.cmd "LazyGit"
-        end, {bang = true, bar = true})
-        -- OR
-        -- vim.g.lazygit_config_file_path = {} -- table of custom config file paths
-    end
-    },
+    --         -- Only one of these is needed, not both.
+    --         "nvim-telescope/telescope.nvim", -- optional
+    --     },
+    --     config = true
+    -- },
+    -- {'kdheepak/lazygit.nvim', config = function()
+    --     vim.g.lazygit_floating_window_winblend = 0 -- transparency of floating window
+    --     vim.g.lazygit_floating_window_scaling_factor = 1 -- scaling factor for floating window
+    --     vim.g.lazygit_floating_window_border_chars = {'╭','─', '╮', '│', '╯','─', '╰', '│'} -- customize lazygit popup window border characters
+    --     vim.g.lazygit_floating_window_use_plenary = 0 -- use plenary.nvim to manage floating window if available
+    --     vim.g.lazygit_use_neovim_remote = 1 -- fallback to 0 if neovim-remote is not installed
+
+    --     vim.g.lazygit_use_custom_config_file_path = 1 -- config file path is evaluated if this value is 1
+    --     vim.g.lazygit_config_file_path = vim.fn.expand("$HOME/dotfiles/lazygit.yml") -- custom config file path
+    --     vim.api.nvim_create_user_command('G', function()
+    --         vim.cmd "LazyGit"
+    --     end, {bang = true, bar = true})
+    --     -- OR
+    --     -- vim.g.lazygit_config_file_path = {} -- table of custom config file paths
+    -- end
+    -- },
     {'rust-lang/rust.vim', lazy = true},
     -- 'nvim-lualine/lualine.nvim',
     {'junegunn/vim-easy-align', lazy = true},
     {'tikhomirov/vim-glsl', lazy = true},
-    -- 'tpope/vim-fugitive',
+    'tpope/vim-fugitive',
 
     { 'bkad/CamelCaseMotion', config = function()
         vim.keymap.set('n', 'w', '<Plug>CamelCaseMotion_w', {})
@@ -60,7 +71,6 @@ require("lazy").setup({
     end },
     {
         'VonHeikemen/lsp-zero.nvim',
-        lazy = true,
         branch = 'v3.x',
         dependencies = {
             -- LSP Support
@@ -79,7 +89,13 @@ require("lazy").setup({
     { 'catppuccin/nvim', lazy = true },
     {'rose-pine/neovim', name = "rosepine", lazy = true},
     'drewtempelmeyer/palenight.vim', lazy = true,
-    {'navarasu/onedark.nvim', lazy = true, opts = {
+    -- Or with configuration
+    {
+        'projekt0n/github-nvim-theme',
+        lazy = true, -- make sure we load this during startup if it is your main colorscheme
+        config = function()
+        end,
+    },
     {'navarasu/onedark.nvim', lazy = false, priority = 1000, opts = {
         -- -- Main options --
         style = 'darker', -- Default theme style. Choose between 'dark', 'darker', 'cool', 'deep', 'warm', 'warmer' and 'light'
