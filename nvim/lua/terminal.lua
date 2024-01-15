@@ -1,7 +1,7 @@
 local term_root_dir = vim.fn.stdpath("cache") .. "/term_cache"
 local term_dir = term_root_dir .. "/0"
-local term_view_file = term_dir .. "/term_temp_view"
-local main_view_file = term_dir .. "/main_temp_view"
+local term_view_file = nil -- NOTE: setup later in setup_term function when VimEnter
+local main_view_file = nil --
 local prev_term_mode = 't'
 function switch_term()
     local term_pattern = 'term://.+/bin/bash$'
@@ -45,11 +45,9 @@ function setup_term()
     if vim.fn.isdirectory(term_root_dir) ~= 1 then
         vim.fn.mkdir(term_root_dir)
     end
-    if vim.fn.isdirectory(term_dir) == 1 then
-        local i = 1
-        while vim.fn.filereadable(term_view_file .. i) == 1 do
-            i = i + 1
-        end
+    local i = 0
+    while vim.fn.isdirectory(term_dir) == 1 do
+        i = i + 1
         term_dir = term_root_dir .. "/" .. i
     end
     term_view_file = term_dir .. "/term_temp_view"

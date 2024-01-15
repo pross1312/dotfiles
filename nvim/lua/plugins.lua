@@ -13,17 +13,22 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
     {'nvim-telescope/telescope.nvim', branch = '0.1.x', dependencies = { 'nvim-lua/plenary.nvim' }}, -- tag = '0.1.3', },
     {"nvim-treesitter/nvim-treesitter", build = ":TSUpdate"},
-    -- {
-    --     "NeogitOrg/neogit",
-    --     dependencies = {
-    --         "nvim-lua/plenary.nvim",         -- required
-    --         -- "sindrets/diffview.nvim",        -- optional - Diff integration
+    {
+        "NeogitOrg/neogit",
+        dependencies = {
+            "nvim-lua/plenary.nvim",         -- required
+            -- "sindrets/diffview.nvim",        -- optional - Diff integration
 
-    --         -- Only one of these is needed, not both.
-    --         "nvim-telescope/telescope.nvim", -- optional
-    --     },
-    --     config = true
-    -- },
+            -- Only one of these is needed, not both.
+            "nvim-telescope/telescope.nvim", -- optional
+        },
+        config = function()
+            require("neogit").setup({})
+            vim.api.nvim_create_user_command('Git', function()
+                vim.cmd "Neogit kind=replace"
+            end, {bang = true, bar = true})
+        end
+    },
     -- {'kdheepak/lazygit.nvim', config = function()
     --     vim.g.lazygit_floating_window_winblend = 0 -- transparency of floating window
     --     vim.g.lazygit_floating_window_scaling_factor = 1 -- scaling factor for floating window
@@ -44,7 +49,7 @@ require("lazy").setup({
     -- 'nvim-lualine/lualine.nvim',
     {'junegunn/vim-easy-align', lazy = true},
     {'tikhomirov/vim-glsl', lazy = true},
-    'tpope/vim-fugitive',
+    -- 'tpope/vim-fugitive',
 
     { 'bkad/CamelCaseMotion', config = function()
         vim.keymap.set('n', 'w', '<Plug>CamelCaseMotion_w', {})
@@ -88,7 +93,7 @@ require("lazy").setup({
     {'folke/tokyonight.nvim', lazy = true},
     { 'catppuccin/nvim', lazy = true },
     {'rose-pine/neovim', name = "rosepine", lazy = true},
-    'drewtempelmeyer/palenight.vim', lazy = true,
+    {'drewtempelmeyer/palenight.vim', lazy = true},
     -- Or with configuration
     {
         'projekt0n/github-nvim-theme',
@@ -209,6 +214,6 @@ require("lazy").setup({
                 highlights.WinSeparator = { fg = colors.grey }
             end,
         })
-    end},
+    end}
     ---------------------------------------------------------------------
 })

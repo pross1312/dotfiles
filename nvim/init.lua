@@ -26,6 +26,19 @@ function set_color(name)
     vim.cmd "hi! TodoBgTODO guibg=#BF0606 guifg=#560303 gui=bold"
     vim.cmd "hi! TodoBgNOTE guibg=#BF0606 guifg=#560303 gui=bold"
     vim.cmd "hi! TodoBgFIX guibg=#BF0606 guifg=#560303 gui=bold"
+    -- neogit
+    vim.cmd "hi! NeogitCursorLine guibg=NONE"
+    vim.cmd "hi! NeogitDiffAddHighlight guibg=NONE"
+    vim.cmd "hi! link NeogitDiffAdd NeogitDiffAddHighlight"
+    vim.cmd "hi! link NeogitDiffAddRegion NeogitDiffAdd"
+
+    vim.cmd "hi! NeogitDiffDeleteHighlight guifg=#bc4650 guibg=NONE"
+    vim.cmd "hi! link NeogitDiffDelete NeogitDiffDeleteHighlight"
+    vim.cmd "hi! link NeogitDiffDeleteRegion NeogitDiffDelete"
+    vim.cmd "hi! NeogitHunkHeader guibg=NONE guifg=#09867D gui=bold,italic"
+    vim.cmd "hi! link NeogitHunkHeaderHighlight NeogitHunkHeader"
+    vim.cmd "hi! NeogitDiffContext guibg=NONE"
+    vim.cmd "hi! NeogitDiffContextHighlight guibg=NONE"
     -- terminal config
     vim.g.terminal_color_0 = "#7D8EB0"
     vim.g.terminal_color_1 = "#f7768e"
