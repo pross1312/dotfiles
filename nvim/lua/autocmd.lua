@@ -45,18 +45,21 @@ vim.api.nvim_create_autocmd('FileType', {
                 cancelreturn = nil,
             })
             if file ~= "" then netrw_split_open(file) end
-        end, {silent = true, buffer = true})
+        end, {buffer = true})
         map("n", "<CR>", function()
             local file = vim.call('netrw#Call', 'NetrwGetWord')
             netrw_split_open(file)
-        end, {silent = true, buffer = true, nowait = true})
+        end, {buffer = true, nowait = true})
+        map("n", ".", ":<C-U> <C-R>=netrw#Call('NetrwGetCurdir', 1)..'/'..netrw#Call('NetrwGetWord')<CR><Home>",
+        map('n', '<C-p>', '<CMD>Lexplore<CR>', {buffer = true})
+        {buffer = true});
     end,
     group = 'NetrwGroup'
 })
 local aug = vim.api.nvim_create_augroup("buf_large", { clear = true })
 vim.api.nvim_create_autocmd({ "BufReadPre" }, {
     callback = function()
-        local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(vim.api.nvim_get_current_buf()))
+        local ok, stats = pcall(vim.uv.fs_stat, vim.api.nvim_buf_get_name(vim.api.nvim_get_current_buf()))
         if ok and stats and (stats.size > 1000000) then
             vim.b.large_buf = true
             vim.cmd("syntax clear")

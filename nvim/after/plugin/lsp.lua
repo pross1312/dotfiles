@@ -10,6 +10,7 @@ lsp_zero.on_attach(function(client, bufnr)
 
     vim.keymap.set("n", "<leader>fr", function() vim.lsp.buf.references() end, opts)
     vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
+    vim.keymap.set('i', '<M-i>', vim.lsp.buf.hover, opts)
 end)
 lsp_zero.set_sign_icons({
     error = '',

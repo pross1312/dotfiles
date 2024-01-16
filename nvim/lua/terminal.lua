@@ -17,7 +17,7 @@ function switch_term()
         end
     else
         if vim.opt.autowrite and vim.bo.buftype == "" then vim.cmd "wa" end
-        vim.keymap.set('t', '<m-o>', 'cd ' .. vim.fn.getcwd() .. '<cr>', {silent = true}) -- to quickly jump to current directory
+        vim.keymap.set('t', '<m-o>', 'cd ' .. vim.fn.getcwd() .. '<cr>') -- to quickly jump to current directory
         vim.cmd("mksession! " .. main_view_file)
         if vim.fn.empty(vim.fn.filereadable(term_view_file)) == 0 then
             local buffers = vim.fn.getbufinfo({buflisted = true}) -- list all buffers
