@@ -4,7 +4,6 @@ require 'keymap'
 require 'autocmd'
 require 'terminal'
 require 'ibus'
-vim.cmd(string.format("source %s/vim-plugins/vim-cool/plugin/cool.vim", vim.fn.stdpath("config")))
 vim.cmd 'cabbrev mkae make'
 function set_color(name)
     vim.cmd('colorscheme ' .. name)
