@@ -3,8 +3,17 @@ local term_dir = term_root_dir .. "/0"
 local term_view_file = nil -- NOTE: setup later in setup_term function when VimEnter
 local main_view_file = nil --
 local prev_term_mode = 't'
+local term_pattern = nil -- string:match use regex
+local au_cmd_term_pattern = nil -- auto command use a different pattern (grub ???)
+if vim.fn.has("macunix") == 0 then -- windows
+    term_pattern = "term://.+powershell%.EXE$"
+    au_cmd_term_pattern = 'term://*powershell.EXE'
+else
+    term_pattern = 'term://.+/bin/bash$'
+    au_cmd_term_pattern = 'term://*/bin/bash'
+end
+
 function switch_term()
-    local term_pattern = 'term://.+/bin/bash$'
     local in_term = vim.api.nvim_buf_get_name(0):match(term_pattern)
     if in_term then
         vim.cmd("mksession! " ..term_view_file)
@@ -60,7 +69,6 @@ function clean_term()
 end
 
 function remove_all_buffers()
-    local term_pattern = 'term://.+/bin/bash$'
     local in_term = vim.api.nvim_buf_get_name(0):match(term_pattern)
     if not in_term then
         switch_term()
@@ -94,7 +102,7 @@ vim.api.nvim_create_autocmd('VimLeave', { -- remove temp view that switch_term u
     group = custom_term
 })
 vim.api.nvim_create_autocmd({'TermOpen', 'BufEnter'}, {
-    pattern = "term://*/bin/bash",
+    pattern = au_cmd_term_pattern,
     callback = function(_)
         -- vim.keymap.set('t', '<esc>', '<c-bslash><c-n>', {silent = true, buffer = true})
         -- vim.keymap.set('t', '<c-m>', 'pwd<CR><c-bslash><c-n>G?^\\/.\\+$<CR>yy<esc>:cd <C-r>"<CR>i', {silent = true, buffer = true})

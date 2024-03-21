@@ -1,6 +1,12 @@
 vim.cmd "let g:ftplugin_sql_omni_key = '<C-1>'"
 vim.cmd.syntax 'on'
 vim.cmd.filetype 'plugin indent on'
+if vim.fn.has("macunix") == 0 then -- windows
+    vim.cmd 'set shell=powershell'
+    -- vim.cmd 'set shellcmdflag=-command'
+    -- vim.cmd 'set shellquote=\\"'
+    -- vim.cmd 'set shellxquote='
+end
 vim.o.background           = 'dark'
 vim.o.encoding             = 'utf-8'
 vim.o.ruler                = true
