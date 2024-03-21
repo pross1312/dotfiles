@@ -1,3 +1,15 @@
+vim.fn.is_module_available = function(module)
+    local function requiref(module)
+        require(module)
+    end
+    res = pcall(requiref,module)
+    if not(res) then
+        return false
+    else
+        return true
+    end
+end
+
 require 'options'
 require 'plugins'
 require 'keymap'

@@ -1,3 +1,4 @@
+if vim.fn.is_module_available('lsp-zero') then
 local lsp_zero = require('lsp-zero')
 
 lsp_zero.on_attach(function(client, bufnr)
@@ -51,3 +52,4 @@ setup_lsp(
         root_dir = lsp.util.root_pattern({"pom.xml", ".git"}),
     }
 )
+end
