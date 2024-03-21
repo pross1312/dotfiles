@@ -1,3 +1,6 @@
+
+if vim.fn.is_module_available('telescope') then
+
 require('telescope').setup({
     pickers = {
         find_files = {
@@ -25,7 +28,7 @@ require('telescope').setup({
 })
 local actions = require('telescope.actions')
 local builtin = require('telescope.builtin')
-vim.keymap.set('n', '<M- >', builtin.find_files, {silent = true})
+vim.keymap.set('n', '<M-p>', builtin.find_files, {silent = true})
 vim.keymap.set('n', '<M-b>', builtin.buffers, {silent = true})
 vim.keymap.set('n', '<M-g>', function()
     builtin.live_grep({only_sort_text = true})
@@ -38,3 +41,4 @@ vim.keymap.set('n', '<leader>re', builtin.registers, {})
 if vim.g.neovide then vim.keymap.set('c', '<C-/>', "lua require('telescope.builtin').command_history()<CR>", {})
 else vim.keymap.set('c', '<C-_>', "lua require('telescope.builtin').command_history()<CR>", {}) end
 
+end

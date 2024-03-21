@@ -1,3 +1,4 @@
+if vim.fn.is_module_available('nvim-treesitter.configs') then
 require('nvim-treesitter.configs').setup {
   -- A list of parser names, or "all" (the five listed parsers should always be installed)
   ensure_installed = { "c", "lua", "vim", "vimdoc", "query", "rust", "python", "javascript"},
@@ -38,3 +39,4 @@ require('nvim-treesitter.configs').setup {
     additional_vim_regex_highlighting = false,
   }
 }
+end

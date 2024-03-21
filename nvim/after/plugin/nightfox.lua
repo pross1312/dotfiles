@@ -1,3 +1,4 @@
+if vim.fn.is_module_available('nightfox') then
 require('nightfox').setup({
     options = {
     --     -- Compiled file's destination location
@@ -47,3 +48,4 @@ require('nightfox').setup({
         }
     },
 })
+end
