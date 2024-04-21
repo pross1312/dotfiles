@@ -121,7 +121,7 @@ vim.api.nvim_create_user_command('Qfix', function()
 end, {bang = true, bar = true})
 
 vim.api.nvim_create_user_command('RemoveAllBuffers', function()
-    extra_func.remove_all_buffers()
+    require("terminal").remove_all_but_terms()
 end, {bang = true, bar = true})
 
 vim.api.nvim_create_user_command('HTMLInit', function()

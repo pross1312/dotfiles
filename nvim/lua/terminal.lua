@@ -5,7 +5,7 @@ local main_view_file = nil --
 local prev_term_mode = 't'
 local term_pattern = nil -- string:match use regex
 local au_cmd_term_pattern = nil -- auto command use a different pattern (grub ???)
-if vim.fn.has("macunix") == 0 then -- windows
+if vim.loop.os_uname().sysname ~= "Linux" then -- windows
     term_pattern = "term://.+powershell%.EXE$"
     au_cmd_term_pattern = 'term://*powershell.EXE'
 else
@@ -68,7 +68,7 @@ function clean_term()
     vim.system({"rm", "-rf", term_dir}):wait()
 end
 
-function remove_all_buffers()
+local remove_all_but_terms = function()
     local in_term = vim.api.nvim_buf_get_name(0):match(term_pattern)
     if not in_term then
         switch_term()
@@ -130,3 +130,4 @@ vim.api.nvim_create_autocmd({'TermOpen', 'BufEnter'}, {
     end,
     group = custom_term
 })
+return {remove_all_but_terms = remove_all_but_terms}
