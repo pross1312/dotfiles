@@ -10,7 +10,7 @@ if [ -f /etc/bashrc ]; then
     . /etc/bashrc
 fi
 
-if [ -f /home/dvtuong/.profile ]; then
+if [ -f $HOME/.profile ]; then
     . /home/dvtuong/.profile
 fi
 

@@ -21,7 +21,7 @@ set show-all-if-ambiguous On
 
 # do not bell on tab-completion
 # set bell-style none
-set bell-style visible
+set bell-style none
 
 # some defaults / modifications for the emacs mode
 
