@@ -50,9 +50,8 @@ vim.api.nvim_create_autocmd('FileType', {
             local file = vim.call('netrw#Call', 'NetrwGetWord')
             netrw_split_open(file)
         end, {buffer = true, nowait = true})
-        map("n", ".", ":<C-U> <C-R>=netrw#Call('NetrwGetCurdir', 1)..'/'..netrw#Call('NetrwGetWord')<CR><Home>",
+        map("n", ".", ":<C-U> <C-R>=netrw#Call('NetrwGetCurdir', 1)..'/'..netrw#Call('NetrwGetWord')<CR><Home>", {buffer = true})
         map('n', '<C-p>', '<CMD>Lexplore<CR>', {buffer = true})
-        {buffer = true});
     end,
     group = 'NetrwGroup'
 })
