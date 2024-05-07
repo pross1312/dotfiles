@@ -1,4 +1,4 @@
-if vim.fn.is_module_available('lsp-zero') then
+if false and vim.fn.is_module_available('lsp-zero') then
 local lsp_zero = require('lsp-zero')
 
 lsp_zero.on_attach(function(client, bufnr)
