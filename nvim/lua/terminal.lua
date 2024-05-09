@@ -79,7 +79,9 @@ local remove_all_but_terms = function()
             vim.cmd(string.format("bd %d", v.bufnr))
         end
     end
-    vim.cmd "LspRestart"
+    if vim.fn.is_module_available('lsp-zero') then
+        vim.cmd "LspRestart"
+    end
     vim.system({"rm", "-f", main_view_file}):wait()
 end
 
@@ -123,10 +125,10 @@ vim.api.nvim_create_autocmd({'TermOpen', 'BufEnter'}, {
         vim.keymap.set('n', '<m-v>', ':vertical split | term<cr>', {buffer = true, silent = true})
         vim.keymap.set('n', '<c-s>', switch_term, {silent = true, buffer = true})
         vim.keymap.set('n', '<C-p>', '<nop>', {buffer = true})
-        vim.keymap.set('n', '<m- >', function()
-            switch_term()
-            require("telescope.builtin").find_files()
-        end, {buffer = true, silent = true}) -- to quickly jump to current directory
+        -- vim.keymap.set('n', '<m- >', function()
+        --     switch_term()
+        --     require("telescope.builtin").find_files()
+        -- end, {buffer = true, silent = true}) -- to quickly jump to current directory
         vim.keymap.set('n', '<C-o> ', '<nop>', {buffer = true, silent = true}) -- to quickly jump to current directory
     end,
     group = custom_term

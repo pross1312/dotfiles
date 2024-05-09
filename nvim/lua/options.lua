@@ -68,6 +68,6 @@ vim.g.netrw_keepdir         = 1
 vim.g.netrw_browse_split    = 0
 vim.g.netrw_localcopydircmd = 'cp -r'
 vim.g.rustfmt_fail_silently = 1
-vim.cmd [[let g:netrw_list_hide= netrw_gitignore#Hide() .. '.*\.swp$,node_modules/,.git/']]
+vim.cmd [[let g:netrw_list_hide= '.*\.swp$,node_modules/,.git/']]
 
 vim.cmd "set undofile"
