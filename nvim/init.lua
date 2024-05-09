@@ -30,7 +30,7 @@ function set_color(name)
     vim.cmd "hi! Cursor guibg=#ffffff guifg=#000000"
     vim.cmd "hi! link TermCursor Cursor"
     vim.cmd "hi Normal guifg=#ffffff"
-    vim.cmd "hi MyMultiCursor guibg=#777777 gui=bold"
+    vim.cmd "hi MyMultiCursor guibg=#888888 guifg=#111111"
     vim.cmd "hi! TodoFgTODO guifg=#8a8a8"
     vim.cmd "hi! TodoFgNOTE guifg=#8a8a8"
     vim.cmd "hi! TodoFgFIX guifg=#8a8a8"
@@ -69,7 +69,7 @@ function set_color(name)
     vim.g.terminal_color_15 = "#c0caf5"
 end
 
-set_color 'onedark'
+set_color 'github_dark_default'
 
 local extra_func = require 'extra-function'
 vim.api.nvim_create_user_command('Run', extra_func.run_cmd, {bang = true, bar = true, nargs = '?', complete = 'file'})

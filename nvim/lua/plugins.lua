@@ -45,10 +45,10 @@ require("lazy").setup({
     --     -- vim.g.lazygit_config_file_path = {} -- table of custom config file paths
     -- end
     -- },
-    {'rust-lang/rust.vim', lazy = true},
+    {'rust-lang/rust.vim', lazy = false},
     -- 'nvim-lualine/lualine.nvim',
-    {'junegunn/vim-easy-align', lazy = true},
-    {'tikhomirov/vim-glsl', lazy = true},
+    {'junegunn/vim-easy-align', lazy = false},
+    {'tikhomirov/vim-glsl', lazy = false},
     'tpope/vim-fugitive',
 
     { 'bkad/CamelCaseMotion', config = function()
@@ -64,7 +64,7 @@ require("lazy").setup({
     {
         "folke/todo-comments.nvim",
         dependencies = { "nvim-lua/plenary.nvim" },
-        lazy = true,
+        lazy = false,
     },
     {'mg979/vim-visual-multi', branch = 'master', priority = 101, config = function()
         vim.g.VM_silent_exit = 1
@@ -72,10 +72,12 @@ require("lazy").setup({
         vim.cmd "nmap <M-n> <Plug>(VM-Add-Cursor-Down)"
         vim.cmd "nmap <M-p> <Plug>(VM-Add-Cursor-Up)"
         vim.cmd [[let g:VM_maps['Exit'] = '<C-c>']]
-        vim.cmd [[let g:VM_Mono_hl   = 'MyMultiCursor']]
+        vim.cmd [[hi! link VM_Mono   MyMultiCursor ]]
+        -- vim.cmd [[let g:VM_Mono_hl   = 'MyMultiCursor']]
     end },
     {
         'VonHeikemen/lsp-zero.nvim',
+        lazy = true,
         branch = 'v3.x',
         dependencies = {
             -- LSP Support
@@ -90,18 +92,18 @@ require("lazy").setup({
         }
     },
     --------------------------colorschemes-------------------------------
-    {'folke/tokyonight.nvim', lazy = true},
-    { 'catppuccin/nvim', lazy = true },
-    {'rose-pine/neovim', name = "rosepine", lazy = true},
-    {'drewtempelmeyer/palenight.vim', lazy = true},
+    {'folke/tokyonight.nvim', lazy = false},
+    { 'catppuccin/nvim', lazy = false },
+    {'rose-pine/neovim', name = "rosepine", lazy = false},
+    {'drewtempelmeyer/palenight.vim', lazy = false},
     -- Or with configuration
     {
         'projekt0n/github-nvim-theme',
-        lazy = true, -- make sure we load this during startup if it is your main colorscheme
+        lazy = false, -- make sure we load this during startup if it is your main colorscheme
         config = function()
         end,
     },
-    {'navarasu/onedark.nvim', lazy = false, priority = 1000, opts = {
+    {'navarasu/onedark.nvim', lazy = false, opts = {
         -- -- Main options --
         style = 'darker', -- Default theme style. Choose between 'dark', 'darker', 'cool', 'deep', 'warm', 'warmer' and 'light'
         transparent = false,  -- Show/hide background
@@ -140,7 +142,7 @@ require("lazy").setup({
         --     background = true,    -- use background color for virtual text
         -- },
     }},
-    { 'blazkowolf/gruber-darker.nvim', lazy = true,
+    { 'blazkowolf/gruber-darker.nvim', lazy = false,
         opts = {
             bold = true,
             invert = {
@@ -164,9 +166,9 @@ require("lazy").setup({
         config = function()
         end
     },
-    { "ellisonleao/gruvbox.nvim", lazy = true},
-    { "EdenEast/nightfox.nvim", lazy = true },
-    {"adisen99/codeschool.nvim", lazy = true, dependencies = {"rktjmp/lush.nvim"}, config = function()
+    { "ellisonleao/gruvbox.nvim", lazy = false},
+    { "EdenEast/nightfox.nvim", lazy = false },
+    {"adisen99/codeschool.nvim", lazy = false, dependencies = {"rktjmp/lush.nvim"}, config = function()
         print("CHECKING")
         vim.cmd "hi Normal guifg=#efefef"
         vim.cmd "hi clear SignColumn"
