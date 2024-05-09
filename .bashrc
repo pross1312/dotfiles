@@ -622,13 +622,23 @@ cfd() { # NOTE: find and open directory in vim ( open project )
 vfd() { # NOTE: find and open directory in vim ( open project )
     if ! command -v fdfind &> /dev/null
     then
-        echo "<fdfind> could not be found\nUse switch to <find>"
-        result=$(find . -name target -prune -o -name node_modules -prune -o -not -path '*/.*' -type d| fzf)
+        if ! command -v fd &> /dev/null
+        then
+            echo "<fdfind || fd> could not be found. Use switch to <find>"
+            result=$(find . -name target -prune -o -name node_modules -prune -o -not -path '*/.*' -type d| fzf)
+        else
+            result=$(fd --type d | fzf)
+        fi
     else
         result=$(fdfind --type d | fzf)
     fi
     if [[ $result != "" ]] then
-        vim $result
+        if ! command -v nvim &> /dev/null
+        then
+            echo "<nvim> could not be found\nUse switch to <vim>"
+        else
+            nvim $result
+        fi
     fi
 }
 lazygit() { # work around for symlinks
