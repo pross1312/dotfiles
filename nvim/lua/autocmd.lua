@@ -80,3 +80,9 @@ vim.api.nvim_create_autocmd({ "BufWinEnter" }, {
     group = aug,
     pattern = "*",
 })
+vim.api.nvim_create_autocmd({"BufRead"}, {
+    pattern = {"*.vs", "*.fs"},
+    callback = function()
+        vim.cmd "set ft=glsl"
+    end,
+})
