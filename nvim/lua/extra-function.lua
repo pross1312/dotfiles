@@ -31,9 +31,13 @@ function m.build_and_run_cmd(data)
     if ok then
         if not data.fargs[1] and vim.g.run_cmd then
             vim.cmd(string.format("split | term %s", vim.g.run_cmd))
+            local key = vim.api.nvim_replace_termcodes("<cr>", true, false, true)
+            vim.fn.feedkeys(key, 'n', false)
         elseif data.fargs[1] then
             vim.cmd(string.format("split | term %s", data.fargs[1]))
             vim.g.run_cmd = data.fargs[1]
+            local key = vim.api.nvim_replace_termcodes("<cr>", true, false, true)
+            vim.api.nvim_feedkeys(key, 'n', false)
         else
             print('No command provided')
         end
