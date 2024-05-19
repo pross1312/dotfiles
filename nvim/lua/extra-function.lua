@@ -25,15 +25,18 @@ function m.swap_header_src()
     if swap_file then vim.cmd(string.format("e %s", swap_file)) end
 end
 
-function m.run_cmd(data)
-    if vim.opt.autowrite and vim.bo.buftype == "" then vim.cmd "wa" end
-    if not data.fargs[1] and vim.g.run_cmd then
-        vim.cmd(string.format("split | term %s", vim.g.run_cmd))
-    elseif data.fargs[1] then
-        vim.cmd(string.format("split | term %s", data.fargs[1]))
-        vim.g.run_cmd = data.fargs[1]
-    else
-        print('No command provided')
+function m.build_and_run_cmd(data)
+    local ok, stats = pcall(vim.cmd, "make")
+    print(ok, stats)
+    if ok then
+        if not data.fargs[1] and vim.g.run_cmd then
+            vim.cmd(string.format("split | term %s", vim.g.run_cmd))
+        elseif data.fargs[1] then
+            vim.cmd(string.format("split | term %s", data.fargs[1]))
+            vim.g.run_cmd = data.fargs[1]
+        else
+            print('No command provided')
+        end
     end
 end
 

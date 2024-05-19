@@ -248,9 +248,9 @@ exec_always --no-startup-id /usr/bin/feh --bg-scale ~/background/space.jpg
 # assign [class="URxvt"] $ws_terminals
 exec_always --no-startup-id xrdb -load ~/dotfiles/Xresources.main
 exec_always --no-startup-id setxkbmap -option ctrl:nocaps
-exec_always --no-startup-id xmodmap -e "remove lock = Caps_Lock"
-exec_always --no-startup-id xmodmap -e "keycode 66 = Control_L"
-exec_always --no-startup-id xmodmap -e "add control = Control_L"
+exec_always --no-startup-id xmodmap -e "remove Lock = Caps_Lock"
+exec_always --no-startup-id xmodmap -e "keysym Caps_Lock = Control_L"
+exec_always --no-startup-id xmodmap -e "add Lock = Caps_Lock"
 exec_always --no-startup-id "picom -b"
 
 # to turn off capslock in extreme case

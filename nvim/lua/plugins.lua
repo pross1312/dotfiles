@@ -175,7 +175,7 @@ require("lazy").setup({
         vim.cmd "hi CursorLineNr guibg=NONE"
         vim.g.codeschool_contrast_dark = "hard"
     end},
-    {"polirritmico/monokai-nightasty.nvim", lazy = true, config=function()
+    {"polirritmico/monokai-nightasty.nvim", lazy = false, config=function()
         require("monokai-nightasty").setup({
             dark_style_background = "transparent", -- default, dark, transparent, #color
             light_style_background = "default", -- default, dark, transparent, #color
@@ -216,6 +216,34 @@ require("lazy").setup({
                 highlights.WinSeparator = { fg = colors.grey }
             end,
         })
-    end}
+    end},
+    {'ramojus/mellifluous.nvim', config = function()
+        require 'mellifluous'.setup({
+            mellifluous = {
+                neutral = true, -- set this to false and bg_contrast to 'medium' for original mellifluous (then it was called meliora theme)
+                bg_contrast = 'soft' -- options: 'soft', 'medium', 'hard'
+            },
+            dim_inactive = false,
+            color_set = 'tender',
+            styles = { -- see :h attr-list for options. set {} for NONE, { option = true } for option
+                comments = { italic = true },
+                conditionals = {},
+                folds = {},
+                loops = {},
+                functions = {},
+                keywords = {},
+                strings = { bold = false},
+                variables = {},
+                numbers = {},
+                booleans = {},
+                properties = {},
+                types = {},
+                operators = {},
+                markup = {
+                    headings = { bold = true },
+                },
+            },
+        })
+    end},
     ---------------------------------------------------------------------
 })
