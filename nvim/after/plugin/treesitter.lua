@@ -16,8 +16,13 @@ require('nvim-treesitter.configs').setup {
   ---- If you need to change the installation directory of the parsers (see -> Advanced Setup)
   -- parser_install_dir = "/some/path/to/store/parsers", -- Remember to run vim.opt.runtimepath:append("/some/path/to/store/parsers")!
   highlight = {
-    enable = true,
-    disable = function() return vim.b.large_buf end, -- vim.b.large_buf set by autocmd
+    enable = false,
+    disable = function(lang, buf)
+        local ok, stats = pcall(vim.uv.fs_stat, vim.api.nvim_buf_get_name(vim.api.nvim_get_current_buf()))
+        if ok and stats and (stats.size > 100 * 1024) then
+            return true
+        end
+    end, -- vim.b.large_buf set by autocmd
     -- NOTE: these are the names of the parsers and not the filetype. (for example if you want to
     -- disable highlighting for the `tex` filetype, you need to include `latex` in this list as this is
     -- the name of the parser)

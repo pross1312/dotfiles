@@ -79,7 +79,7 @@ vim.api.nvim_create_user_command('Brun', extra_func.build_and_run_cmd, {bang = t
 vim.api.nvim_create_user_command('Conflict', function()
     local obj = vim.system({"git", "--no-pager", "diff", "--no-color", "--check", "--relative"}, {text = true}):wait();
     if obj.code == 0 then
-        print("No conflict found !!!")
+        vim.api.nvim_err_writeln("No conflict found !!!")
     elseif obj.code == 2 then
         local lines = vim.split(vim.trim(obj.stdout), "\n")
         local current_file_lines = nil
@@ -97,7 +97,7 @@ vim.api.nvim_create_user_command('Conflict', function()
         vim.fn.setqflist(qf_list)
         vim.cmd "cfirst"
     elseif obj.code ~= 2 then
-        print(vim.split(obj.stderr, "\n")[1])
+        vim.api.nvim_err_writeln(vim.split(obj.stderr, "\n")[1])
     end
 end, {bar = true, nargs = 0})
 
