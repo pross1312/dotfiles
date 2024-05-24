@@ -29,15 +29,18 @@ local run_cmd = nil
 function m.build_and_run_cmd(data)
     if vim.opt.autowrite and vim.bo.buftype == "" then vim.cmd "w" end
     if data.fargs[1] then
-        run_cmd = data.fargs[1]
+        run_cmd = string.format('term %s', data.fargs[1]):gsub(' ', '\\ ')
     end
     if vim.opt.makeprg._value ~= 'make' or vim.fn.filereadable('makefile') == 1 or vim.fn.filereadable('Makefile') == 1 then
-        local output = vim.system(vim.split(vim.opt.makeprg._value, ' ')):wait()
+        local cmd = vim.fn.expandcmd(vim.opt.makeprg._value)
+        local output = vim.system(vim.split(cmd, ' ')):wait()
         vim.fn.setqflist({})
         if output.code ~= 0 then
-            vim.cmd(string.format('cexpr %s', vim.inspect(output.stderr)))
+            local err = output.stderr:gsub('"', '\\"'):gsub('\n', '\\n')
+            print(err)
+            vim.cmd(string.format('cexpr "%s"', err))
         elseif run_cmd then
-            vim.cmd(string.format("belowright split +term\\ %s", run_cmd))
+            vim.cmd(string.format("belowright split +%s", run_cmd))
             local key = vim.api.nvim_replace_termcodes("<cr>", true, false, true)
             vim.api.nvim_feedkeys(key, 'n', false)
         else

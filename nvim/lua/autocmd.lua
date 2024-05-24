@@ -78,3 +78,14 @@ vim.api.nvim_create_autocmd({"BufRead"}, {
         vim.cmd "set ft=glsl"
     end,
 })
+vim.api.nvim_create_autocmd({"FileType"}, {
+    pattern = {"rust"},
+    callback = function()
+        vim.opt.errorformat = '%Eerror: %m,%Eerror[E%n]: %m,%Wwarning: %m,%Inote: %m,%C %#--> %f:%l:%c,%Z'
+        if vim.fn.filereadable('./Cargo.toml') == 1 then
+            vim.opt.makeprg = 'cargo build'
+        else
+            vim.opt.makeprg = "rustc %"
+        end
+    end,
+})

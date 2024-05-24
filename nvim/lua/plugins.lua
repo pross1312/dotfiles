@@ -12,7 +12,7 @@ end
 vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
     {'nvim-telescope/telescope.nvim', branch = '0.1.x', dependencies = { 'nvim-lua/plenary.nvim' }}, -- tag = '0.1.3', },
-    {"nvim-treesitter/nvim-treesitter", build = ":TSUpdate"},
+    {"nvim-treesitter/nvim-treesitter", build = ":TSUpdate", lazy = true},
     -- {
     --     "NeogitOrg/neogit",
     --     dependencies = {
@@ -45,7 +45,6 @@ require("lazy").setup({
     --     -- vim.g.lazygit_config_file_path = {} -- table of custom config file paths
     -- end
     -- },
-    {'rust-lang/rust.vim', lazy = false},
     -- 'nvim-lualine/lualine.nvim',
     {'junegunn/vim-easy-align', lazy = false},
     {'tikhomirov/vim-glsl', lazy = false},
@@ -103,7 +102,7 @@ require("lazy").setup({
         config = function()
         end,
     },
-    {'navarasu/onedark.nvim', lazy = false, opts = {
+    {'navarasu/onedark.nvim', lazy = true, opts = {
         -- -- Main options --
         style = 'darker', -- Default theme style. Choose between 'dark', 'darker', 'cool', 'deep', 'warm', 'warmer' and 'light'
         transparent = false,  -- Show/hide background
@@ -174,7 +173,7 @@ require("lazy").setup({
         vim.cmd "hi CursorLineNr guibg=NONE"
         vim.g.codeschool_contrast_dark = "hard"
     end},
-    {"polirritmico/monokai-nightasty.nvim", lazy = false, config=function()
+    {"polirritmico/monokai-nightasty.nvim", lazy = true, config=function()
         require("monokai-nightasty").setup({
             dark_style_background = "transparent", -- default, dark, transparent, #color
             light_style_background = "default", -- default, dark, transparent, #color
@@ -216,7 +215,7 @@ require("lazy").setup({
             end,
         })
     end},
-    {'ramojus/mellifluous.nvim', config = function()
+    {'ramojus/mellifluous.nvim', lazy = true, config = function()
         require 'mellifluous'.setup({
             mellifluous = {
                 neutral = true, -- set this to false and bg_contrast to 'medium' for original mellifluous (then it was called meliora theme)
