@@ -27,7 +27,7 @@ map('i', '<c-r>',  '<c-r><c-o>', {})
 --    if vim.g.pre_buffer then
 --        vim.cmd("buffer " .. vim.g.pre_buffer)
 --    else
---        print('No buf found') end
+--        vim.api.nvim_err_writeln('No buf found') end
 --end, {})
 map('n', 'p', 'p`]', {}) -- jump to end after pasting text
 map('n', '<c-m-l>', '<Cmd>vertical res +5<cr>', {})
@@ -55,7 +55,7 @@ map('n', '<leader>jc', function()
         vim.cmd(string.format("cd %s", dir))
         print(dir)
     else
-        print('No directory found')
+        vim.api.nvim_err_writeln('No directory found')
     end
 end, {})
 -- command mode mapping

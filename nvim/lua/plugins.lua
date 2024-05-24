@@ -169,7 +169,6 @@ require("lazy").setup({
     { "ellisonleao/gruvbox.nvim", lazy = false},
     { "EdenEast/nightfox.nvim", lazy = false },
     {"adisen99/codeschool.nvim", lazy = false, dependencies = {"rktjmp/lush.nvim"}, config = function()
-        print("CHECKING")
         vim.cmd "hi Normal guifg=#efefef"
         vim.cmd "hi clear SignColumn"
         vim.cmd "hi CursorLineNr guibg=NONE"
