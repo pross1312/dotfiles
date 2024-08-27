@@ -65,12 +65,13 @@ require("lazy").setup({
         dependencies = { "nvim-lua/plenary.nvim" },
         lazy = false,
     },
-    {'mg979/vim-visual-multi', branch = 'master', priority = 101, config = function()
+    {'mg979/vim-visual-multi', branch = 'master', config = function()
         vim.g.VM_silent_exit = 1
-        vim.cmd [[let g:VM_maps = {}]]
+        -- vim.cmd [[let g:VM_maps = {}]]
+        -- vim.cmd [[let g:VM_maps["Exit"] = '<C-C>']]
+        vim.cmd "nmap <C-C> <Plug>(VM-Exit)"
         vim.cmd "nmap <M-n> <Plug>(VM-Add-Cursor-Down)"
         vim.cmd "nmap <M-p> <Plug>(VM-Add-Cursor-Up)"
-        vim.cmd [[let g:VM_maps['Exit'] = '<C-c>']]
         vim.cmd [[hi! link VM_Mono   MyMultiCursor ]]
         -- vim.cmd [[let g:VM_Mono_hl   = 'MyMultiCursor']]
     end },

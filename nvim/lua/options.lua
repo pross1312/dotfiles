@@ -57,6 +57,7 @@ vim.o.wrap                 = false
 vim.opt.matchpairs:append '<:>'
 vim.opt.isfname:append("@-@")
 vim.opt.sessionoptions = "blank,buffers,folds,help,tabpages,winsize,winpos,terminal,localoptions,options,curdir"
+vim.opt.guicursor = "n-v-c-sm:block,i-ci-ve:ver25,r-cr-o:hor20"
 -- vim.opt.updatetime = 50
 -- vim.opt.iskeyword = "@,48-57,192-255"
 

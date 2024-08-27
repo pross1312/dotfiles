@@ -1,0 +1,3 @@
+set font "iosevka term regular 20"
+map <C-G> toggle_statusbar
+set guioptions none

@@ -27,7 +27,9 @@ end
 
 local run_cmd = nil
 function m.build_and_run_cmd(data)
-    if vim.opt.autowrite and vim.bo.buftype == "" then vim.cmd "w" end
+    if vim.opt.autowrite._value and vim.bo.buftype == "" and vim.fn.bufname(0) ~= "" then
+        vim.cmd "w"
+    end
     if data.fargs[1] then
         run_cmd = string.format('term %s', data.fargs[1]):gsub(' ', '\\ ')
     end
@@ -37,7 +39,6 @@ function m.build_and_run_cmd(data)
         vim.fn.setqflist({})
         if output.code ~= 0 then
             local err = output.stderr:gsub('"', '\\"'):gsub('\n', '\\n')
-            print(err)
             vim.cmd(string.format('cexpr "%s"', err))
         elseif run_cmd then
             vim.cmd(string.format("belowright split +%s", run_cmd))
