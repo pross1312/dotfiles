@@ -27,7 +27,9 @@ end
 
 local run_cmd = nil
 function m.build_and_run_cmd(data)
-    if vim.opt.autowrite._value and vim.bo.buftype == "" and vim.fn.bufname(0) ~= "" then
+    local info = vim.fn.getbufinfo(vim.fn.bufnr());
+    if #info > 0 then info = info[1] end
+    if vim.opt.autowrite._value and vim.bo.buftype == "" and info.changed == 1 and info.name ~= "" then
         vim.cmd "w"
     end
     if data.fargs[1] then
