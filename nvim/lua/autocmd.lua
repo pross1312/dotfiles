@@ -71,13 +71,6 @@ vim.api.nvim_create_autocmd('FileType', {
 --     group = aug,
 --     pattern = "*",
 -- })
-
-vim.api.nvim_create_autocmd({"BufRead"}, {
-    pattern = {"*.vs", "*.fs"},
-    callback = function()
-        vim.cmd "set ft=glsl"
-    end,
-})
 vim.api.nvim_create_autocmd({"FileType"}, {
     pattern = {"rust"},
     callback = function()
