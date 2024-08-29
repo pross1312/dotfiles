@@ -65,11 +65,12 @@ require("lazy").setup({
         dependencies = { "nvim-lua/plenary.nvim" },
         lazy = false,
     },
-    {'mg979/vim-visual-multi', branch = 'master', config = function()
+    -- master is broken (VM_maps['Exit'] not working)
+    {'mg979/vim-visual-multi', commit = 'b84a6d42c1c10678928b0bf8327f378c8bc8af5a', config = function()
         vim.g.VM_silent_exit = 1
-        -- vim.cmd [[let g:VM_maps = {}]]
-        -- vim.cmd [[let g:VM_maps["Exit"] = '<C-C>']]
-        vim.cmd "nmap <C-C> <Plug>(VM-Exit)"
+        vim.cmd [[let g:VM_maps = {}]]
+        vim.cmd [[let g:VM_maps["Exit"] = '<C-C>']]
+        -- vim.cmd "nmap <C-C> <Plug>(VM-Exit)"
         vim.cmd "nmap <M-n> <Plug>(VM-Add-Cursor-Down)"
         vim.cmd "nmap <M-p> <Plug>(VM-Add-Cursor-Up)"
         vim.cmd [[hi! link VM_Mono   MyMultiCursor ]]
@@ -243,6 +244,8 @@ require("lazy").setup({
                 },
             },
         })
+    end},
+    {'rebelot/kanagawa.nvim', lazy = false, config = function()
     end},
     ---------------------------------------------------------------------
 })

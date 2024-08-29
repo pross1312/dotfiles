@@ -16,6 +16,7 @@ require 'keymap'
 require 'autocmd'
 require 'terminal'
 require 'ibus'
+require 'ftdetect'
 vim.cmd 'cabbrev mkae make'
 function set_color(name)
     vim.cmd('colorscheme ' .. name)

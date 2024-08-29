@@ -30,7 +30,7 @@ function m.build_and_run_cmd(data)
     local info = vim.fn.getbufinfo(vim.fn.bufnr());
     if #info > 0 then info = info[1] end
     if vim.opt.autowrite._value and vim.bo.buftype == "" and info.changed == 1 and info.name ~= "" then
-        vim.cmd "w"
+        vim.cmd "wa"
     end
     if data.fargs[1] then
         run_cmd = string.format('term %s', data.fargs[1]):gsub(' ', '\\ ')
