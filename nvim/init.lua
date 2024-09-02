@@ -71,7 +71,7 @@ function set_color(name)
     -- vim.g.terminal_color_15 = "#c0caf5"
 end
 
-set_color 'tokyonight'
+set_color 'mellifluous'
 
 local extra_func = require 'extra-function'
 vim.api.nvim_create_user_command('Brun', extra_func.build_and_run_cmd, {bang = true, bar = true, nargs = '?', complete = 'file'})
@@ -145,7 +145,7 @@ vim.api.nvim_create_user_command('MIT', function()
     vim.api.nvim_buf_set_text(0, 0, 0, 0, 0,
     { 'MIT License',
     '',
-    'Copyright (c) 2023 pross1312',
+    'Copyright (c) 2023 dangvinhtuong12@gmail.com',
     '',
     'Permission is hereby granted, free of charge, to any person obtaining a copy',
     'of this software and associated documentation files (the "Software"), to deal',

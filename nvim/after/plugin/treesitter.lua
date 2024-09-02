@@ -1,4 +1,4 @@
-if false and vim.fn.is_module_available('nvim-treesitter.configs') then
+if vim.fn.is_module_available('nvim-treesitter.configs') then
 require('nvim-treesitter.configs').setup {
   -- A list of parser names, or "all" (the five listed parsers should always be installed)
   ensure_installed = { "c", "lua", "vim", "vimdoc", "query", "rust", "python", "javascript"},
@@ -16,12 +16,13 @@ require('nvim-treesitter.configs').setup {
   ---- If you need to change the installation directory of the parsers (see -> Advanced Setup)
   -- parser_install_dir = "/some/path/to/store/parsers", -- Remember to run vim.opt.runtimepath:append("/some/path/to/store/parsers")!
   highlight = {
-    enable = false,
+    enable = true,
     disable = function(lang, buf)
         local ok, stats = pcall(vim.uv.fs_stat, vim.api.nvim_buf_get_name(vim.api.nvim_get_current_buf()))
         if ok and stats and (stats.size > 100 * 1024) then
             return true
         end
+        return false
     end, -- vim.b.large_buf set by autocmd
     -- NOTE: these are the names of the parsers and not the filetype. (for example if you want to
     -- disable highlighting for the `tex` filetype, you need to include `latex` in this list as this is

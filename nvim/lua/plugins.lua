@@ -12,7 +12,7 @@ end
 vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
     {'nvim-telescope/telescope.nvim', branch = '0.1.x', dependencies = { 'nvim-lua/plenary.nvim' }}, -- tag = '0.1.3', },
-    {"nvim-treesitter/nvim-treesitter", build = ":TSUpdate", lazy = true},
+    {"nvim-treesitter/nvim-treesitter", build = ":TSUpdate", lazy = false},
     -- {
     --     "NeogitOrg/neogit",
     --     dependencies = {
@@ -169,84 +169,29 @@ require("lazy").setup({
     },
     { "ellisonleao/gruvbox.nvim", lazy = false},
     { "EdenEast/nightfox.nvim", lazy = false },
-    {"adisen99/codeschool.nvim", lazy = false, dependencies = {"rktjmp/lush.nvim"}, config = function()
-        vim.cmd "hi Normal guifg=#efefef"
-        vim.cmd "hi clear SignColumn"
-        vim.cmd "hi CursorLineNr guibg=NONE"
-        vim.g.codeschool_contrast_dark = "hard"
-    end},
-    {"polirritmico/monokai-nightasty.nvim", lazy = true, config=function()
-        require("monokai-nightasty").setup({
-            dark_style_background = "transparent", -- default, dark, transparent, #color
-            light_style_background = "default", -- default, dark, transparent, #color
-            terminal_colors = true, -- Set the colors used when opening a `:terminal`
-            color_headers = true, -- Enable header colors for each header level (h1, h2, etc.)
-            hl_styles = {
-                -- Style to be applied to different syntax groups. See `:help nvim_set_hl`
-                comments = { italic = false },
-                keywords = { italic = false },
-                functions = {},
-                variables = {},
-                -- Background styles for sidebars (panels) and floating windows:
-                floats = "transparent", -- default, dark, transparent
-                sidebars = "transparent", -- default, dark, transparent
-            },
-            -- sidebars = { "qf", "help" }, -- Set a darker background on sidebar-like windows. For example: `["qf", "vista_kind", "terminal", "packer"]`
-
-            hide_inactive_statusline = false, -- Hide inactive statuslines and replace them with a thin border instead. Should work with the standard **StatusLine** and **LuaLine**.
-            dim_inactive = false, -- dims inactive windows
-            lualine_bold = false, -- Lualine headers will be bold or regular.
-            lualine_style = "default", -- "dark", "light" or "default" (Follows dark/light style)
-
-            --- You can override specific color/highlights. Current values in `extras/palettes`
-
-            ---@param colors ColorScheme
-            on_colors = function(colors)
-                -- colors.border = colors.grey
-                -- colors.comment = "#2d7e79"
-            end,
-
-            ---@param highlights Highlights
-            -- TODO: jqwoiejoiwq
-            -- NOTE:
-            -- FIXME:
-            ---@param colors ColorScheme
-            on_highlights = function(highlights, colors)
-                -- highlights.TelescopeNormal = { fg = colors.magenta, bg = colors.charcoal }
-                highlights.WinSeparator = { fg = colors.grey }
-            end,
-        })
-    end},
-    {'ramojus/mellifluous.nvim', lazy = true, config = function()
+    {"adisen99/codeschool.nvim", lazy = false, dependencies = {"rktjmp/lush.nvim"}},
+    {"polirritmico/monokai-nightasty.nvim", lazy = false },
+    {'ramojus/mellifluous.nvim', lazy = false, config = function()
         require 'mellifluous'.setup({
             mellifluous = {
-                neutral = true, -- set this to false and bg_contrast to 'medium' for original mellifluous (then it was called meliora theme)
-                bg_contrast = 'soft' -- options: 'soft', 'medium', 'hard'
+                neutral = false, -- set this to false and bg_contrast to 'medium' for original mellifluous (then it was called meliora theme)
+                bg_contrast = 'medium' -- options: 'soft', 'medium', 'hard'
             },
             dim_inactive = false,
-            color_set = 'tender',
-            styles = { -- see :h attr-list for options. set {} for NONE, { option = true } for option
-                comments = { italic = true },
-                conditionals = {},
-                folds = {},
-                loops = {},
-                functions = {},
-                keywords = {},
-                strings = { bold = false},
-                variables = {},
-                numbers = {},
-                booleans = {},
-                properties = {},
-                types = {},
-                operators = {},
-                markup = {
-                    headings = { bold = true },
-                },
-            },
+            color_set = 'kanagawa_dragon',
         })
     end},
     {'rebelot/kanagawa.nvim', lazy = false, config = function()
     end},
+    {"0xstepit/flow.nvim", lazy = true, config = function()
+        require("flow").setup{
+            transparent = true, -- Set transparent background.
+            fluo_color = "pink", --  Fluo color: pink, yellow, orange, or green.
+            mode = "normal", -- Intensity of the palette: normal, bright, desaturate, or dark. Notice that dark is ugly!
+            aggressive_spell = false, -- Display colors for spell check.
+        }
+    end},
+    { "savq/melange-nvim" },
     {
         "zenbones-theme/zenbones.nvim",
         -- Optionally install Lush. Allows for more configuration or extending the colorscheme
@@ -254,9 +199,6 @@ require("lazy").setup({
         -- In Vim, compat mode is turned on as Lush only works in Neovim.
         dependencies = "rktjmp/lush.nvim",
         lazy = false,
-        config = function()
-            -- vim.g.zenbones_darkness = 'stark'
-        end
     },
     ---------------------------------------------------------------------
 })
