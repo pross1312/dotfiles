@@ -1,5 +1,4 @@
-local my_info = { bold = true, bg = "#4f1227", fg = "#ff224b" } -- FIXME: TODO: NOTE:
-require("gruvbox").setup({
+if vim.fn.is_module_available("gruvbox") then require("gruvbox").setup {
     undercurl = true,
     underline = false, bold = true,
     italic = {
@@ -17,19 +16,15 @@ require("gruvbox").setup({
     contrast = "", -- can be "hard", "soft" or empty string
     palette_overrides = {},
     overrides = {
-        Normal = { bg = "" },
+        -- Normal = { bg = "" },
         CursorLine = { bg = "" },
         CursorLineNr = { bg = "" },
         LineNr = { bg = "" },
         SignColumn = { bg = "" },
         ["Todo"] = { bg = "", fg = "" },
---         ["@text.todo.comment"] = my_info,
---         ["@text.note.comment"] = my_info,
---         ["@text.danger.comment"] = my_info,
---         ["@text.warning.comment"] = my_info,
---         ["@punctuation.delimiter.comment"] = my_info,
        Cursor = { bg = "#C3A40C" },
     },
     dim_inactive = false,
-    transparent_mode = not vim.g.neovide
-})
+    transparent_mode = false -- not vim.g.neovide
+}
+end
