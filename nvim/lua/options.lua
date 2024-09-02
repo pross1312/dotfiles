@@ -4,7 +4,6 @@ vim.cmd.filetype 'plugin indent on'
 if vim.loop.os_uname().sysname ~= "Linux" then -- windows
     vim.cmd 'set shell=powershell'
 end
-vim.o.background           = 'dark'
 vim.o.encoding             = 'utf-8'
 vim.o.ruler                = true
 vim.o.number               = true

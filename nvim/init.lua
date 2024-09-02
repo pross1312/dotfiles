@@ -19,6 +19,7 @@ require 'ibus'
 require 'ftdetect'
 vim.cmd 'cabbrev mkae make'
 function set_color(name)
+    vim.o.background = 'dark'
     vim.cmd('colorscheme ' .. name)
     vim.cmd "hi! clear TermCursorNC"
     vim.cmd "hi! clear Cursor"

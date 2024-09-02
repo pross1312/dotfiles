@@ -2,12 +2,13 @@ local map = vim.keymap.set
 
 local extra = require 'extra-function'
 
-map('', '<C-c>', '<Esc>', {})
+-- map('n', '<C-c>', '<Esc>', {})
 map('v', '<C-c>', '<Esc>', {})
 map('i', '<C-c>', '<Esc>', {})
 
 map('i', '<C-s>', '<Cmd>write<CR>', {})
 
+map('n', '<C-]>', 'g<C-]>', {})
 
 map('x', '<leader>a', '<Plug>(EasyAlign)', {})
 map('n', '<leader>a', '<Plug>(EasyAlign)', {})
@@ -59,9 +60,15 @@ map('n', '<leader>jc', function()
     end
 end, {})
 -- command mode mapping
+local cedit = "<C-O>"
+vim.cmd(string.format('exe "set cedit=\\%s"',cedit))
 map('c', '<C-a>', '<Home>', {})
 map('c', '<C-e>', '<End>', {})
-map('c', '<C-k>', '<C-F>D<C-C>', {})
+map('c', '<C-f>', '<Right>', {})
+map('c', '<C-b>', '<Left>', {})
+map('c', '<M-b>', '<S-Left>', {})
+map('c', '<M-f>', '<S-Right>', {})
+map('c', '<C-k>', cedit .. 'D<C-C>', {})
 for i=1,9 do
     map('n', string.format('<M-%d>', i), i .. 'gt', {})
     map('t', string.format('<M-%d>', i), '<c-bslash><c-n>' .. i .. 'gti', {})

@@ -645,3 +645,11 @@ lazygit() { # work around for symlinks
     cd $(readlink -f .)
     /usr/local/bin/lazygit "$@"
 }
+
+if command -v fcitx5 > /dev/null && command -v fcitx5-remote > /dev/null
+then
+    if ! fcitx5-remote > /dev/null
+    then
+        eval 'fcitx5 -d > /dev/null'
+    fi
+fi
