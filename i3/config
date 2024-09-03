@@ -238,20 +238,10 @@ bindsym $mod+Control+b exec --no-startup-id ~/software/boomer/boomer
 bindsym Control+Shift+s exec --no-startup-id /usr/bin/bash ~/.config/i3/change_ibus.sh
 bindsym Print exec --no-startup-id gnome-screenshot -f /tmp/test && xclip -i /tmp/test -selection clipboard -target image/png
 bindsym --release Shift+Print exec --no-startup-id gnome-screenshot -afB /tmp/test && xclip -i /tmp/test -selection clipboard -target image/png
-exec_always --no-startup-id xinput set-prop "MSFT0002:00 04F3:31BE Mouse" "libinput Natural Scrolling Enabled" 0
-exec_always --no-startup-id xinput set-prop "MSFT0002:00 04F3:31BE Touchpad" "libinput Tapping Enabled" 1
-exec_always --no-startup-id xinput set-prop "MSFT0002:00 04F3:31BE Touchpad" "libinput Natural Scrolling Enabled" 1
-exec_always --no-startup-id xinput set-prop "MSFT0002:00 04F3:31BE Touchpad" "libinput Accel Speed" .4
-exec_always --no-startup-id /usr/bin/feh --bg-scale ~/background/space.jpg
 # assign [class="google-chrome"] $ws_browsers
 # assign [class="Google-chrome"] $ws_browsers
 # assign [class="URxvt"] $ws_terminals
-exec_always --no-startup-id xrdb -load ~/dotfiles/Xresources.main
-exec_always --no-startup-id setxkbmap -option ctrl:nocaps
-exec_always --no-startup-id xmodmap -e "remove Lock = Caps_Lock"
-exec_always --no-startup-id xmodmap -e "keysym Caps_Lock = Control_L"
-exec_always --no-startup-id xmodmap -e "add Lock = Caps_Lock"
-exec_always --no-startup-id "picom -b"
+exec_always --no-startup-id sh ~/dotfiles/setup.sh
 
 # to turn off capslock in extreme case
 # python -c 'from ctypes import *; X11 = cdll.LoadLibrary("libX11.so.6"); display = X11.XOpenDisplay(None); X11.XkbLockModifiers(display, c_uint(0x0100), c_uint(2), c_uint(0)); X11.XCloseDisplay(display)'
