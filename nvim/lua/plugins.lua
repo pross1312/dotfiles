@@ -12,7 +12,7 @@ end
 vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
     {'nvim-telescope/telescope.nvim', branch = '0.1.x', dependencies = { 'nvim-lua/plenary.nvim' }}, -- tag = '0.1.3', },
-    {"nvim-treesitter/nvim-treesitter", build = ":TSUpdate", lazy = false},
+    -- {"nvim-treesitter/nvim-treesitter", build = ":TSUpdate", lazy = false},
     -- {
     --     "NeogitOrg/neogit",
     --     dependencies = {

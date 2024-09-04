@@ -82,3 +82,14 @@ vim.api.nvim_create_autocmd({"FileType"}, {
         end
     end,
 })
+vim.api.nvim_create_autocmd({"CmdWinEnter"}, {
+    callback = function()
+        vim.keymap.del('', '<C-C>', {})
+    end,
+})
+vim.api.nvim_create_autocmd({"CmdWinLeave"}, {
+    callback = function()
+        print("OK")
+        vim.keymap.set('', '<C-C>', '<Esc>', {})
+    end,
+})

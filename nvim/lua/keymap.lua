@@ -2,7 +2,7 @@ local map = vim.keymap.set
 
 local extra = require 'extra-function'
 
--- map('n', '<C-c>', '<Esc>', {})
+map('n', '<C-c>', '<Esc>', {})
 map('v', '<C-c>', '<Esc>', {})
 map('i', '<C-c>', '<Esc>', {})
 

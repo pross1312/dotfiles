@@ -19,7 +19,16 @@ function switch_term()
         vim.cmd("mksession! " ..term_view_file)
         if vim.fn.empty(vim.fn.filereadable(main_view_file)) == 0 then
             prev_term_mode = vim.fn.mode()
-            vim.cmd("so " .. main_view_file)
+            xpcall(function()
+                vim.cmd("silent so " .. main_view_file)
+                if prev_term_mode == 't' then
+                    vim.cmd "startinsert"
+                    vim.opt.scrolloff = vim.g.scrolloff.h -- switch to terminal mode break scrolloff for some reasons
+                    vim.opt.sidescrolloff = vim.g.scrolloff.w -- switch to terminal mode break scrolloff for some reasons
+                end
+            end, function(err)
+                error(err)
+            end)
         else
             vim.cmd "only"
             vim.cmd "Sc"
@@ -30,12 +39,16 @@ function switch_term()
         vim.cmd("mksession! " .. main_view_file)
         if vim.fn.empty(vim.fn.filereadable(term_view_file)) == 0 then
             local buffers = vim.fn.getbufinfo({buflisted = true}) -- list all buffers
-            vim.cmd("so " ..term_view_file)
-            if prev_term_mode == 't' then
-                vim.cmd "startinsert"
-                vim.opt.scrolloff = vim.g.scrolloff.h -- switch to terminal mode break scrolloff for some reasons
-                vim.opt.sidescrolloff = vim.g.scrolloff.w -- switch to terminal mode break scrolloff for some reasons
-            end
+            xpcall(function()
+                vim.cmd("silent so " ..term_view_file)
+                if prev_term_mode == 't' then
+                    vim.cmd "startinsert"
+                    vim.opt.scrolloff = vim.g.scrolloff.h -- switch to terminal mode break scrolloff for some reasons
+                    vim.opt.sidescrolloff = vim.g.scrolloff.w -- switch to terminal mode break scrolloff for some reasons
+                end
+            end, function(err)
+                error(err)
+            end)
             return
         end
         vim.cmd "only"
