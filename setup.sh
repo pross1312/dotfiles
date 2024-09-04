@@ -11,3 +11,11 @@ xmodmap -e "remove Lock = Caps_Lock"
 xmodmap -e "keysym Caps_Lock = Control_L"
 xmodmap -e "add Lock = Caps_Lock"
 picom -b
+
+if command -v fcitx5 > /dev/null && command -v fcitx5-remote > /dev/null
+then
+    if ! fcitx5-remote > /dev/null
+    then
+        eval 'fcitx5 -d > /dev/null'
+    fi
+fi

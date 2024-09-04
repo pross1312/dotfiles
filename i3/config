@@ -175,6 +175,7 @@ mode "resize" {
     # back to normal: Enter or Escape or $mod+r
     bindsym Return mode "default"
     bindsym Control+c mode "default"
+    bindsym Escape mode "default"
     bindsym $mod+r mode "default"
 }
 
@@ -193,7 +194,6 @@ client.focused          $bg-color           $bg-color           $text-color     
 client.unfocused        $inactive-bg-color  $inactive-bg-color  $inactive-text-color #00ff00
 client.focused_inactive $inactive-bg-color  $inactive-bg-color  $inactive-text-color #00ff00
 client.urgent           $urgent-bg-color    $urgent-bg-color    $text-color          #00ff00
-hide_edge_borders both
 bar {
     status_command sh ~/.config/i3/status.sh
     colors {
@@ -241,7 +241,10 @@ bindsym --release Shift+Print exec --no-startup-id gnome-screenshot -afB /tmp/te
 # assign [class="google-chrome"] $ws_browsers
 # assign [class="Google-chrome"] $ws_browsers
 # assign [class="URxvt"] $ws_terminals
-exec_always --no-startup-id sh ~/dotfiles/setup.sh
+exec_always --no-startup-id "~/dotfiles/setup.sh"
+
+hide_edge_borders smart
+workspace_auto_back_and_forth yes
 
 # to turn off capslock in extreme case
 # python -c 'from ctypes import *; X11 = cdll.LoadLibrary("libX11.so.6"); display = X11.XOpenDisplay(None); X11.XkbLockModifiers(display, c_uint(0x0100), c_uint(2), c_uint(0)); X11.XCloseDisplay(display)'
