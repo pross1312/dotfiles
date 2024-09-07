@@ -17,12 +17,12 @@ function switch_term()
     local in_term = vim.api.nvim_buf_get_name(0):match(term_pattern)
     if in_term then
         vim.cmd("mksession! " ..term_view_file)
-        if vim.fn.empty(vim.fn.filereadable(main_view_file)) == 0 then
+        if vim.fn.filereadable(main_view_file) == 1 then
             prev_term_mode = vim.fn.mode()
             xpcall(function()
                 vim.cmd("silent so " .. main_view_file)
+                vim.cmd("clearjumps")
                 if prev_term_mode == 't' then
-                    vim.cmd "startinsert"
                     vim.opt.scrolloff = vim.g.scrolloff.h -- switch to terminal mode break scrolloff for some reasons
                     vim.opt.sidescrolloff = vim.g.scrolloff.w -- switch to terminal mode break scrolloff for some reasons
                 end
@@ -32,15 +32,17 @@ function switch_term()
         else
             vim.cmd "only"
             vim.cmd "Sc"
+            vim.cmd("clearjumps")
         end
     else
         if vim.opt.autowrite and vim.bo.buftype == "" then vim.cmd "wa" end
         vim.keymap.set('t', '<m-o>', 'cd ' .. vim.fn.getcwd() .. '<cr>') -- to quickly jump to current directory
         vim.cmd("mksession! " .. main_view_file)
-        if vim.fn.empty(vim.fn.filereadable(term_view_file)) == 0 then
+        if vim.fn.filereadable(term_view_file) == 1 then
             local buffers = vim.fn.getbufinfo({buflisted = true}) -- list all buffers
             xpcall(function()
                 vim.cmd("silent so " ..term_view_file)
+                vim.cmd("clearjumps")
                 if prev_term_mode == 't' then
                     vim.cmd "startinsert"
                     vim.opt.scrolloff = vim.g.scrolloff.h -- switch to terminal mode break scrolloff for some reasons
@@ -53,8 +55,7 @@ function switch_term()
         end
         vim.cmd "only"
         vim.cmd "term"
-        vim.cmd "hi Cursor guifg=#000000 guibg=#ffffff"
-        vim.cmd "hi! link TermCursor Cursor"
+        vim.cmd("clearjumps")
         if prev_term_mode == 't' then
             vim.cmd "startinsert"
             vim.opt.scrolloff = vim.g.scrolloff.h -- switch to terminal mode break scrolloff for some reasons
@@ -108,23 +109,23 @@ vim.api.nvim_create_autocmd({'TermOpen', 'BufEnter'}, {
             switch_term()
             require("telescope.builtin").find_files()
         end, {buffer = true})
-        vim.keymap.set('t', '<c-t>', switch_term, {silent = true, buffer = true})
-        vim.keymap.set('t', '<c-s>', switch_term, {silent = true, buffer = true})
+        vim.keymap.set('t', '<c-t>', switch_term, {buffer = true})
+        vim.keymap.set('t', '<c-s>', switch_term, {buffer = true})
         vim.keymap.set('t', '<m-h>', '<c-bslash><c-n><c-w>hi', {buffer = true})
         vim.keymap.set('t', '<m-j>', '<c-bslash><c-n><c-w>ji', {buffer = true})
         vim.keymap.set('t', '<m-k>', '<c-bslash><c-n><c-w>ki', {buffer = true})
         vim.keymap.set('t', '<m-l>', '<c-bslash><c-n><c-w>li', {buffer = true})
-        vim.keymap.set('t', '<m-s>', '<c-bslash><c-n>:split | term<cr>i', {silent = true})
-        vim.keymap.set('t', '<m-v>', '<c-bslash><c-n>:vertical split | term<cr>i', {silent = true})
-        vim.keymap.set('n', '<m-s>', ':split | term<cr>', {buffer = true, silent = true})
-        vim.keymap.set('n', '<m-v>', ':vertical split | term<cr>', {buffer = true, silent = true})
-        vim.keymap.set('n', '<c-s>', switch_term, {silent = true, buffer = true})
+        vim.keymap.set('t', '<m-s>', '<c-bslash><c-n>:split | term<cr>i', {})
+        vim.keymap.set('t', '<m-v>', '<c-bslash><c-n>:vertical split | term<cr>i', {})
+        vim.keymap.set('n', '<m-s>', ':split | term<cr>', {buffer = true})
+        vim.keymap.set('n', '<m-v>', ':vertical split | term<cr>', {buffer = true})
+        vim.keymap.set('n', '<c-s>', switch_term, {buffer = true})
         vim.keymap.set('n', '<C-p>', '<nop>', {buffer = true})
         -- vim.keymap.set('n', '<m- >', function()
         --     switch_term()
         --     require("telescope.builtin").find_files()
         -- end, {buffer = true, silent = true}) -- to quickly jump to current directory
-        vim.keymap.set('n', '<C-o> ', '<nop>', {buffer = true, silent = true}) -- to quickly jump to current directory
+        -- vim.keymap.set('n', '<C-o> ', '<nop>', {buffer = true}) -- to quickly jump to current directory
     end,
     group = custom_term
 })
