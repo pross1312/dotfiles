@@ -51,7 +51,7 @@ vim.g.scrolloff            = { -- save to fix weird bug in switch term
 }
 vim.opt.scrolloff          = vim.g.scrolloff.h
 vim.opt.sidescrolloff      = vim.g.scrolloff.w
-vim.opt.signcolumn         = "yes"
+vim.opt.signcolumn         = "auto"
 vim.o.laststatus           = 0
 vim.cmd "set statusline=%{repeat('─',winwidth('.'))}"
 vim.o.wrap                 = false
