@@ -80,24 +80,6 @@ end
 function clean_term()
     vim.system({"rm", "-rf", term_dir}):wait()
 end
-
-local remove_all_but_terms = function()
-    local in_term = vim.api.nvim_buf_get_name(0):match(term_pattern)
-    if not in_term then
-        switch_term()
-    end
-    local buffers = vim.fn.getbufinfo({buflisted = true}) -- list all buffers
-    for i, v in pairs(buffers) do
-        if not v.name:match(term_pattern) then
-            vim.cmd(string.format("bd %d", v.bufnr))
-        end
-    end
-    if vim.fn.is_module_available('lsp-zero') then
-        vim.cmd "LspRestart"
-    end
-    vim.system({"rm", "-f", main_view_file}):wait()
-end
-
 -- **KEY MAP**
 vim.keymap.set('n', '<c-t>', switch_term, {silent = true})
 
@@ -146,4 +128,3 @@ vim.api.nvim_create_autocmd({'TermOpen', 'BufEnter'}, {
     end,
     group = custom_term
 })
-return {remove_all_but_terms = remove_all_but_terms}
