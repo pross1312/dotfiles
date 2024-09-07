@@ -21,18 +21,18 @@ vim.cmd 'cabbrev mkae make'
 function set_color(name)
     vim.o.background = 'dark'
     vim.cmd('colorscheme ' .. name)
-    vim.cmd "hi! clear TermCursorNC"
-    vim.cmd "hi! clear Cursor"
-    vim.cmd "hi! clear TermCursor"
+    -- vim.cmd "hi! clear TermCursorNC"
+    -- vim.cmd "hi! clear Cursor"
+    -- vim.cmd "hi! clear TermCursor"
     vim.cmd "hi! link WinSeparator normal"
     vim.cmd "hi! link StatusLine WinSeperator"
     vim.cmd "hi! link StatusLineNC normal"
-    vim.cmd 'hi clear CursorLine'
-    vim.cmd "hi! MatchParen guifg=#ff0000 guibg=none"
-    vim.cmd "hi! Cursor guibg=#ffffff guifg=#000000"
-    vim.cmd "hi! link TermCursor Cursor"
-    vim.cmd "hi Normal guifg=#ffffff"
-    vim.cmd "hi MyMultiCursor guibg=#888888 guifg=#111111"
+    -- vim.cmd 'hi clear CursorLine'
+    -- vim.cmd "hi! MatchParen guifg=#ff0000 guibg=none"
+    -- vim.cmd "hi! Cursor guibg=#ffffff guifg=#000000"
+    -- vim.cmd "hi! link TermCursor Cursor"
+    -- vim.cmd "hi Normal guifg=#ffffff"
+    vim.cmd "hi! link MyMultiCursor Cursor"
     vim.cmd "hi! TodoFgTODO guifg=#8a8a8"
     vim.cmd "hi! TodoFgNOTE guifg=#8a8a8"
     vim.cmd "hi! TodoFgFIX guifg=#8a8a8"
@@ -71,7 +71,7 @@ function set_color(name)
     -- vim.g.terminal_color_15 = "#c0caf5"
 end
 
-set_color 'mellifluous'
+set_color 'kanagawa'
 
 local extra_func = require 'extra-function'
 vim.api.nvim_create_user_command('Brun', extra_func.build_and_run_cmd, {bang = true, bar = true, nargs = '?', complete = 'file'})
@@ -120,10 +120,6 @@ vim.api.nvim_create_user_command('Dtrailing', extra_func.delete_trailing, {bang 
 
 vim.api.nvim_create_user_command('Qfix', function()
     vim.cmd "vsplit | vertical resize 65 | copen | set nowrap | wincmd k | close"
-end, {bang = true, bar = true})
-
-vim.api.nvim_create_user_command('RemoveAllBuffers', function()
-    require("terminal").remove_all_but_terms()
 end, {bang = true, bar = true})
 
 vim.api.nvim_create_user_command('HTMLInit', function()

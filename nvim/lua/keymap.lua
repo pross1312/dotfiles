@@ -37,7 +37,7 @@ map('n', '<c-m-j>', '<Cmd>horizontal res -5<cr>', {})
 map('n', '<c-m-k>', '<Cmd>horizontal res +5<cr>', {})
 map('n', '<c-k>', '<cmd>cp<cr>', {})
 map('n', '<c-j>', '<cmd>cn<cr>', {})
-map('n', '<C-p>', '<CMD>Lexplore %:p:h<CR>', {})
+map('n', '<leader>nd', '<CMD>Lexplore<CR>', {})
 map('n', '<leader>nf', '<Cmd>Lexplore %:p:h<cr>', {})
 
 -- jump root (start directory)
