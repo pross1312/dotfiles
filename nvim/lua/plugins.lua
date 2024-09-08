@@ -76,22 +76,22 @@ require("lazy").setup({
         vim.cmd [[hi! link VM_Mono   MyMultiCursor ]]
         -- vim.cmd [[let g:VM_Mono_hl   = 'MyMultiCursor']]
     end },
-    {
-        'VonHeikemen/lsp-zero.nvim',
-        lazy = true,
-        branch = 'v3.x',
-        dependencies = {
-            -- LSP Support
-            {'neovim/nvim-lspconfig'},             -- Required
-            {'williamboman/mason.nvim'},           -- Optional
-            {'williamboman/mason-lspconfig.nvim'}, -- Optional
+    -- {
+    --     'VonHeikemen/lsp-zero.nvim',
+    --     lazy = true,
+    --     branch = 'v3.x',
+    --     dependencies = {
+    --         -- LSP Support
+    --         {'neovim/nvim-lspconfig'},             -- Required
+    --         {'williamboman/mason.nvim'},           -- Optional
+    --         {'williamboman/mason-lspconfig.nvim'}, -- Optional
 
-            -- Autocompletion
-            {'hrsh7th/nvim-cmp'},     -- Required
-            {'hrsh7th/cmp-nvim-lsp'}, -- Required
-            {'L3MON4D3/LuaSnip'},     -- Required
-        }
-    },
+    --         -- Autocompletion
+    --         {'hrsh7th/nvim-cmp'},     -- Required
+    --         {'hrsh7th/cmp-nvim-lsp'}, -- Required
+    --         {'L3MON4D3/LuaSnip'},     -- Required
+    --     }
+    -- },
     --------------------------colorschemes-------------------------------
     {'folke/tokyonight.nvim', lazy = false},
     { 'catppuccin/nvim', lazy = false },

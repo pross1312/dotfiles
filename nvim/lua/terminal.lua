@@ -9,8 +9,8 @@ if vim.loop.os_uname().sysname ~= "Linux" then -- windows
     term_pattern = "term://.+powershell%.EXE$"
     au_cmd_term_pattern = 'term://*powershell.EXE'
 else
-    term_pattern = 'term://.+/bin/bash$'
-    au_cmd_term_pattern = 'term://*/bin/bash'
+    term_pattern = string.format('term://.+%s$', vim.o.shell)
+    au_cmd_term_pattern = string.format('term://*%s', vim.o.shell)
 end
 
 function switch_term()
