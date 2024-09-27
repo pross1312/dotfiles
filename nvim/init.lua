@@ -26,8 +26,10 @@ function set_color(name)
     vim.cmd "hi! link StatusLineNC normal"
     -- vim.cmd 'hi clear CursorLine'
     -- vim.cmd "hi! MatchParen guifg=#ff0000 guibg=none"
+    vim.cmd "hi! clear Cursor"
     vim.cmd "hi! Cursor guibg=#ffffff guifg=#000000"
-    -- vim.cmd "hi! link TermCursor Cursor"
+    vim.cmd "hi! clear TermCursor"
+    vim.cmd "hi! link TermCursor Cursor"
     -- vim.cmd "hi Normal guifg=#ffffff"
     vim.cmd "hi! link VM_Mono Cursor"
     vim.cmd "hi! TodoFgTODO guifg=#8a8a8"

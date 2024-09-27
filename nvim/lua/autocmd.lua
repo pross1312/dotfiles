@@ -29,7 +29,7 @@ function netrw_split_open(file)
     if vim.fn.isdirectory(file) == 1  or not last_window then
         vim.call('netrw#LocalBrowseCheck', vim.call('netrw#Call', 'NetrwBrowseChgDir', 1, file))
     else
-        vim.cmd "vsplit | vertical resize +35"
+        vim.cmd "vsplit | vertical resize 90"
         vim.call('netrw#LocalBrowseCheck', vim.call('netrw#Call', 'NetrwBrowseChgDir', 1, file))
     end
 end
@@ -47,7 +47,7 @@ vim.api.nvim_create_autocmd('FileType', {
             if file ~= "" then netrw_split_open(file) end
         end, {buffer = true})
         map("n", "<CR>", function()
-            local file = vim.call('netrw#Call', 'NetrwGetWord')
+            local file = vim.call('netrw#Call', 'NetrwGetCurdir', 1) .. '/' .. vim.call('netrw#Call', 'NetrwGetWord')
             netrw_split_open(file)
         end, {buffer = true, nowait = true})
         map("n", ".", ":<C-U> <C-R>=netrw#Call('NetrwGetCurdir', 1)..'/'..netrw#Call('NetrwGetWord')<CR><Home>", {buffer = true})
