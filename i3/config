@@ -241,7 +241,6 @@ bindsym --release Shift+Print exec --no-startup-id gnome-screenshot -afB /tmp/te
 # assign [class="google-chrome"] $ws_browsers
 # assign [class="Google-chrome"] $ws_browsers
 # assign [class="URxvt"] $ws_terminals
-exec_always --no-startup-id "~/dotfiles/setup.sh"
 
 hide_edge_borders smart
 # workspace_auto_back_and_forth yes
