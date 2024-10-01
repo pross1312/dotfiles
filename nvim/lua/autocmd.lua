@@ -71,25 +71,25 @@ vim.api.nvim_create_autocmd('FileType', {
 --     group = aug,
 --     pattern = "*",
 -- })
-vim.api.nvim_create_autocmd({"FileType"}, {
-    pattern = {"go"},
-    callback = function()
-        -- ./main.go:109:40: undefined: group
-        vim.opt.errorformat = '%f:%l:%c: %m'
-        vim.opt.makeprg = "go build"
-    end,
-})
-vim.api.nvim_create_autocmd({"FileType"}, {
-    pattern = {"rust"},
-    callback = function()
-        vim.opt.errorformat = '%Eerror: %m,%Eerror[E%n]: %m,%Wwarning: %m,%Inote: %m,%C %#--> %f:%l:%c,%Z'
-        if vim.fn.filereadable('./Cargo.toml') == 1 then
-            vim.opt.makeprg = 'cargo build'
-        else
-            vim.opt.makeprg = "rustc %"
-        end
-    end,
-})
+-- vim.api.nvim_create_autocmd({"FileType"}, {
+--     pattern = {"go"},
+--     callback = function()
+--         -- ./main.go:109:40: undefined: group
+--         vim.opt.errorformat = '%f:%l:%c: %m'
+--         vim.opt.makeprg = "go build"
+--     end,
+-- })
+-- vim.api.nvim_create_autocmd({"FileType"}, {
+--     pattern = {"rust"},
+--     callback = function()
+--         vim.opt.errorformat = '%Eerror: %m,%Eerror[E%n]: %m,%Wwarning: %m,%Inote: %m,%C %#--> %f:%l:%c,%Z'
+--         if vim.fn.filereadable('./Cargo.toml') == 1 then
+--             vim.opt.makeprg = 'cargo build'
+--         else
+--             vim.opt.makeprg = "rustc %"
+--         end
+--     end,
+-- })
 vim.api.nvim_create_autocmd({"CmdWinEnter"}, {
     callback = function()
         vim.keymap.set('n', '<C-O>', '<C-C>', {buffer = true})
