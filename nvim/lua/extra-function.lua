@@ -41,7 +41,7 @@ function m.build_and_run_cmd(data)
         vim.fn.setqflist({})
         local result = output.stdout .. '\n' .. output.stderr
         local err = result:gsub('"', '\\"'):gsub('\n', '\\n')
-        vim.cmd(string.format('cexpr "%s" | cw', err))
+        -- vim.cmd(string.format('copen | cexpr "%s"', err))
         if output.code == 0 and run_cmd then
             vim.cmd(string.format("belowright split +%s", run_cmd))
             local key = vim.api.nvim_replace_termcodes("<cr>", true, false, true)
