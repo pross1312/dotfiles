@@ -145,8 +145,8 @@ function __setprompt
     # Date
     #	PS1+="\[${DARKGRAY}\](\[${CYAN}\]\$(date +%a) $(date +%b-'%-m')" # Date
     #	PS1+="${BLUE} $(date +'%-I':%M:%S%P)\[${DARKGRAY}\])-" # Time
-    PS1+="\[${LIGHTBLUE}\]\$(date +%a) $(date +%b-'%-m')\[${DARKGRAY}\]::" # Date
-    PS1+="${LIGHTBLUE}$(date +'%-I':%M:%S%P)\[${DARKGRAY}\]::" # Time
+    # PS1+="\[${LIGHTBLUE}\]\$(date +%a) $(date +%b-'%-m')\[${DARKGRAY}\]::" # Date
+    # PS1+="${LIGHTBLUE}$(date +'%-I':%M:%S%P)\[${DARKGRAY}\]::" # Time
 
 #	# CPU
 #	PS1+="(\[${MAGENTA}\]CPU $(cpu)%"
@@ -160,14 +160,14 @@ function __setprompt
 #	PS1+="\[${DARKGRAY}\])-"
 
     # User and server
-    # 	local SSH_IP=`echo $SSH_CLIENT | awk '{ print $1 }'`
-    # 	local SSH2_IP=`echo $SSH2_CLIENT | awk '{ print $1 }'`
-    # 	if [ $SSH2_IP ] || [ $SSH_IP ] ; then
-    # 		PS1+="(\[${RED}\]\u@\h"
-    # 	else
-    # 		PS1+="(\[${RED}\]\u"
-    # 	fi
-    PS1+="\[${RED}\]\u"
+    local SSH_IP=`echo $SSH_CLIENT | awk '{ print $1 }'`
+    local SSH2_IP=`echo $SSH2_CLIENT | awk '{ print $1 }'`
+    if [ $SSH2_IP ] || [ $SSH_IP ] ; then
+        PS1+="\[${RED}\]\u@\h"
+    else
+        PS1+="\[${RED}\]\u\[${BLUE}\]@\h"
+    fi
+    # PS1+="\[${RED}\]\u"
 
     # Current directory
     #	PS1+="\[${DARKGRAY}\]:\[${BROWN}\]\w\[${DARKGRAY}\])-"
@@ -273,16 +273,3 @@ lazygit() { # work around for symlinks
     cd $(readlink -f .)
     /usr/local/bin/lazygit "$@"
 }
-
-/usr/bin/feh --bg-fill "/usr/share/background/dark-firewatch.jpg"
-xinput set-prop "MSFT0002:00 04F3:31BE Mouse" "libinput Natural Scrolling Enabled" 0
-xinput set-prop "MSFT0002:00 04F3:31BE Touchpad" "libinput Tapping Enabled" 1
-xinput set-prop "MSFT0002:00 04F3:31BE Touchpad" "libinput Natural Scrolling Enabled" 1
-xinput set-prop "MSFT0002:00 04F3:31BE Touchpad" "libinput Accel Speed" .4
-xrdb -load ~/programming/dotfiles/Xresources.main
-setxkbmap -option ctrl:nocaps
-xmodmap -e "remove Lock = Caps_Lock"
-xmodmap -e "keysym Caps_Lock = Control_L"
-xmodmap -e "add Lock = Caps_Lock"
-picom -b
-

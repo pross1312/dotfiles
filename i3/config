@@ -244,6 +244,7 @@ bindsym --release Shift+Print exec --no-startup-id gnome-screenshot -afB /tmp/te
 
 hide_edge_borders smart
 # workspace_auto_back_and_forth yes
+exec_always sh ~/programming/dotfiles/setup.sh
 
 # to turn off capslock in extreme case
 # python -c 'from ctypes import *; X11 = cdll.LoadLibrary("libX11.so.6"); display = X11.XOpenDisplay(None); X11.XkbLockModifiers(display, c_uint(0x0100), c_uint(2), c_uint(0)); X11.XCloseDisplay(display)'

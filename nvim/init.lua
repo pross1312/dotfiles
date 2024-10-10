@@ -108,7 +108,15 @@ vim.api.nvim_create_user_command('Color',
 
 
 vim.api.nvim_create_user_command('Scratch', function()
-    vim.cmd(string.format("b %s", vim.api.nvim_create_buf(false, true)))
+    if vim.g.scratch_buffer == nil then
+        vim.cmd(string.format("b %s", vim.api.nvim_create_buf(false, true)))
+        vim.g.scratch_buffer = vim.fn.bufnr()
+    else
+        vim.cmd(string.format("b %s", vim.g.scratch_buffer))
+		vim.cmd "setlocal buftype=nofile"
+		vim.cmd "setlocal bufhidden=hide"
+		vim.cmd "setlocal noswapfile"
+    end
 end, {bang = true, bar = true})
 
 vim.api.nvim_create_user_command('Write', function()
