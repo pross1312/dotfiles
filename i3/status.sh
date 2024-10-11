@@ -18,5 +18,5 @@ i3status -c ~/.config/i3/status.conf |
 do
     brightness=$(brightnessctl get)
     read line
-    echo ",[{\"full_text\":\"Sun: $(echo "$brightness/2.55" | bc)% \" },${line#,\[}" || exit 1
+    echo ",[{\"full_text\":\"Sun: $(python3 -c "print(round($brightness/2.55))")% \" },${line#,\[}" || exit 1
 done)
