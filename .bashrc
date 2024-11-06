@@ -231,8 +231,6 @@ function fcd {
         \) -prune -false -o -type d -print | fzf)
     }
 export FZF_DEFAULT_OPTS='-i --height=100%'
-export JAVA_HOME=/usr/lib/jvm/java-19-openjdk-amd64
-export PATH="/home/dvtuong/.local/bin:$PATH"
 alias f='fcd'
 # . "$HOME/.cargo/env"
 cfd() { # NOTE: find and open directory in vim ( open project )

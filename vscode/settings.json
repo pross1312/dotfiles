@@ -1,12 +1,11 @@
 {
-    "workbench.colorTheme": "Activate UMBRA protocol",
     "window.titleBarStyle": "custom",
     "workbench.sideBar.location": "right",
     "editor.fontSize": 20,
-    "editor.fontFamily": "JetBrains Mono",
+    "editor.fontFamily": "Terminator",
     "terminal.integrated.fontSize": 20,
-    "terminal.integrated.fontFamily": "Iosevka Term",
-    "files.autoSave": "onFocusChange",
+    "terminal.integrated.fontFamily": "Terminator",
+    "files.autoSave": "afterDelay",
     "editor.inlayHints.enabled": "off",
     // "maven.terminal.useJavaHome": true, // "C_Cpp.formatting": "vcFormat",
     // "java.configuration.runtimes": [
@@ -43,7 +42,7 @@
     "[python]": {
         "editor.formatOnType": true
     },
-    "files.autoSaveDelay": 2000,
+    "files.autoSaveDelay": 1000,
     "editor.tokenColorCustomizations": {
         "textMateRules": [
             {
@@ -57,29 +56,62 @@
     "github.gitProtocol": "ssh",
     "git.openRepositoryInParentFolders": "prompt",
     "terminal.integrated.defaultProfile.windows": "Windows PowerShell",
+    "workbench.colorCustomizations": {
+        // "editor.lineHighlightBackground": "#00000000",
+    },
+    "editor.lineNumbers": "relative",
+    "window.zoomLevel": 1,
+    "editor.guides.indentation": false,
+    "editor.occurrencesHighlight": "off",
+    "editor.renderLineHighlight": "none",
+    "editor.matchBrackets": "near",
+    "editor.autoClosingBrackets": "never",
+    "editor.autoClosingQuotes": "never",
+    "editor.cursorBlinking": "solid",
+    "editor.acceptSuggestionOnEnter": "off",
+    "editor.wordBasedSuggestions": "off",
+    "editor.semanticHighlighting.enabled": true,
+    "editor.detectIndentation": true,
+    "redhat.telemetry.enabled": false,
+    "editor.minimap.enabled": false,
+    "editor.hideCursorInOverviewRuler": true,
+    "editor.scrollbar.horizontal": "hidden",
+    "editor.scrollbar.vertical": "hidden",
+    "editor.scrollbar.verticalScrollbarSize": 0,
+    "editor.scrollbar.horizontalScrollbarSize": 0,
+    "workbench.colorTheme": "Kanagawa Wave",
+    "editor.suggest.insertMode": "insert",
+    "editor.stickyScroll.enabled": false,
+    "task.quickOpen.showAll": true,
+    "search.quickOpen.includeHistory": false,
+    "editor.cursorSurroundingLines": 8,
+
     "vim.easymotion": true,
     "vim.incsearch": true,
+    "vim.surround": true,
+    "vim.history": 100,
+    "vim.wrapscan": false,
     "vim.useSystemClipboard": true,
     "vim.useCtrlKeys": true,
-    "vim.hlsearch": true,
+    "vim.hlsearch": false,
     "vim.insertModeKeyBindings": [
         {
             "before": ["<C-c>"],
             "after": ["<Esc>"]
         },
-        {
-            "before": ["j", "j"],
-            "after": ["<Esc>"]
-        }
     ],
-    "vim.visualModeKeyBindings": [
-        {
-            "before": ["<C-n>"],
-            "after": ["g", "b"],
-        },
+    "vim.visualModeKeyBindingsNonRecursive": [
+        // {
+        //     "before": ["<C-n>"],
+        //     "after": ["g", "b"],
+        // },
         {
             "before": ["<C-c>"],
             "after": ["<Esc>"]
+        },
+        {
+            "before": ["<C-n>"],
+            "commands": ["editor.action.addSelectionToNextFindMatch"],
         },
     ],
     "vim.normalModeKeyBindingsNonRecursive": [
@@ -101,14 +133,22 @@
             "silent": true,
         },
         {
-            "before": ["<C-n>"],
-            "after": ["g", "b"],
+            "before": ["g", "d"],
+            "command": "editor.action.goToDeclaration",
         },
         {
-            "before": ["<leader>", " "],
-            "commands": ["workbench.action.quickOpen"],
-            "silent": true,
-        }
+            "before": ["<C-n>"],
+            "commands": ["editor.action.addSelectionToNextFindMatch"],
+        },
+        {
+            "before": ["K"],
+            "commands": ["editor.action.showDefinitionPreviewHover"]
+        },
+        // {
+        //     "before": [" ", " "],
+        //     "commands": ["workbench.action.quickOpen"],
+        //     "silent": true,
+        // }
         // {
         //     "before": ["A-k"],
         //     "when": "editorTextFocus",
@@ -123,26 +163,9 @@
     "vim.leader": "<space>",
     "vim.handleKeys": {
         "<tab>": false,
-        // "<C-n>": false,
+        "<C-n>": true,
         "<C-p>": false,
-        "<C-k>": false,
+        "<C-w>": true,
+        "<C-k>": true,
     },
-    "workbench.colorCustomizations": {
-        // "editor.lineHighlightBackground": "#00000000",
-    },
-    "editor.lineNumbers": "relative",
-    "window.zoomLevel": 1,
-    "editor.guides.indentation": false,
-    "editor.occurrencesHighlight": false,
-    "editor.renderLineHighlight": "none",
-    "editor.matchBrackets": "near",
-    "editor.autoClosingBrackets": "never",
-    "editor.autoClosingQuotes": "never",
-    "editor.cursorBlinking": "solid",
-    "editor.acceptSuggestionOnEnter": "off",
-    "editor.wordBasedSuggestions": false,
-    "editor.suggest.insertMode": "replace",
-    "editor.semanticHighlighting.enabled": true,
-    "editor.detectIndentation": true,
-    "redhat.telemetry.enabled": false,
 }

@@ -15,8 +15,13 @@
         "command": "-editor.action.insertCursorBelow",
         "when": "editorTextFocus"
     },
+    // {
+    //     "key": "ctrl+shift+k",
+    //     "command": "editor.action.insertCursorAbove",
+    //     "when": "editorTextFocus"
+    // },
     {
-        "key": "ctrl+shift+k",
+        "key": "alt+p",
         "command": "editor.action.insertCursorAbove",
         "when": "editorTextFocus"
     },
@@ -25,8 +30,13 @@
         "command": "-workbench.action.search.toggleQueryDetails",
         "when": "inSearchEditor || searchViewletFocus"
     },
+    // {
+    //     "key": "ctrl+shift+j",
+    //     "command": "editor.action.insertCursorBelow",
+    //     "when": "editorTextFocus"
+    // },
     {
-        "key": "ctrl+shift+j",
+        "key": "alt+n",
         "command": "editor.action.insertCursorBelow",
         "when": "editorTextFocus"
     },
@@ -35,17 +45,22 @@
         "command": "-workbench.action.files.newUntitledFile"
     },
     {
-        "key": "space space",
+        "key": "alt+space",
         "command": "workbench.action.quickOpen",
-        "when": "!textInputFocus"
     },
     {
         "key": "ctrl+p",
-        "command": "workbench.action.quickOpenNavigatePrevious",
+        "command": "-workbench.action.quickOpen",
+    },
+    {
+        "key": "ctrl+p",
+        "command": "quickInput.previous",
+        "when": "inQuickInput || inQuickOpen"
     },
     {
         "key": "ctrl+n",
-        "command": "workbench.action.quickOpenNavigateNext"
+        "command": "quickInput.next",
+        "when": "inQuickInput || inQuickOpen"
     },
     {
         "key": "ctrl+p",
@@ -56,5 +71,20 @@
         "key": "ctrl+n",
         "command": "selectNextSuggestion",
         "when": "suggestWidgetMultipleSuggestions && suggestWidgetVisible && textInputFocus || suggestWidgetVisible && textInputFocus && !suggestWidgetHasFocusedSuggestion"
-    }
+    },
+    {
+        "key": "alt+k",
+        "command": "editor.action.moveLinesUpAction",
+        "when": "editorTextFocus && editorHasSelection"
+    },
+    {
+        "key": "alt+j",
+        "command": "editor.action.moveLinesDownAction",
+        "when": "editorTextFocus && editorHasSelection"
+    },
+    {
+        "key": "ctrl+c",
+        "command": "workbench.action.closeQuickOpen",
+        "when": "inQuickOpen"
+    },
 ]

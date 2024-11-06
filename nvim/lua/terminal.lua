@@ -129,3 +129,9 @@
 --     end,
 --     group = custom_term
 -- })
+vim.keymap.set('t', '<m-h>', '<c-bslash><c-n><c-w>hi', {})
+vim.keymap.set('t', '<m-j>', '<c-bslash><c-n><c-w>ji', {})
+vim.keymap.set('t', '<m-k>', '<c-bslash><c-n><c-w>ki', {})
+vim.keymap.set('t', '<m-l>', '<c-bslash><c-n><c-w>li', {})
+vim.keymap.set('t', '<m-s>', '<c-bslash><c-n>:split | term<cr>i', {})
+vim.keymap.set('t', '<m-v>', '<c-bslash><c-n>:vertical split | term<cr>i', {})
