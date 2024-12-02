@@ -46,10 +46,6 @@ map('n', '<leader>jr', function()
                             vim.cmd(string.format("cd %s", vim.g.root_dir))
                         end,
                         {silent = false})
-map('n', '<leader>sr', function()
-                            vim.g.root_dir = vim.fn.expand('%:p:h')
-                            print(vim.g.root_dir)
-                       end, {})
 map('n', '<leader>jc', function()
     local dir = vim.fn.expand("%:p:h")
     if vim.fn.isdirectory(dir) == 1 then
@@ -73,4 +69,25 @@ for i=1,9 do
     map('n', string.format('<M-%d>', i), i .. 'gt', {})
     map('t', string.format('<M-%d>', i), '<c-bslash><c-n>' .. i .. 'gti', {})
     map('i', string.format('<M-%d>', i), '<Esc>'.. i .. 'gt', {})
+end
+
+map('t', '<m-h>', '<c-bslash><c-n><c-w>h', {})
+map('t', '<m-j>', '<c-bslash><c-n><c-w>j', {})
+map('t', '<m-k>', '<c-bslash><c-n><c-w>k', {})
+map('t', '<m-l>', '<c-bslash><c-n><c-w>l', {})
+map('t', '<m-s>', '<c-bslash><c-n>:split | term<cr>i', {})
+map('t', '<m-v>', '<c-bslash><c-n>:vertical split | term<cr>i', {})
+
+local session_dir = vim.fn.stdpath("cache") .. "/sessions"
+if vim.fn.isdirectory(session_dir) ~= 1 then
+    vim.fn.mkdir(session_dir)
+end
+local session_file = session_dir .. "/tmpSession"
+local session_swap = session_dir .. "/swapSession"
+map('n', '<leader> ', string.format("<Cmd>mksession! %s<CR><Cmd>mksession! %s | only | lua require('telescope.builtin').find_files()<CR>", session_file, session_swap), {})
+map('n', '<leader>l', string.format("<Cmd>mksession! %s | so %s<CR>", session_swap, session_file), {})
+map('n', '<leader>s', string.format("<Cmd>mksession! %s.swp | so %s | lua vim.uv.fs_copyfile('%s.swp', '%s')<CR>", session_swap, session_swap, session_swap, session_swap), {})
+for i=1,9 do
+    map('n', string.format('"%d<leader> ', i), string.format("<Cmd>mksession! %s%d<CR><Cmd>mksession! %s | only | lua require('telescope.builtin').find_files()<CR>", session_file, i, session_swap), {})
+    map('n', string.format('"%d<leader>l', i), string.format("<Cmd>mksession! %s | so %s%d<CR>", session_swap, session_file, i), {})
 end

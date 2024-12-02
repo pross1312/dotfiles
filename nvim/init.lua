@@ -14,7 +14,6 @@ require 'options'
 require 'plugins'
 require 'keymap'
 require 'autocmd'
-require 'terminal'
 require 'ibus'
 require 'ftdetect'
 vim.cmd 'cabbrev mkae make'
@@ -24,7 +23,7 @@ function set_color(name)
     vim.cmd "hi! link WinSeparator normal"
     vim.cmd "hi! link StatusLine WinSeperator"
     vim.cmd "hi! link StatusLineNC normal"
-    -- vim.cmd 'hi clear CursorLine'
+    vim.cmd 'hi! clear CursorLine'
     -- vim.cmd "hi! MatchParen guifg=#ff0000 guibg=none"
     vim.cmd "hi! clear Cursor"
     vim.cmd "hi! Cursor guibg=#ffffff guifg=#000000"
