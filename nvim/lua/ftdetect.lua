@@ -13,3 +13,11 @@ vim.api.nvim_create_autocmd({"BufNewFile", "BufReadPost"}, {
     end,
     group = "filetypedetect"
 })
+
+vim.api.nvim_create_autocmd({"BufNewFile", "BufReadPost"}, {
+    pattern = {"*.jsx", "*.tsx", "*.dart"},
+    callback = function()
+        vim.cmd "setlocal shiftwidth=2"
+    end,
+    group = "filetypedetect"
+})
