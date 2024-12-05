@@ -91,6 +91,10 @@ require("lazy").setup({
     --         {'L3MON4D3/LuaSnip'},     -- Required
     --     }
     -- },
+    { "nvim-tree/nvim-tree.lua",
+        version = "*",
+        lazy = false,
+    },
     --------------------------colorschemes-------------------------------
     {'folke/tokyonight.nvim', lazy = false},
     { 'catppuccin/nvim', lazy = false },
@@ -199,5 +203,6 @@ require("lazy").setup({
         dependencies = "rktjmp/lush.nvim",
         lazy = false,
     },
+    "marko-cerovac/material.nvim"
     ---------------------------------------------------------------------
 })
