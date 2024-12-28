@@ -69,7 +69,7 @@ function set_color(name)
     vim.g.terminal_color_15 = "#c0caf5"
 end
 
-set_color 'kanagawa'
+set_color 'habamax'
 
 local extra_func = require 'extra-function'
 vim.api.nvim_create_user_command('Brun', extra_func.build_and_run_cmd, {bang = true, bar = true, nargs = '?', complete = 'file'})

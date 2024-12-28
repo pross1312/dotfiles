@@ -5,7 +5,7 @@
  *
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
-static char *font = "Terminus:pixelsize=31:antialias=true:autohint=true";
+static char *font = "Terminus:pixelsize=30:antialias=true:autohint=true";
 static int borderpx = 0;
 
 /*
@@ -94,43 +94,35 @@ char *termname = "st-256color";
 unsigned int tabspaces = 8;
 /* Terminal colors (16 first used in escape sequence) */
 
-#if 1 // SELECT COLOR THEME
+#if 0 // SELECT COLOR THEME
     #include "tokyonigh.h"
 #else // default config
 static const char *colorname[] = {
-	/* 8 normal colors */
-	[0] = "#2E3440",
-	[1] = "red3",
-	[2] = "green3",
-	[3] = "yellow3",
-	[4] = "#EBCB8B",
-	[5] = "#A3BE8C",
-	[6] = "cyan3",
-	[7] = "gray90",
-
-	/* 8 bright colors */
-	[8] = "#4C566A",
-	[9] = "red",
-	[10] = "green",
-	[11] = "yellow",
-	[12] = "#EBCB8B",
-	[13] = "#A3BE8C",
-	[14] = "cyan",
-	[15] = "white",
+    [0] = "#15161e",
+    [1] = "#f7768e",
+    [2] = "#9ece6a",
+    [3] = "#e0af68",
+    [4] = "#7aa2f7",
+    [5] = "#bb9af7",
+    [6] = "#7dcfff",
+    [7] = "#a9b1d6",
+    [8] = "#7D8EB0",
+    [9] = "#f7768e",
+    [10] = "#9ece6a",
+    [11] = "#e0af68",
+    [12] = "#7aa2f7",
+    [13] = "#bb9af7",
+    [14] = "#7dcfff",
+    [15] = "#c0caf5",
 
 	[255] = 0,
 
 	/* more colors can be added after 255 to use with DefaultXX */
 	"#cccccc",
 	"#555555",
-	"#e5e9f0", /* default foreground colour */
-	"#181818", /* default background colour */
+	"#bcbcbc", /* default foreground colour */
+	"#1c1c1c", /* default background colour */
 };
-
-/*
- * Default colors (colorname index)
- * foreground, background, cursor, reverse cursor
- */
 unsigned int defaultfg = 258;
 unsigned int defaultbg = 259;
 unsigned int defaultcs = 256;
@@ -196,8 +188,8 @@ static Shortcut shortcuts[] = {
 	{ ControlMask,          XK_Print,       toggleprinter,  {.i =  0} },
 	{ ShiftMask,            XK_Print,       printscreen,    {.i =  0} },
 	{ XK_ANY_MOD,           XK_Print,       printsel,       {.i =  0} },
-	{ TERMMOD,              XK_plus,        zoom,           {.f = +2} },
-	{ TERMMOD,              XK_underscore,  zoom,           {.f = -2} },
+	{ TERMMOD,              XK_plus,        zoom,           {.f = +1} },
+	{ TERMMOD,              XK_underscore,  zoom,           {.f = -1} },
 	{ TERMMOD,              XK_BackSpace,   zoomreset,      {.f =  0} },
 	{ TERMMOD,              XK_C,           clipcopy,       {.i =  0} },
 	{ TERMMOD,              XK_V,           clippaste,      {.i =  0} },

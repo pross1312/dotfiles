@@ -60,11 +60,6 @@ require("lazy").setup({
         vim.keymap.set('v', 'e', '<Plug>CamelCaseMotion_e', {})
         vim.keymap.set('v', 'ge', '<Plug>CamelCaseMotion_ge', {})
     end },
-    {
-        "folke/todo-comments.nvim",
-        dependencies = { "nvim-lua/plenary.nvim" },
-        lazy = false,
-    },
     -- master is broken (VM_maps['Exit'] not working)
     {'mg979/vim-visual-multi', commit = 'b84a6d42c1c10678928b0bf8327f378c8bc8af5a', config = function()
         vim.g.VM_silent_exit = 1
@@ -94,6 +89,9 @@ require("lazy").setup({
     { "nvim-tree/nvim-tree.lua",
         version = "*",
         lazy = false,
+        config = function()
+            vim.cmd("hi! link NvimTreeWinSeparator WinSeperator");
+        end
     },
     --------------------------colorschemes-------------------------------
     {'folke/tokyonight.nvim', lazy = false},
@@ -107,9 +105,9 @@ require("lazy").setup({
         config = function()
         end,
     },
-    {'navarasu/onedark.nvim', lazy = true, opts = {
+    {'navarasu/onedark.nvim', lazy = false, opts = {
         -- -- Main options --
-        style = 'darker', -- Default theme style. Choose between 'dark', 'darker', 'cool', 'deep', 'warm', 'warmer' and 'light'
+        style = 'deep', -- Default theme style. Choose between 'dark', 'darker', 'cool', 'deep', 'warm', 'warmer' and 'light'
         transparent = false,  -- Show/hide background
         term_colors = true, -- Change terminal color as per the selected theme style
         -- ending_tildes = true, -- Show the end-of-buffer tildes. By default they are hidden
@@ -186,7 +184,7 @@ require("lazy").setup({
     end},
     {'rebelot/kanagawa.nvim', lazy = false, config = function()
     end},
-    {"0xstepit/flow.nvim", lazy = true, config = function()
+    {"0xstepit/flow.nvim", lazy = false, config = function()
         require("flow").setup{
             transparent = true, -- Set transparent background.
             fluo_color = "pink", --  Fluo color: pink, yellow, orange, or green.

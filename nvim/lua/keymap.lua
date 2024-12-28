@@ -85,9 +85,10 @@ end
 local session_file = session_dir .. "/tmpSession"
 local session_swap = session_dir .. "/swapSession"
 map('n', '<leader> ', string.format("<Cmd>mksession! %s<CR><Cmd>mksession! %s | only | lua require('telescope.builtin').find_files()<CR>", session_file, session_swap), {})
-map('n', '<leader>l', string.format("<Cmd>mksession! %s | so %s<CR>", session_swap, session_file), {})
+map('n', '<leader>b', string.format("<Cmd>mksession! %s<CR><Cmd>mksession! %s | only | lua require('telescope.builtin').buffers()<CR>", session_file, session_swap), {})
+-- map('n', '<leader>l', string.format("<Cmd>mksession! %s | so %s<CR>", session_swap, session_file), {})
 map('n', '<leader>s', string.format("<Cmd>mksession! %s.swp | so %s | lua vim.uv.fs_copyfile('%s.swp', '%s')<CR>", session_swap, session_swap, session_swap, session_swap), {})
 for i=1,9 do
     map('n', string.format('"%d<leader> ', i), string.format("<Cmd>mksession! %s%d<CR><Cmd>mksession! %s | only | lua require('telescope.builtin').find_files()<CR>", session_file, i, session_swap), {})
-    map('n', string.format('"%d<leader>l', i), string.format("<Cmd>mksession! %s | so %s%d<CR>", session_swap, session_file, i), {})
+    -- map('n', string.format('"%d<leader>l', i), string.format("<Cmd>mksession! %s | so %s%d<CR>", session_swap, session_file, i), {})
 end
