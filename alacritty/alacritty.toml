@@ -1,0 +1,26 @@
+[window]
+decorations = "None"
+
+[font]
+normal = { family = "Spleen 32x64"}
+size = 11.5
+
+# [font]
+# normal = { family = "PxPlus IBM VGA8x16"}
+# size = 11.5
+# normal = { family = "Unifont"}
+# normal = { family = "Terminus"}
+# size = 12
+
+[colors]
+vi_mode_cursor = { text = '#1c1c1c', cursor = '#bcbcbc'}
+cursor = { text = '#1c1c1c', cursor = '#bcbcbc'}
+
+[colors.primary]
+background = '#1c1c1c'
+foreground = '#bcbcbc'
+
+[keyboard]
+bindings = [
+    { key = "A", mode = "Vi", action = "ToggleViMode" },
+]
