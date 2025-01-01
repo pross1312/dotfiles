@@ -1,12 +1,12 @@
 [window]
-decorations = "None"
+# decorations = "None"
 
 [font]
 normal = { family = "Spleen 32x64"}
 size = 11.5
 
 # [font]
-# normal = { family = "PxPlus IBM VGA8x16"}
+# normal = { family = "PxPlus IBM VGA8"}
 # size = 11.5
 # normal = { family = "Unifont"}
 # normal = { family = "Terminus"}
@@ -16,9 +16,16 @@ size = 11.5
 vi_mode_cursor = { text = '#1c1c1c', cursor = '#bcbcbc'}
 cursor = { text = '#1c1c1c', cursor = '#bcbcbc'}
 
+# [colors.primary]
+# background = '0x181512'
+# foreground = '0xbea492'
+
 [colors.primary]
 background = '#1c1c1c'
 foreground = '#bcbcbc'
+
+[colors.normal]
+black =   '0x335d29'
 
 [keyboard]
 bindings = [

@@ -118,7 +118,7 @@ vim.api.nvim_create_user_command('Scratch', function()
     end
 end, {bang = true, bar = true})
 
-vim.api.nvim_create_user_command('Write', function()
+vim.api.nvim_create_user_command('Write', function() -- so that :W work -_-
     vim.cmd "write"
 end, {bang = true, bar = true})
 

@@ -46,7 +46,10 @@ require("lazy").setup({
     -- end
     -- },
     -- 'nvim-lualine/lualine.nvim',
-    {'junegunn/vim-easy-align', lazy = false},
+    {'junegunn/vim-easy-align', lazy = false, config = function()
+        vim.keymap.set('x', '<leader>a', '<Plug>(EasyAlign)', {})
+        vim.keymap.set('n', '<leader>a', '<Plug>(EasyAlign)', {})
+    end},
     {'tikhomirov/vim-glsl', lazy = false},
     'tpope/vim-fugitive',
 
@@ -89,9 +92,6 @@ require("lazy").setup({
     { "nvim-tree/nvim-tree.lua",
         version = "*",
         lazy = false,
-        config = function()
-            vim.cmd("hi! link NvimTreeWinSeparator WinSeperator");
-        end
     },
     --------------------------colorschemes-------------------------------
     {'folke/tokyonight.nvim', lazy = false},

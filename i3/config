@@ -218,7 +218,7 @@ bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 5%- # decre
 # bindsym XF86AudioPrev exec playerctl previous
 
 # add shutdown
-set $Locker i3lock
+set $Locker i3lock -i /usr/share/background/0577d98a03b6774bdccef3b57b3f02bc.jpg
 
 set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown
 bindsym $mod+Shift+Escape mode "$mode_system"
@@ -242,9 +242,19 @@ bindsym --release Shift+Print exec --no-startup-id gnome-screenshot -afB /tmp/te
 # assign [class="Google-chrome"] $ws_browsers
 # assign [class="URxvt"] $ws_terminals
 
-hide_edge_borders smart
+hide_edge_borders both
 # workspace_auto_back_and_forth yes
-exec_always sh ~/programming/dotfiles/setup.sh
+exec_always sh -c '/usr/bin/feh --bg-fill "/usr/share/background/0577d98a03b6774bdccef3b57b3f02bc.jpg"'
+exec_always sh -c 'xinput set-prop "MSFT0002:00 04F3:31BE Mouse" "libinput Natural Scrolling Enabled" 0'
+exec_always sh -c 'xinput set-prop "MSFT0002:00 04F3:31BE Touchpad" "libinput Tapping Enabled" 1'
+exec_always sh -c 'xinput set-prop "MSFT0002:00 04F3:31BE Touchpad" "libinput Natural Scrolling Enabled" 1'
+exec_always sh -c 'xinput set-prop "MSFT0002:00 04F3:31BE Touchpad" "libinput Accel Speed" .4'
+exec_always sh -c 'xrdb -load ~/programming/dotfiles/Xresources.main'
+exec_always sh -c 'setxkbmap -option ctrl:nocaps'
+exec_always sh -c 'xmodmap -e "remove Lock = Caps_Lock"'
+exec_always sh -c 'xmodmap -e "keysym Caps_Lock = Control_L"'
+exec_always sh -c 'xmodmap -e "add Lock = Caps_Lock"'
+exec sh -c 'picom -b'
 
 # to turn off capslock in extreme case
 # python -c 'from ctypes import *; X11 = cdll.LoadLibrary("libX11.so.6"); display = X11.XOpenDisplay(None); X11.XkbLockModifiers(display, c_uint(0x0100), c_uint(2), c_uint(0)); X11.XCloseDisplay(display)'

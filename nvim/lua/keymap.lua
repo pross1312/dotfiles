@@ -10,8 +10,6 @@ map('i', '<C-s>', '<Cmd>write<CR>', {})
 
 map('n', '<C-]>', 'g<C-]>', {})
 
-map('x', '<leader>a', '<Plug>(EasyAlign)', {})
-map('n', '<leader>a', '<Plug>(EasyAlign)', {})
 map('n', '<C-G>', '1<C-G>', {})
 map('n', '<m-h>', '<c-w>h', {})
 map('n', '<m-j>', '<c-w>j', {})
@@ -37,8 +35,6 @@ map('n', '<c-m-j>', '<Cmd>horizontal res -5<cr>', {})
 map('n', '<c-m-k>', '<Cmd>horizontal res +5<cr>', {})
 map('n', '<c-k>', '<cmd>cp<cr>', {})
 map('n', '<c-j>', '<cmd>cn<cr>', {})
-map('n', '<leader>nd', '<CMD>NvimTreeToggle<CR>', {})
-map('n', '<leader>nf', '<Cmd>NvimTreeFindFileToggle<cr>', {})
 
 -- jump root (start directory)
 map('n', '<leader>jr', function()
