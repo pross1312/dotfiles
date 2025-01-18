@@ -14,7 +14,6 @@ require 'options'
 require 'plugins'
 require 'keymap'
 require 'autocmd'
-require 'ibus'
 require 'ftdetect'
 vim.cmd 'cabbrev mkae make'
 function set_color(name)
@@ -69,7 +68,7 @@ function set_color(name)
     vim.g.terminal_color_15 = "#c0caf5"
 end
 
-set_color 'habamax'
+set_color 'kanagawa-dragon'
 
 local extra_func = require 'extra-function'
 vim.api.nvim_create_user_command('Brun', extra_func.build_and_run_cmd, {bang = true, bar = true, nargs = '?', complete = 'file'})

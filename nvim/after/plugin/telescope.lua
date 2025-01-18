@@ -29,7 +29,14 @@ require('telescope').setup({
 local actions = require('telescope.actions')
 local builtin = require('telescope.builtin')
 vim.keymap.set('n', '<M- >', builtin.find_files, {silent = true})
-vim.keymap.set('n', '<M-b>', builtin.buffers, {silent = true})
+vim.keymap.set('n', '<M-b>', function()
+    builtin.buffers({
+        ignore_current_buffer = true,
+        -- sort_lastused = true,
+        sorter = require('telescope.sorters').get_substr_matcher(),
+        sort_mru = true,
+    })
+end, {silent = true})
 vim.keymap.set('n', '<M-g>', function()
     builtin.live_grep({only_sort_text = true})
 end, {silent = true})
@@ -38,7 +45,7 @@ vim.keymap.set('n', '<M-d>g', function()
 end, {silent = true})
 vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
 vim.keymap.set('n', '<leader>re', builtin.registers, {})
-if vim.g.neovide then vim.keymap.set('c', '<C-/>', "lua require('telescope.builtin').command_history()<CR>", {})
-else vim.keymap.set('c', '<C-_>', "lua require('telescope.builtin').command_history()<CR>", {}) end
+if vim.g.neovide then vim.keymap.set('c', '<C-/>', builtin.command_history, {})
+else vim.keymap.set('c', '<C-_>', builtin.command_history, {}) end
 
 end

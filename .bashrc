@@ -40,7 +40,6 @@ PROMPT_COMMAND='history -a'
 
 # Set the default editor
 export EDITOR=vim
-export VISUAL=vim
 
 alias cp='cp -i'
 alias mv='mv -i'
@@ -49,31 +48,11 @@ alias mkdir='mkdir -p'
 alias ls='ls -aFh --color=always' # add colors and file type extensions
 alias ll='ls -Fls' # long listing format
 # Copy file with a progress bar
-cpp()
-{
-    set -e
-    strace -q -ewrite cp -- "${1}" "${2}" 2>&1 \
-        | awk '{
-            count += $NF
-            if (count % 10 == 0) {
-                percent = count / total_size * 100
-                printf "%3d%% [", percent
-                for (i=0;i<=percent;i++)
-                    printf "="
-                    printf ">"
-                    for (i=percent;i<100;i++)
-                        printf " "
-                        printf "]\r"
-                    }
-                }
-            END { print "" }' total_size=$(stat -c '%s' "${1}") count=0
-        }
 
 parse_git_branch() {
-    git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ [\1]/'
+    git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/'
 }
 
-alias cpu="grep 'cpu ' /proc/stat | awk '{usage=(\$2+\$4)*100/(\$2+\$4+\$5)} END {print usage}' | awk '{printf(\"%.1f\n\", \$1)}'"
 function color() {
     echo "\033[$1;38;2;$2;$3;$4m"
 }
@@ -142,62 +121,22 @@ function __setprompt
         PS1=""
     fi
 
-    # Date
-    #	PS1+="\[${DARKGRAY}\](\[${CYAN}\]\$(date +%a) $(date +%b-'%-m')" # Date
-    #	PS1+="${BLUE} $(date +'%-I':%M:%S%P)\[${DARKGRAY}\])-" # Time
-    # PS1+="\[${LIGHTBLUE}\]\$(date +%a) $(date +%b-'%-m')\[${DARKGRAY}\]::" # Date
-    # PS1+="${LIGHTBLUE}$(date +'%-I':%M:%S%P)\[${DARKGRAY}\]::" # Time
-
-#	# CPU
-#	PS1+="(\[${MAGENTA}\]CPU $(cpu)%"
-
-    # Jobs
-    #	PS1+="\[${DARKGRAY}\]:\[${MAGENTA}\]\j"
-
-# 	# Network Connections (for a server - comment out for non-server)
-# 	PS1+="\[${DARKGRAY}\]:\[${MAGENTA}\]Net $(awk 'END {print NR}' /proc/net/tcp)"
-#
-#	PS1+="\[${DARKGRAY}\])-"
-
-    # User and server
     local SSH_IP=`echo $SSH_CLIENT | awk '{ print $1 }'`
     local SSH2_IP=`echo $SSH2_CLIENT | awk '{ print $1 }'`
+    # PS1+="\[${RED}\]\u"
+    PS1+="\[${LIGHTGREEN}\][\w]\[${DARKGRAY}\] "
     if [ $SSH2_IP ] || [ $SSH_IP ] ; then
         PS1+="\[${RED}\]\u@\h"
     else
         PS1+="\[${RED}\]\u\[${BLUE}\]@\h"
     fi
-    # PS1+="\[${RED}\]\u"
 
-    # Current directory
-    #	PS1+="\[${DARKGRAY}\]:\[${BROWN}\]\w\[${DARKGRAY}\])-"
-    PS1+="\[${DARKGRAY}\]::\[${LIGHTGREEN}\]\w\[${DARKGRAY}\]"
-
-    # Total size of files in current directory
-    #	PS1+="(\[${GREEN}\]$(/bin/ls -lah | /bin/grep -m 1 total | /bin/sed 's/total //')\[${DARKGRAY}\]:"
-
-    # Number of files
-    #	PS1+="\[${GREEN}\]\$(/bin/ls -A -1 | /usr/bin/wc -l)\[${DARKGRAY}\])"
-
-    # git branch
-    PS1+="\[${LIGHTRED}\]\$(parse_git_branch)\[\033[00m\]"
-    # Skip to the next line
-    PS1+="\n"
-
-    if [[ $EUID -ne 0 ]]; then
-        PS1+="\[${GREEN}\]>\[${NOCOLOR}\] " # Normal user
-    else
-        PS1+="\[${RED}\]>\[${NOCOLOR}\] " # Root user
+    local git_branch=$(parse_git_branch)
+    if [ "$git_branch" ] ; then
+        PS1+="\[${DARKGRAY}\]::\[${LIGHTRED}\]\$(parse_git_branch)\[\033[00m\]"
     fi
-
-    # PS2 is used to continue a command using the \ character
-    PS2="\[${DARKGRAY}\]>\[${NOCOLOR}\] "
-
-    # PS3 is used to enter a number choice in a script
-    PS3='Please enter a number from above list: '
-
-    # PS4 is used for tracing a script in debug mode
-    PS4='\[${DARKGRAY}\]+\[${NOCOLOR}\] '
+    PS1+="\n"
+    PS1+="\[${GREEN}\]>\[${NOCOLOR}\] "
 }
 PROMPT_COMMAND='__setprompt'
 export VIMDIR=~/.config/nvim
