@@ -75,16 +75,25 @@ map('t', '<m-s>', '<c-bslash><c-n>:split | term<cr>i', {})
 map('t', '<m-v>', '<c-bslash><c-n>:vertical split | term<cr>i', {})
 
 local session_dir = vim.fn.stdpath("cache") .. "/sessions"
-if vim.fn.isdirectory(session_dir) ~= 1 then
-    vim.fn.mkdir(session_dir)
+for i=1,9 do
+    if vim.fn.isdirectory(session_dir .. i) ~= 1 then
+        vim.fn.mkdir(session_dir .. i);
+        session_dir = session_dir .. i
+        break
+    end
 end
+
 local session_file = session_dir .. "/tmpSession"
 local session_swap = session_dir .. "/swapSession"
 map('n', '<leader> ', string.format("<Cmd>mksession! %s<CR><Cmd>mksession! %s | only | lua require('telescope.builtin').find_files()<CR>", session_file, session_swap), {})
 map('n', '<leader>b', string.format("<Cmd>mksession! %s<CR><Cmd>mksession! %s | only | lua require('telescope.builtin').buffers()<CR>", session_file, session_swap), {})
 -- map('n', '<leader>l', string.format("<Cmd>mksession! %s | so %s<CR>", session_swap, session_file), {})
 map('n', '<leader>s', string.format("<Cmd>mksession! %s.swp | so %s | lua vim.uv.fs_copyfile('%s.swp', '%s')<CR>", session_swap, session_swap, session_swap, session_swap), {})
-for i=1,9 do
-    map('n', string.format('"%d<leader> ', i), string.format("<Cmd>mksession! %s%d<CR><Cmd>mksession! %s | only | lua require('telescope.builtin').find_files()<CR>", session_file, i, session_swap), {})
-    -- map('n', string.format('"%d<leader>l', i), string.format("<Cmd>mksession! %s | so %s%d<CR>", session_swap, session_file, i), {})
-end
+vim.api.nvim_create_autocmd({"VimLeavePre"}, {
+    callback = function()
+        if vim.loop.os_uname().sysname ~= "Linux" then -- windows
+        else
+            vim.system({"rm", "-rf", session_dir}):wait()
+        end
+    end,
+})

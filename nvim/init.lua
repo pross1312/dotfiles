@@ -19,6 +19,7 @@ vim.cmd 'cabbrev mkae make'
 function set_color(name)
     vim.o.background = 'dark'
     vim.cmd('colorscheme ' .. name)
+    vim.cmd "hi! clear WinSeparator"
     vim.cmd "hi! link WinSeparator normal"
     vim.cmd "hi! link StatusLine WinSeperator"
     vim.cmd "hi! link StatusLineNC normal"
@@ -28,6 +29,7 @@ function set_color(name)
     vim.cmd "hi! Cursor guibg=#ffffff guifg=#000000"
     vim.cmd "hi! clear TermCursor"
     vim.cmd "hi! link TermCursor Cursor"
+    vim.cmd "hi! TermCursorNC guifg=#1c1917 guibg=#797f84"
     -- vim.cmd "hi Normal guifg=#ffffff"
     vim.cmd "hi! link VM_Mono Cursor"
     vim.cmd "hi! TodoFgTODO guifg=#8a8a8"
@@ -66,6 +68,10 @@ function set_color(name)
     vim.g.terminal_color_13 = "#bb9af7"
     vim.g.terminal_color_14 = "#7dcfff"
     vim.g.terminal_color_15 = "#c0caf5"
+    vim.cmd("hi! link NvimTreeWinSeparator WinSeperator");
+    vim.cmd("hi! link NvimTreeNormal Normal");
+    vim.cmd("hi! link NvimTreeCursorLine CursorLine");
+    vim.cmd("hi! link NvimTreeCursorLineNr CursorLineNr");
 end
 
 set_color 'kanagawa-dragon'

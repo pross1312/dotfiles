@@ -7,9 +7,14 @@ vim.api.nvim_create_autocmd('VimEnter', {
         vim.g.root_dir = vim.fn.getcwd()
     end
 })
+vim.api.nvim_create_autocmd('TermEnter', {
+    callback = function()
+        vim.fn.clearmatches(0)
+    end
+})
 vim.api.nvim_create_autocmd('BufEnter', {
     pattern =  "*.py",
-    callback = function(_)
+    callback = function()
         vim.cmd "compiler pyunit"
     end
 })

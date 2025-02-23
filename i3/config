@@ -45,7 +45,7 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec --no-startup-id alacritty
+bindsym $mod+Return exec --no-startup-id st
 # bindsym $mod+Return exec terminator
 
 # kill focused window
@@ -235,9 +235,9 @@ mode "$mode_system" {
     bindsym Escape mode "default"
 }
 bindsym $mod+Control+b exec --no-startup-id ~/software/boomer/boomer
-bindsym Control+Shift+s exec --no-startup-id /usr/bin/bash ~/.config/i3/change_ibus.sh
+# bindsym Control+Shift+s exec --no-startup-id /usr/bin/bash ~/.config/i3/change_ibus.sh
 bindsym Print exec --no-startup-id gnome-screenshot -f /tmp/test && xclip -i /tmp/test -selection clipboard -target image/png
-bindsym --release Shift+Print exec --no-startup-id gnome-screenshot -afB /tmp/test && xclip -i /tmp/test -selection clipboard -target image/png
+bindsym --release Shift+Print exec --no-startup-id gnome-screenshot -afB /tmp/test.png && xclip -i /tmp/test.png -selection clipboard -target image/png
 # assign [class="google-chrome"] $ws_browsers
 # assign [class="Google-chrome"] $ws_browsers
 # assign [class="URxvt"] $ws_terminals
@@ -255,6 +255,7 @@ exec_always sh -c 'xmodmap -e "remove Lock = Caps_Lock"'
 exec_always sh -c 'xmodmap -e "keysym Caps_Lock = Control_L"'
 exec_always sh -c 'xmodmap -e "add Lock = Caps_Lock"'
 exec sh -c 'picom -b'
+exec sh -c 'fcitx5 -d'
 
 # to turn off capslock in extreme case
 # python -c 'from ctypes import *; X11 = cdll.LoadLibrary("libX11.so.6"); display = X11.XOpenDisplay(None); X11.XkbLockModifiers(display, c_uint(0x0100), c_uint(2), c_uint(0)); X11.XCloseDisplay(display)'

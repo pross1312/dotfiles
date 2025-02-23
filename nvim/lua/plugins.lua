@@ -29,23 +29,6 @@ require("lazy").setup({
     --         end, {bang = true, bar = true})
     --     end
     -- },
-    -- {'kdheepak/lazygit.nvim', config = function()
-    --     vim.g.lazygit_floating_window_winblend = 0 -- transparency of floating window
-    --     vim.g.lazygit_floating_window_scaling_factor = 1 -- scaling factor for floating window
-    --     vim.g.lazygit_floating_window_border_chars = {'╭','─', '╮', '│', '╯','─', '╰', '│'} -- customize lazygit popup window border characters
-    --     vim.g.lazygit_floating_window_use_plenary = 0 -- use plenary.nvim to manage floating window if available
-    --     vim.g.lazygit_use_neovim_remote = 1 -- fallback to 0 if neovim-remote is not installed
-
-    --     vim.g.lazygit_use_custom_config_file_path = 1 -- config file path is evaluated if this value is 1
-    --     vim.g.lazygit_config_file_path = vim.fn.expand("$HOME/dotfiles/lazygit.yml") -- custom config file path
-    --     vim.api.nvim_create_user_command('G', function()
-    --         vim.cmd "LazyGit"
-    --     end, {bang = true, bar = true})
-    --     -- OR
-    --     -- vim.g.lazygit_config_file_path = {} -- table of custom config file paths
-    -- end
-    -- },
-    -- 'nvim-lualine/lualine.nvim',
     {'junegunn/vim-easy-align', lazy = false, config = function()
         vim.keymap.set('x', '<leader>a', '<Plug>(EasyAlign)', {})
         vim.keymap.set('n', '<leader>a', '<Plug>(EasyAlign)', {})
