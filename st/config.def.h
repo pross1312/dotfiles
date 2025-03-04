@@ -5,7 +5,7 @@
  *
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
-static char *font = "Terminus:pixelsize=30:antialias=true:autohint=true";
+static char *font = "Spleen 32x64:pixelsize=26:antialias=false:autohint=true";
 static int borderpx = 0;
 
 /*
@@ -17,9 +17,9 @@ static int borderpx = 0;
  * 5: value of shell in config.h
  */
 static char *shell = "/bin/sh";
-char *utmp = NULL;
+char *utmp = NULL; // "-c term";
 /* scroll program: to enable use a string like "scroll" */
-char *scroll = NULL;
+char *scroll = NULL; // "nvim";
 char *stty_args = "stty raw pass8 nl -echo -iexten -cstopb 38400";
 
 /* identification sequence returned in DA and DECID */
@@ -98,30 +98,34 @@ unsigned int tabspaces = 8;
     #include "tokyonigh.h"
 #else // default config
 static const char *colorname[] = {
-    [0] = "#15161e",
-    [1] = "#f7768e",
-    [2] = "#9ece6a",
-    [3] = "#e0af68",
-    [4] = "#7aa2f7",
-    [5] = "#bb9af7",
-    [6] = "#7dcfff",
-    [7] = "#a9b1d6",
-    [8] = "#7D8EB0",
-    [9] = "#f7768e",
-    [10] = "#9ece6a",
-    [11] = "#e0af68",
-    [12] = "#7aa2f7",
-    [13] = "#bb9af7",
-    [14] = "#7dcfff",
-    [15] = "#c0caf5",
+// normal
+     [0] = "#282a2e",
+     [1] = "#a54242",
+     [2] = "#8c9440",
+     [3] = "#de935f",
+     [4] = "#5f819d",
+     [5] = "#85678f",
+     [6] = "#5e8d87",
+     [7] = "#707880",
+
+// bright
+     [8] = "#373b41",
+     [9] = "#cc6666",
+    [10] = "#b5bd68",
+    [11] = "#f0c674",
+    [12] = "#81a2be",
+    [13] = "#b294bb",
+    [14] = "#8abeb7",
+    [15] = "#c5c8c6",
 
 	[255] = 0,
+
 
 	/* more colors can be added after 255 to use with DefaultXX */
 	"#cccccc",
 	"#555555",
-	"#bcbcbc", /* default foreground colour */
-	"#1c1c1c", /* default background colour */
+	"#c5c8c6", /* default foreground colour */
+	"#1d1f21", /* default background colour */
 };
 unsigned int defaultfg = 258;
 unsigned int defaultbg = 259;

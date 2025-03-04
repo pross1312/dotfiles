@@ -72,9 +72,10 @@ function set_color(name)
     vim.cmd("hi! link NvimTreeNormal Normal");
     vim.cmd("hi! link NvimTreeCursorLine CursorLine");
     vim.cmd("hi! link NvimTreeCursorLineNr CursorLineNr");
+    vim.cmd("hi! link NvimTreeEndOfBuffer NvimTreeNormal");
 end
 
-set_color 'kanagawa-dragon'
+set_color 'termlike'
 
 local extra_func = require 'extra-function'
 vim.api.nvim_create_user_command('Brun', extra_func.build_and_run_cmd, {bang = true, bar = true, nargs = '?', complete = 'file'})
