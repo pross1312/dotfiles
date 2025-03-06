@@ -1,14 +1,3 @@
-if has("gui_running")
-    if has("gui_gtk")
-        :set guifont=Luxi\ Mono\ 12
-    elseif has("x11")
-        :set guifont=*-lucidatypewriter-medium-r-normal-*-*-180-*-*-m-*-*
-    elseif has("gui_win32")
-        set guioptions=
-        set guifont=Spleen:h14
-    endif
-endif
-color habamax
 let g:ftplugin_sql_omni_key = '<C-1>'
 syntax on
 filetype plugin indent on

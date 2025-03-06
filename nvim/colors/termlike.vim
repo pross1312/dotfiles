@@ -62,15 +62,15 @@ let g:terminal_ansi_colors = [
 
 " TODO: Basic highlighting
 call s:hi('Normal')
-call s:hi('Comment', s:bright_yellow)
+call s:hi('Comment', s:yellow)
 call s:hi('Constant', s:cyan)
 call s:hi('Identifier', s:blue)
 call s:hi('Statement', s:red,)
-call s:hi('PreProc', s:yellow,)
+call s:hi('PreProc', s:bright_yellow,)
 call s:hi('Type', s:red,)
 call s:hi('Underlined', s:bright_blue, '','underline')
 call s:hi('Error', s:bright_white, s:red)
-call s:hi('Todo', s:bright_yellow, s:bright_black, 'bold')
+call s:hi('Todo', s:yellow, s:bright_black, 'bold')
 
 hi! link Function Identifier
 hi! link Special Statement

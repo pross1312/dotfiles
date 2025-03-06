@@ -10,72 +10,14 @@ vim.fn.is_module_available = function(module)
     end
 end
 
-require 'options'
+vim.cmd("source " .. vim.fn.stdpath('config') .. "/options.vim")
 require 'plugins'
 require 'keymap'
 require 'autocmd'
 require 'ftdetect'
 vim.cmd 'cabbrev mkae make'
-function set_color(name)
-    vim.o.background = 'dark'
-    vim.cmd('colorscheme ' .. name)
-    vim.cmd "hi! clear WinSeparator"
-    vim.cmd "hi! link WinSeparator normal"
-    vim.cmd "hi! link StatusLine WinSeperator"
-    vim.cmd "hi! link StatusLineNC normal"
-    vim.cmd 'hi! clear CursorLine'
-    -- vim.cmd "hi! MatchParen guifg=#ff0000 guibg=none"
-    vim.cmd "hi! clear Cursor"
-    vim.cmd "hi! Cursor guibg=#ffffff guifg=#000000"
-    vim.cmd "hi! clear TermCursor"
-    vim.cmd "hi! link TermCursor Cursor"
-    vim.cmd "hi! TermCursorNC guifg=#1c1917 guibg=#797f84"
-    -- vim.cmd "hi Normal guifg=#ffffff"
-    vim.cmd "hi! link VM_Mono Cursor"
-    vim.cmd "hi! TodoFgTODO guifg=#8a8a8"
-    vim.cmd "hi! TodoFgNOTE guifg=#8a8a8"
-    vim.cmd "hi! TodoFgFIX guifg=#8a8a8"
-    vim.cmd "hi! TodoBgTODO guibg=#BF0606 guifg=#560303 gui=bold"
-    vim.cmd "hi! TodoBgNOTE guibg=#BF0606 guifg=#560303 gui=bold"
-    vim.cmd "hi! TodoBgFIX guibg=#BF0606 guifg=#560303 gui=bold"
-    -- neogit
-    -- vim.cmd "hi! NeogitCursorLine guibg=NONE"
-    -- vim.cmd "hi! NeogitDiffAddHighlight guibg=NONE"
-    -- vim.cmd "hi! link NeogitDiffAdd NeogitDiffAddHighlight"
-    -- vim.cmd "hi! link NeogitDiffAddRegion NeogitDiffAdd"
 
-    -- vim.cmd "hi! NeogitDiffDeleteHighlight guifg=#bc4650 guibg=NONE"
-    -- vim.cmd "hi! link NeogitDiffDelete NeogitDiffDeleteHighlight"
-    -- vim.cmd "hi! link NeogitDiffDeleteRegion NeogitDiffDelete"
-    -- vim.cmd "hi! NeogitHunkHeader guibg=NONE guifg=#09867D gui=bold,italic"
-    -- vim.cmd "hi! link NeogitHunkHeaderHighlight NeogitHunkHeader"
-    -- vim.cmd "hi! NeogitDiffContext guibg=NONE"
-    -- vim.cmd "hi! NeogitDiffContextHighlight guibg=NONE"
-    -- terminal config
-    vim.g.terminal_color_0 = "#7D8EB0"
-    vim.g.terminal_color_1 = "#f7768e"
-    vim.g.terminal_color_2 = "#9ece6a"
-    vim.g.terminal_color_3 = "#e0af68"
-    vim.g.terminal_color_4 = "#7aa2f7"
-    vim.g.terminal_color_5 = "#bb9af7"
-    vim.g.terminal_color_6 = "#7dcfff"
-    vim.g.terminal_color_7 = "#a9b1d6"
-    vim.g.terminal_color_8 = "#7D8EB0"
-    vim.g.terminal_color_9 = "#f7768e"
-    vim.g.terminal_color_10 = "#9ece6a"
-    vim.g.terminal_color_11 = "#e0af68"
-    vim.g.terminal_color_12 = "#7aa2f7"
-    vim.g.terminal_color_13 = "#bb9af7"
-    vim.g.terminal_color_14 = "#7dcfff"
-    vim.g.terminal_color_15 = "#c0caf5"
-    vim.cmd("hi! link NvimTreeWinSeparator WinSeperator");
-    vim.cmd("hi! link NvimTreeNormal Normal");
-    vim.cmd("hi! link NvimTreeCursorLine CursorLine");
-    vim.cmd("hi! link NvimTreeCursorLineNr CursorLineNr");
-    vim.cmd("hi! link NvimTreeEndOfBuffer NvimTreeNormal");
-end
-
-set_color 'termlike'
+vim.fn.SetColor 'termlike'
 
 local extra_func = require 'extra-function'
 vim.api.nvim_create_user_command('Brun', extra_func.build_and_run_cmd, {bang = true, bar = true, nargs = '?', complete = 'file'})
