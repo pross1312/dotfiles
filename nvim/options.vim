@@ -62,8 +62,12 @@ let g:netrw_localcopydircmd='cp -r'
 let g:rustfmt_fail_silently=1
 let g:netrw_list_hide='.*\\.swp$,node_modules/,.git/'
 set undofile
+set undodir-=.
 if has('win32') || has('win64')
     set shell=powershell
+    set undodir+=~/AppData/Local/Temp
+else
+    set undodir+=/tmp
 endif
 function! SetColor(name)
     set background=dark
@@ -81,9 +85,9 @@ function! SetColor(name)
     hi! TermCursorNC guifg=#1c1917 guibg=#797f84
     """ hi Normal guifg=#ffffff
     hi! link VM_Mono Cursor
-    hi! TodoFgTODO guifg=#8a8a8
-    hi! TodoFgNOTE guifg=#8a8a8
-    hi! TodoFgFIX guifg=#8a8a8
+    hi! TodoFgTODO guifg=#8a8a8a
+    hi! TodoFgNOTE guifg=#8a8a8a
+    hi! TodoFgFIX guifg=#8a8a8a
     hi! TodoBgTODO guibg=#BF0606 guifg=#560303 gui=bold
     hi! TodoBgNOTE guibg=#BF0606 guifg=#560303 gui=bold
     hi! TodoBgFIX guibg=#BF0606 guifg=#560303 gui=bold

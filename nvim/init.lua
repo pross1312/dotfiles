@@ -50,7 +50,7 @@ vim.api.nvim_create_user_command('Conflict', function()
 end, {bar = true, nargs = 0})
 
 vim.api.nvim_create_user_command('Color',
-            function(data) set_color(data.fargs[1]) end,
+            function(data) vim.fn.SetColor(data.fargs[1]) end,
             {bang = true, bar = true, nargs = 1, complete = 'color'})
 
 
