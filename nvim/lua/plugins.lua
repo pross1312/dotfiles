@@ -149,6 +149,7 @@ require("lazy").setup({
             }
         },
         config = function()
+            vim.cmd "hi link typescriptVariable GruberDarkerYellow"
         end
     },
     { "ellisonleao/gruvbox.nvim", lazy = false},
@@ -184,6 +185,8 @@ require("lazy").setup({
         dependencies = "rktjmp/lush.nvim",
         lazy = false,
     },
-    "marko-cerovac/material.nvim"
+    "marko-cerovac/material.nvim",
+    "sainnhe/gruvbox-material",
+    "Shatur/neovim-ayu"
     ---------------------------------------------------------------------
 })

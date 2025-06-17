@@ -244,7 +244,7 @@ bindsym --release Shift+Print exec --no-startup-id gnome-screenshot -afB /tmp/te
 
 hide_edge_borders both
 # workspace_auto_back_and_forth yes
-exec_always sh -c '/usr/bin/feh --bg-fill "/usr/share/background/0577d98a03b6774bdccef3b57b3f02bc.jpg"'
+# exec_always sh -c '/usr/bin/feh --bg-fill "/usr/share/background/0577d98a03b6774bdccef3b57b3f02bc.jpg"'
 exec_always sh -c 'xinput set-prop "MSFT0002:00 04F3:31BE Mouse" "libinput Natural Scrolling Enabled" 0'
 exec_always sh -c 'xinput set-prop "MSFT0002:00 04F3:31BE Touchpad" "libinput Tapping Enabled" 1'
 exec_always sh -c 'xinput set-prop "MSFT0002:00 04F3:31BE Touchpad" "libinput Natural Scrolling Enabled" 1'

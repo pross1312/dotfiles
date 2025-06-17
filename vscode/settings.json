@@ -79,7 +79,7 @@
     "editor.scrollbar.vertical": "hidden",
     "editor.scrollbar.verticalScrollbarSize": 0,
     "editor.scrollbar.horizontalScrollbarSize": 0,
-    "workbench.colorTheme": "Kanagawa Wave",
+    "workbench.colorTheme": "Kanagawa Dragon",
     "editor.suggest.insertMode": "insert",
     "editor.stickyScroll.enabled": false,
     "task.quickOpen.showAll": true,
@@ -168,4 +168,5 @@
         "<C-w>": true,
         "<C-k>": true,
     },
+    "typescript.updateImportsOnFileMove.enabled": "always",
 }

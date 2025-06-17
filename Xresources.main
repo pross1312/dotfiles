@@ -1,7 +1,7 @@
-URxvt.font: xft:Zed Mono:style=Regular:size=20:antialias=true
-URxvt.boldFont: xft:Zed Mono:style=Bold:size=20:antialias=true
-URxvt.italicFont: xft:Zed Mono:style=Italic:size=20:antialias=true
-URxvt.boldItalicfont: xft:Zed Mono:style=Bold Italic:size=20:antialias=true
+URxvt.font: xft:Terminus:style=Regular:size=23:antialias=true
+URxvt.boldFont: xft:Terminus:style=Bold:size=23:antialias=true
+URxvt.italicFont: xft:Terminus:style=Italic:size=23:antialias=true
+URxvt.boldItalicfont: xft:Terminus:style=Bold Italic:size=23:antialias=true
 URxvt.letterSpace: 0
 URxvt.geometry: 40x20
 URxvt.lineSpace: 0
