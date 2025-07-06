@@ -17,7 +17,7 @@ if !exists('nim_highlight_exceptions')
   let nim_highlight_exceptions = 1
 endif
 if !exists('nim_highlight_space_errors')
-  let nim_highlight_space_errors = 1
+  let nim_highlight_space_errors = 0
 endif
 if !exists('nim_highlight_special_vars')
   let nim_highlight_special_vars = 1
