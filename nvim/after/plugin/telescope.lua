@@ -3,6 +3,16 @@ if vim.fn.is_module_available('telescope') then
 
 require('telescope').setup({
     pickers = {
+        buffers = {
+            show_all_buffers = true,
+            sort_lastused = true,
+            previewer = true,
+            mappings = {
+                i = {
+                    ["<c-r>"] = "delete_buffer",
+                }
+            }
+        },
         find_files = {
             hidden = true,
         }
@@ -47,5 +57,6 @@ vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
 vim.keymap.set('n', '<leader>re', builtin.registers, {})
 if vim.g.neovide then vim.keymap.set('c', '<C-/>', builtin.command_history, {})
 else vim.keymap.set('c', '<C-_>', builtin.command_history, {}) end
+
 
 end

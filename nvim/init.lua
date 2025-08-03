@@ -17,7 +17,7 @@ require 'autocmd'
 require 'ftdetect'
 vim.cmd 'cabbrev mkae make'
 
-vim.fn.SetColor 'termlike'
+vim.fn.SetColor 'kanagawa'
 
 local extra_func = require 'extra-function'
 vim.api.nvim_create_user_command('Brun', extra_func.build_and_run_cmd, {bang = true, bar = true, nargs = '?', complete = 'file'})
@@ -53,7 +53,6 @@ vim.api.nvim_create_user_command('Color',
             function(data) vim.fn.SetColor(data.fargs[1]) end,
             {bang = true, bar = true, nargs = 1, complete = 'color'})
 
-
 vim.api.nvim_create_user_command('Scratch', function()
     if vim.g.scratch_buffer == nil then
         vim.cmd(string.format("b %s", vim.api.nvim_create_buf(false, true)))
@@ -71,10 +70,6 @@ vim.api.nvim_create_user_command('Write', function() -- so that :W work -_-
 end, {bang = true, bar = true})
 
 vim.api.nvim_create_user_command('Dtrailing', extra_func.delete_trailing, {bang = true, bar = true})
-
-vim.api.nvim_create_user_command('Qfix', function()
-    vim.cmd "vsplit | vertical resize 65 | copen | set nowrap | wincmd k | close"
-end, {bang = true, bar = true})
 
 vim.api.nvim_create_user_command('HTMLInit', function()
     vim.api.nvim_buf_set_text(0, 0, 0, 0, 0, {
