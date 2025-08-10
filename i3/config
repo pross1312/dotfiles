@@ -45,7 +45,8 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec --no-startup-id st
+set $terminal st
+bindsym $mod+Return exec --no-startup-id $terminal
 # bindsym $mod+Return exec terminator
 
 # kill focused window
@@ -218,7 +219,7 @@ bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 5%- # decre
 # bindsym XF86AudioPrev exec playerctl previous
 
 # add shutdown
-set $Locker i3lock -i /usr/share/background/0577d98a03b6774bdccef3b57b3f02bc.jpg
+set $Locker i3lock -i "/usr/share/background/firewatch.jpg"
 
 set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown
 bindsym $mod+Shift+Escape mode "$mode_system"
@@ -244,7 +245,7 @@ bindsym --release Shift+Print exec --no-startup-id gnome-screenshot -afB /tmp/te
 
 hide_edge_borders both
 # workspace_auto_back_and_forth yes
-# exec_always sh -c '/usr/bin/feh --bg-fill "/usr/share/background/0577d98a03b6774bdccef3b57b3f02bc.jpg"'
+# exec_always sh --no-startup-id "~/programming/dotfiles/setup.sh" "/usr/share/background/4K Ultra HD wallpaper for pc.jpg"
 exec_always sh -c 'xinput set-prop "MSFT0002:00 04F3:31BE Mouse" "libinput Natural Scrolling Enabled" 0'
 exec_always sh -c 'xinput set-prop "MSFT0002:00 04F3:31BE Touchpad" "libinput Tapping Enabled" 1'
 exec_always sh -c 'xinput set-prop "MSFT0002:00 04F3:31BE Touchpad" "libinput Natural Scrolling Enabled" 1'
@@ -256,6 +257,6 @@ exec_always sh -c 'xmodmap -e "keysym Caps_Lock = Control_L"'
 exec_always sh -c 'xmodmap -e "add Lock = Caps_Lock"'
 exec sh -c 'picom -b'
 exec sh -c 'fcitx5 -d'
-
+exec --no-startup-id $terminal
 # to turn off capslock in extreme case
 # python -c 'from ctypes import *; X11 = cdll.LoadLibrary("libX11.so.6"); display = X11.XOpenDisplay(None); X11.XkbLockModifiers(display, c_uint(0x0100), c_uint(2), c_uint(0)); X11.XCloseDisplay(display)'
