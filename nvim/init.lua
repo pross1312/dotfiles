@@ -10,9 +10,9 @@ vim.fn.is_module_available = function(module)
     end
 end
 
+vim.cmd("source " .. vim.fn.stdpath('config') .. "/options.vim")
 require 'plugins'
 require 'ftdetect'
-vim.cmd("source " .. vim.fn.stdpath('config') .. "/options.vim")
 vim.cmd 'cabbrev mkae make'
 
 vim.api.nvim_create_autocmd('TermEnter', {
