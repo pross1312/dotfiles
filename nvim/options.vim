@@ -200,3 +200,5 @@ tnoremap <M-l> <C-\><C-n><C-w>l
 " Open a new terminal split with Alt-S and Alt-V
 tnoremap <M-s> <C-\><C-n><cmd>split \| term<CR>i
 tnoremap <M-v> <C-\><C-n><cmd>vertical split \| term<CR>i
+
+call SetColor('slate')
