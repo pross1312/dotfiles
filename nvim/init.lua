@@ -12,17 +12,41 @@ end
 
 vim.cmd("source " .. vim.fn.stdpath('config') .. "/options.vim")
 require 'plugins'
-require 'keymap'
-require 'autocmd'
 require 'ftdetect'
 vim.cmd 'cabbrev mkae make'
 
-vim.fn.SetColor 'kanagawa'
+vim.fn.SetColor 'slate'
 
-local extra_func = require 'extra-function'
-vim.api.nvim_create_user_command('Brun', extra_func.build_and_run_cmd, {bang = true, bar = true, nargs = '?', complete = 'file'})
--- vim.api.nvim_create_user_command('GConflict', function()
---     vim.cmd [[vimgrep "<<<<<<< HEAD\(.*\n\)*=======\(.*\n\)*>>>>>>> .*\n" **/*]]
+vim.api.nvim_create_autocmd('TermEnter', {
+    callback = function()
+        vim.fn.clearmatches(0)
+    end
+})
+
+vim.api.nvim_create_autocmd('VimEnter', {
+    callback = function(_)
+        local buf_name = vim.fn.bufname(0)
+        if vim.fn.isdirectory(buf_name) == 1 then
+            vim.cmd("cd "..buf_name)
+        end
+        vim.g.root_dir = vim.fn.getcwd()
+    end
+})
+
+vim.keymap.set('n', '<leader>jr', function()
+    print(vim.g.root_dir)
+    vim.cmd(string.format("cd %s", vim.g.root_dir))
+end, {})
+
+vim.keymap.set('n', '<leader>jc', function()
+    local dir = vim.fn.expand("%:p:h")
+    if vim.fn.isdirectory(dir) == 1 then
+        vim.cmd(string.format("cd %s", dir))
+        print(dir)
+    else
+        vim.api.nvim_err_writeln('No directory found')
+    end
+end, {})
 
 vim.api.nvim_create_user_command('Conflict', function()
     local obj = vim.system({"git", "--no-pager", "diff", "--no-color", "--check", "--relative"}, {text = true}):wait();
@@ -69,21 +93,10 @@ vim.api.nvim_create_user_command('Write', function() -- so that :W work -_-
     vim.cmd "write"
 end, {bang = true, bar = true})
 
-vim.api.nvim_create_user_command('Dtrailing', extra_func.delete_trailing, {bang = true, bar = true})
-
-vim.api.nvim_create_user_command('HTMLInit', function()
-    vim.api.nvim_buf_set_text(0, 0, 0, 0, 0, {
-    '<!DOCTYPE html>',
-    '<html lang="en">',
-    '<head>',
-    '    <meta charset="UTF-8">',
-    '    <meta name="viewport" content="width=device-width, initial-scale=1.0">',
-    '    <title>Document</title>',
-    '</head>',
-    '<body>',
-    '    ',
-    '</body>',
-    '</html>'})
+vim.api.nvim_create_user_command('Dtrailing', function()
+    local view = vim.fn.winsaveview()
+    vim.cmd "%s/ *$// | %s/\\n*\\%$// | nohl"
+    vim.fn.winrestview(view)
 end, {bang = true, bar = true})
 
 vim.api.nvim_create_user_command('MIT', function()

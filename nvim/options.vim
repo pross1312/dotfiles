@@ -32,6 +32,7 @@ set matchtime=2
 set sw=4
 set novisualbell
 set nowrap
+set nowrapscan
 set nospell
 set cmdheight=1
 set hlsearch
@@ -91,20 +92,6 @@ function! SetColor(name)
     hi! TodoBgTODO guibg=#BF0606 guifg=#560303 gui=bold
     hi! TodoBgNOTE guibg=#BF0606 guifg=#560303 gui=bold
     hi! TodoBgFIX guibg=#BF0606 guifg=#560303 gui=bold
-    """ neogit
-    """ hi! NeogitCursorLine guibg=NONE
-    """ hi! NeogitDiffAddHighlight guibg=NONE
-    """ hi! link NeogitDiffAdd NeogitDiffAddHighlight
-    """ hi! link NeogitDiffAddRegion NeogitDiffAdd
-
-    """ hi! NeogitDiffDeleteHighlight guifg=#bc4650 guibg=NONE
-    """ hi! link NeogitDiffDelete NeogitDiffDeleteHighlight
-    """ hi! link NeogitDiffDeleteRegion NeogitDiffDelete
-    """ hi! NeogitHunkHeader guibg=NONE guifg=#09867D gui=bold,italic
-    """ hi! link NeogitHunkHeaderHighlight NeogitHunkHeader
-    """ hi! NeogitDiffContext guibg=NONE
-    """ hi! NeogitDiffContextHighlight guibg=NONE
-    """ terminal config
     let g:terminal_color_0 = '#7D8EB0'
     let g:terminal_color_1 = '#f7768e'
     let g:terminal_color_2 = '#9ece6a'
@@ -174,6 +161,28 @@ cnoremap <C-b> <Left>
 cnoremap <M-b> <S-Left>
 cnoremap <M-f> <S-Right>
 cnoremap <C-k> <C-O>D<C-C>
+autocmd CmdWinEnter nnoremap <buffer> <C-O> <C-C>
+autocmd CmdWinLeave nnoremap <C-C> <Esc>
+
+augroup buf_large
+    autocmd!
+    autocmd BufRead * call s:CheckLargeFile()
+augroup END
+
+function! s:CheckLargeFile() abort
+    let l:fname = expand('%:p')
+    if filereadable(l:fname)
+        let l:size = getfsize(l:fname)
+        if l:size > 1 * 1024 * 1024
+            let b:large_buf = 1
+            syntax clear
+            setlocal foldmethod=manual
+            setlocal nospell
+        else
+            let b:large_buf = 0
+        endif
+    endif
+endfunction
 
 " Tab switching with Alt + numbers (1-9)
 for i in range(1, 9)
