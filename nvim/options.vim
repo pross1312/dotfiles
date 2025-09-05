@@ -66,9 +66,13 @@ set undofile
 set undodir-=.
 if has('win32') || has('win64')
     if executable('pwsh')
-        set shell=pwsh
+        set shell=pwsh\ -NoLogo
+        set shellcmdflag=-NoLogo\ -NoProfile\ -NonInteractive\ -ExecutionPolicy\ RemoteSigned\ -OutputFormat\ Text\ -Command\ $PSStyle.OutputRendering\ =\ [System.Management.Automation.OutputRendering]::PlainText;
+        set shellxquote=
     elseif executable('powershell')
         set shell=powershell
+        set shellcmdflag=-NoLogo\ -NoProfile\ -NonInteractive\ -ExecutionPolicy\ RemoteSigned\ -OutputFormat\ Text\ -Command
+        set shellxquote=
     else
         set shell=cmd
     endif
