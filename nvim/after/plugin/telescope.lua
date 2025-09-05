@@ -1,4 +1,3 @@
-
 if vim.fn.is_module_available('telescope') then
 
 require('telescope').setup({
@@ -38,7 +37,7 @@ require('telescope').setup({
 })
 local actions = require('telescope.actions')
 local builtin = require('telescope.builtin')
-vim.keymap.set('n', '<M- >', builtin.find_files, {silent = true})
+vim.keymap.set('n', '<M-/>', builtin.find_files, {silent = true})
 vim.keymap.set('n', '<M-b>', function()
     builtin.buffers({
         ignore_current_buffer = true,
@@ -56,7 +55,7 @@ end, {silent = true})
 vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
 vim.keymap.set('n', '<leader>re', builtin.registers, {})
 if vim.g.neovide then vim.keymap.set('c', '<C-/>', builtin.command_history, {})
-else vim.keymap.set('c', '<C-_>', builtin.command_history, {}) end
+else vim.keymap.set('c', '<C-/>', builtin.command_history, {}) end
 
 
 end

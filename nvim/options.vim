@@ -65,10 +65,16 @@ let g:netrw_list_hide='.*\\.swp$,node_modules/,.git/'
 set undofile
 set undodir-=.
 if has('win32') || has('win64')
-    set shell=powershell
-    set undodir+=~/AppData/Local/Temp
+    if executable('pwsh')
+        set shell=pwsh
+    elseif executable('powershell')
+        set shell=powershell
+    else
+        set shell=cmd
+    endif
+    set undodir=~/AppData/Local/Temp
 else
-    set undodir+=/tmp
+    set undodir=/tmp
 endif
 function! SetColor(name)
     set background=dark
@@ -161,11 +167,12 @@ cnoremap <C-b> <Left>
 cnoremap <M-b> <S-Left>
 cnoremap <M-f> <S-Right>
 cnoremap <C-k> <C-O>D<C-C>
-autocmd CmdWinEnter nnoremap <buffer> <C-O> <C-C>
-autocmd CmdWinLeave nnoremap <C-C> <Esc>
+
+autocmd! CmdWinEnter * nnoremap <buffer> <C-o> <C-C>
+
+autocmd! CmdWinLeave * nnoremap <C-c> <Esc>
 
 augroup buf_large
-    autocmd!
     autocmd BufRead * call s:CheckLargeFile()
 augroup END
 
@@ -175,7 +182,7 @@ function! s:CheckLargeFile() abort
         let l:size = getfsize(l:fname)
         if l:size > 1 * 1024 * 1024
             let b:large_buf = 1
-            syntax clear
+            setfiletype nosyntax
             setlocal foldmethod=manual
             setlocal nospell
         else
