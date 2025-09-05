@@ -104,3 +104,29 @@ function mklink {
         }
 }
 
+function downfile([string]$url, [string]$dir, [string]$filename) {
+    if (-not $filename) {
+        $filename = [System.IO.Path]::GetFileName('https://raw.githubusercontent.com/tsoding/nob.h/refs/heads/main/nob.h')
+    }
+    if (-not $dir) {
+        $dir = "."
+    }
+    invoke-webrequest $url -outfile "$dir/$filename"
+}
+
+function prompt {
+    write-host -foregroundcolor green "$pwd " -nonewline
+    write-host -foregroundcolor red "$env:USERNAME " -nonewline
+    $branch = & git rev-parse --abbrev-ref HEAD
+    if ($lastexitcode -ne 0) {
+        write-host
+    } else {
+        write-host -foregroundcolor blue $branch
+    }
+    "> "
+}
+
+function dev-env() {
+    Import-Module "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\Common7\Tools\Microsoft.VisualStudio.DevShell.dll"
+    Enter-VsDevShell -VsInstallPath "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools" -SkipAutomaticLocation -DevCmdArguments "-arch=x64 -host_arch=x64"
+}
