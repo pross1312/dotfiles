@@ -120,16 +120,16 @@ function __setprompt
     local SSH_IP=`echo $SSH_CLIENT | awk '{ print $1 }'`
     local SSH2_IP=`echo $SSH2_CLIENT | awk '{ print $1 }'`
     # PS1+="\[${RED}\]\u"
-    PS1+="\[${LIGHTGREEN}\][\w]\[${DARKGRAY}\] "
+    PS1+="\[${GREEN}\]\w \[${DARKGRAY}\] "
     if [ $SSH2_IP ] || [ $SSH_IP ] ; then
         PS1+="\[${RED}\]\u@\h"
     else
-        PS1+="\[${RED}\]\u\[${BLUE}\]@\h"
+        PS1+="\[${LIGHTRED}\]\u\[${LIGHTBLUE}\]@\[${LIGHTRED}\]\h"
     fi
 
     local git_branch=$(parse_git_branch)
     if [ "$git_branch" ] ; then
-        PS1+="\[${DARKGRAY}\]::\[${LIGHTRED}\]\$(parse_git_branch)\[\033[00m\]"
+        PS1+=" \[${LIGHTBLUE}\]\$(parse_git_branch)\[\033[00m\]"
     fi
     PS1+="\n"
     PS1+="\[${GREEN}\]>\[${NOCOLOR}\] "
