@@ -53,4 +53,5 @@ white   = "#c5c8c6"
 [keyboard]
 bindings = [
     { key = "A", mode = "Vi", action = "ToggleViMode" },
+    { key = "I", mode = "Vi", action = "ToggleViMode" },
 ]

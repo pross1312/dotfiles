@@ -255,8 +255,8 @@ exec_always sh -c 'setxkbmap -option ctrl:nocaps'
 exec_always sh -c 'xmodmap -e "remove Lock = Caps_Lock"'
 exec_always sh -c 'xmodmap -e "keysym Caps_Lock = Control_L"'
 exec_always sh -c 'xmodmap -e "add Lock = Caps_Lock"'
-exec sh -c 'picom -b'
-exec sh -c 'fcitx5 -d'
+exec picom -b
+exec fcitx5 -d
 exec --no-startup-id $terminal
 # to turn off capslock in extreme case
 # python -c 'from ctypes import *; X11 = cdll.LoadLibrary("libX11.so.6"); display = X11.XOpenDisplay(None); X11.XkbLockModifiers(display, c_uint(0x0100), c_uint(2), c_uint(0)); X11.XCloseDisplay(display)'

@@ -206,3 +206,4 @@ lazygit() { # work around for symlinks
     cd $(readlink -f .)
     /usr/local/bin/lazygit "$@"
 }
+alias clip="xclip -selection clipboard"

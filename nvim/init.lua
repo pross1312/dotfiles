@@ -31,6 +31,8 @@ vim.api.nvim_create_autocmd('VimEnter', {
     end
 })
 
+vim.keymap.set('n', '<M-r>', '<cmd>make<cr>', {})
+
 vim.keymap.set('n', '<leader>jr', function()
     print(vim.g.root_dir)
     vim.cmd(string.format("cd %s", vim.g.root_dir))
@@ -45,6 +47,10 @@ vim.keymap.set('n', '<leader>jc', function()
         vim.api.nvim_err_writeln('No directory found')
     end
 end, {})
+vim.api.nvim_create_user_command('Build', function(in_opt)
+    vim.opt.makeprg = in_opt.args
+    vim.cmd "make"
+end, {nargs = "*", complete = "shellcmdline"})
 
 vim.api.nvim_create_user_command('Conflict', function()
     local obj = vim.system({"git", "--no-pager", "diff", "--no-color", "--check", "--relative"}, {text = true}):wait();
