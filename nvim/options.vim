@@ -24,7 +24,7 @@ set splitright
 set cursorline
 set shortmess=aoOtTWIcF
 set report=10000
-set history=50
+set history=500
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
@@ -136,6 +136,12 @@ nnoremap <M-h> <C-w>h
 nnoremap <M-j> <C-w>j
 nnoremap <M-k> <C-w>k
 nnoremap <M-l> <C-w>l
+if !has('nvim')
+    silent! execute "set <M-h>=\<Esc>h"
+    silent! execute "set <M-j>=\<Esc>j"
+    silent! execute "set <M-k>=\<Esc>k"
+    silent! execute "set <M-l>=\<Esc>l"
+endif
 
 nnoremap <C-L> <Cmd>nohlsearch<CR>
 
@@ -172,10 +178,6 @@ autocmd! CmdWinEnter * nnoremap <buffer> <C-o> <C-C>
 
 autocmd! CmdWinLeave * nnoremap <C-c> <Esc>
 
-augroup buf_large
-    autocmd BufRead * call s:CheckLargeFile()
-augroup END
-
 function! s:CheckLargeFile() abort
     let l:fname = expand('%:p')
     if filereadable(l:fname)
@@ -190,6 +192,10 @@ function! s:CheckLargeFile() abort
         endif
     endif
 endfunction
+
+augroup buf_large
+    autocmd BufRead * call s:CheckLargeFile()
+augroup END
 
 " Tab switching with Alt + numbers (1-9)
 for i in range(1, 9)
