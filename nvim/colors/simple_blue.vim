@@ -9,6 +9,9 @@ let s:strings      = "#51cf66"
 let s:numbers      = "#51a5cf"
 let s:comments     = "#868e96"
 let s:line_number  = "#535b63"
+let s:error_msg    = "#ffc0b9"
+let s:ok_msg       = s:strings
+let s:warn_msg     = "#fce094"
 
 let s:visual       = "#095277"
 let s:visual_text  = "#eaeaea"
@@ -92,8 +95,14 @@ call s:hi('TabLine', '', s:tabline, '')
 call s:hi('TabLineSel', s:background, s:tabline_sel, 'bold')
 call s:hi('TabLineFill')
 call s:hi('Title', '', '', 'bold')
-call s:hi('ModeMsg', s:strings)
+call s:hi('ModeMsg', s:ok_msg, '', 'bold')
+call s:hi('DiagnosticOk', s:ok_msg, '', 'bold')
+call s:hi('DiagnosticError', s:error_msg, '', 'bold')
+call s:hi('DiagnosticWarn', s:warn_msg, '', 'bold')
 
+" call s:hlink('MoreMsg',         'Normal')
+call s:hlink('WarningMsg',      'DiagnosticWarn')
+call s:hlink('ErrorMsg',        'DiagnosticError')
 call s:hlink('DiffAdd',         'Added')
 call s:hlink('Directory',       'Keyword')
 call s:hlink('DiffChange',      'Changed')
