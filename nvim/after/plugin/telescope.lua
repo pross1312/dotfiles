@@ -32,7 +32,7 @@ require('telescope').setup({
             treesitter = false,
         },
         path_display = {'shorten', shorten = { len = 1, exclude = {-2, -1, -3} }},
-        file_ignore_patterns = {"node_modules/", ".git/", "target/", "build/"},
+        file_ignore_patterns = {"node_modules[/\\]", ".git[/\\]", "target[/\\]", "build[/\\]", ".obj$"},
     },
 })
 local actions = require('telescope.actions')

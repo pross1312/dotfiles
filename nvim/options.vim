@@ -182,6 +182,10 @@ autocmd! CmdWinEnter * nnoremap <buffer> <C-o> <C-C>
 
 autocmd! CmdWinLeave * nnoremap <C-c> <Esc>
 
+if has('nvim')
+    autocmd BufEnter * set! nowinfixbuf
+endif
+
 function! s:CheckLargeFile() abort
     let l:fname = expand('%:p')
     if filereadable(l:fname)
@@ -198,6 +202,7 @@ function! s:CheckLargeFile() abort
 endfunction
 
 augroup buf_large
+    autocmd BufReadPre * call s:CheckLargeFile()
     autocmd BufRead * call s:CheckLargeFile()
 augroup END
 

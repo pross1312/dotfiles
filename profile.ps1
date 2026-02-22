@@ -106,7 +106,7 @@ function mklink {
 
 function downfile([string]$url, [string]$dir, [string]$filename) {
     if (-not $filename) {
-        $filename = [System.IO.Path]::GetFileName('https://raw.githubusercontent.com/tsoding/nob.h/refs/heads/main/nob.h')
+        $filename = [System.IO.Path]::GetFileName($url)
     }
     if (-not $dir) {
         $dir = "."
