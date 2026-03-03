@@ -76,7 +76,10 @@ if has('win32') || has('win64')
     else
         set shell=cmd
     endif
-    set undodir=~/AppData/Local/Temp
+    let &undodir = expand('~') . '\AppData\Local\Temp'
+    if !isdirectory(&undodir)
+        call mkdir(&undodir, 'p')
+    endif
 else
     set undodir=/tmp
 endif

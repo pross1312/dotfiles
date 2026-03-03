@@ -14,7 +14,6 @@ vim.cmd("source " .. vim.fn.stdpath('config') .. "/options.vim")
 require 'plugins'
 require 'ftdetect'
 vim.cmd 'cabbrev mkae make'
-vim.fn.SetColor('kanagawa-dragon')
 
 vim.api.nvim_create_autocmd('TermEnter', {
     callback = function()
