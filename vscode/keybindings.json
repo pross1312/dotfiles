@@ -26,6 +26,11 @@
         "when": "editorTextFocus"
     },
     {
+        "key": "ctrl+p",
+        "command": "editor.action.insertCursorAtEndOfEachLineSelected",
+        "when": "editorTextFocus && editorHasSelection"
+    },
+    {
         "key": "ctrl+shift+j",
         "command": "-workbench.action.search.toggleQueryDetails",
         "when": "inSearchEditor || searchViewletFocus"
@@ -43,10 +48,6 @@
     {
         "key": "ctrl+n",
         "command": "-workbench.action.files.newUntitledFile"
-    },
-    {
-        "key": "alt+space",
-        "command": "workbench.action.quickOpen",
     },
     {
         "key": "ctrl+p",
@@ -87,4 +88,65 @@
         "command": "workbench.action.closeQuickOpen",
         "when": "inQuickOpen"
     },
+    {
+        "key": "alt+f",
+        "when": "!terminalFocus",
+        "command": "workbench.action.quickOpen"
+    },
+    {
+        "key": "ctrl+e",
+        "command": "-workbench.action.quickOpen"
+    },
+    {
+        "key": "ctrl+k",
+        "command": "noop",
+        "when": "terminalFocus"
+    },
+    {
+        "key": "ctrl+f",
+        "command": "noop",
+        "when": "terminalFocus"
+    },
+    {
+        "key": "ctrl+alt+b",
+        "command": "workbench.action.toggleSidebarVisibility"
+    },
+    {
+        "key": "ctrl+shift+k",
+        "when": "terminalFocus",
+        "command": "workbench.action.terminal.scrollUpPage"
+    },
+    {
+        "key": "ctrl+shift+j",
+        "when": "terminalFocus",
+        "command": "workbench.action.terminal.scrollDownPage"
+    },
+    {
+        "key": "ctrl+m",
+        "command": "noop"
+    },
+    {
+        "key": "ctrl+shift+w",
+        "command": "noop"
+    },
+    {
+        "key": "ctrl+alt+i",
+        "command": "-workbench.panel.chat",
+        "when": "workbench.panel.chat.view.copilot.active"
+    },
+    {
+        "key": "ctrl+alt+j",
+        "command": "search.action.focusNextSearchResult",
+        "when": "hasSearchResult && (editorTextFocus || searchResultListFocused || searchInputBoxFocus || hasSearchResult)"
+    },
+    {
+        "key": "ctrl+alt+k",
+        "command": "search.action.focusPreviousSearchResult",
+        "when": "hasSearchResult && (editorTextFocus || searchResultListFocused || searchInputBoxFocus)"
+    },
+    {
+        "key": "ctrl+shift+g",
+        "command": "workbench.view.extension.gitlensInspect",
+        "when": "workbench.scm.active"
+    }
 ]

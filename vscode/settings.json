@@ -1,12 +1,32 @@
 {
+    "git.blame.statusBarItem.template": "(${authorDateAgo}) [${authorName}] ${subject}",
+    "files.exclude": {
+        "**/.git": true,
+        "**/.svn": true,
+        "**/.hg": true,
+        "**/CVS": true,
+        "**/.DS_Store": true,
+        "**/Thumbs.db": true,
+        "**/target/debug/*": true,
+        "**/target/release/*": true,
+    },
     "window.titleBarStyle": "custom",
+    "window.customMenuBarAltFocus": false,
+    "window.enableMenuBarMnemonics": false,
     "workbench.sideBar.location": "right",
-    "editor.fontSize": 20,
-    "editor.fontFamily": "Terminator",
-    "terminal.integrated.fontSize": 20,
-    "terminal.integrated.fontFamily": "Terminator",
+    "editor.fontSize": 14,
+    // "editor.fontFamily": "Spleen 32x64",
+    "editor.fontFamily": "Iosevka Term",
+    // "editor.fontFamily": "Comic Mono",
+    // "editor.fontFamily": "Cascadia Code",
+    // "editor.fontFamily": "Terminus",
+    "terminal.integrated.fontSize": 14,
+    // "terminal.integrated.fontFamily": "Iosevka Term",
+    // "terminal.integrated.fontFamily": "Terminus",
+    "terminal.integrated.fontFamily": "Iosevka Term",
     "files.autoSave": "afterDelay",
-    "editor.inlayHints.enabled": "off",
+    "files.autoSaveDelay": 5000,
+    "files.simpleDialog.enable": true,
     // "maven.terminal.useJavaHome": true, // "C_Cpp.formatting": "vcFormat",
     // "java.configuration.runtimes": [
     //     {
@@ -27,6 +47,73 @@
     // ],
     // "terminal.explorerKind": "external",
     "security.workspace.trust.untrustedFiles": "open",
+    "editor.inlayHints.enabled": "off",
+    // "editor.parameterHints.enabled": false,
+    "editor.autoClosingOvertype": "never",
+    "editor.suggest.snippetsPreventQuickSuggestions": true,
+    "editor.quickSuggestions": {
+        "other": "on",
+        "comments": "off",
+        "strings": "off"
+    },
+    "editor.autoClosingDelete": "never",
+    "editor.trimAutoWhitespace": true,
+    "files.trimFinalNewlines": false,
+    "editor.inlineSuggest.edits.codeShifting": false,
+    "editor.inlineSuggest.enabled": false,
+    "editor.snippetSuggestions": "none",
+    "editor.autoSurround": "never",
+    "editor.parameterHints.cycle": false,
+    "editor.semanticTokenColorCustomizations": {
+        "rules": {
+            "*": {
+                "fontStyle": "",
+            }
+        }
+    },
+    "editor.tokenColorCustomizations": {
+        "textMateRules": [
+            {
+                "scope": "variable.parameter.cpp",
+                "settings": {
+                    "fontStyle": ""
+                }
+            },
+        ]
+    },
+    "rust-analyzer.inlayHints.closingBraceHints.enable": false,
+    "rust-analyzer.completion.callable.snippets": "none",
+    "editor.snippets.codeActions.enabled": false,
+    "editor.suggest.showSnippets": false,
+    "rust-analyzer.completion.autoimport.exclude": [
+        {
+            "path": "*",
+            "type": "always"
+        },
+    ],
+    "rust-analyzer.completion.postfix.enable": false,
+    "rust-analyzer.completion.autoimport.enable": false,
+    "rust-analyzer.completion.addSemicolonToUnit": false,
+    "rust-analyzer.completion.autoAwait.enable": false,
+    "rust-analyzer.hover.actions.enable": false,
+    "rust-analyzer.hover.actions.run.enable": false,
+    "rust-analyzer.hover.actions.debug.enable": false,
+    "rust-analyzer.lens.run.enable": false,
+    "rust-analyzer.lens.debug.enable": false,
+    "rust-analyzer.hover.actions.implementations.enable": false,
+    "rust-analyzer.lens.implementations.enable": false,
+    "rust-analyzer.completion.snippets.custom": {
+    },
+    "rust-analyzer.inlayHints.parameterHints.enable": false,
+    "rust-analyzer.inlayHints.typeHints.enable": false,
+    "rust-analyzer.inlayHints.closingBraceHints.minLines": 0,
+    "notebook.output.textLineLimit": 100,
+    "C_Cpp.vcFormat.indent.lambdaBracesWhenParameter": false,
+    "C_Cpp.vcFormat.newLine.beforeOpenBrace.function": "newLine",
+    "C_Cpp.errorSquiggles": "enabled",
+    "[python]": {
+        "editor.formatOnType": false
+    },
     // "python.autoComplete.extraPaths": [
     //     "c:\\users\\dvtuong\\appdata\\roaming\\python\\python310\\site-packages\\*",
     // ],
@@ -35,32 +122,15 @@
     // ],
     // "python.defaultInterpreterPath": "C:\\Program Files\\Python310\\python.exe",
     "python.analysis.autoImportCompletions": true,
-    "notebook.output.textLineLimit": 100,
-    "C_Cpp.vcFormat.indent.lambdaBracesWhenParameter": false,
-    "C_Cpp.vcFormat.newLine.beforeOpenBrace.function": "newLine",
-    "C_Cpp.errorSquiggles": "enabled",
-    "[python]": {
-        "editor.formatOnType": true
-    },
-    "files.autoSaveDelay": 1000,
-    "editor.tokenColorCustomizations": {
-        "textMateRules": [
-            {
-                "scope": "variable.parameter.cpp",
-                "settings": {
-                    "fontStyle": ""
-                }
-            }
-        ]
-    },
     "github.gitProtocol": "ssh",
-    "git.openRepositoryInParentFolders": "prompt",
-    "terminal.integrated.defaultProfile.windows": "Windows PowerShell",
+    "git.openRepositoryInParentFolders": "never",
+    "terminal.integrated.defaultProfile.windows": "PowerShell",
+    "terminal.integrated.bellDuration": 0,
     "workbench.colorCustomizations": {
         // "editor.lineHighlightBackground": "#00000000",
     },
     "editor.lineNumbers": "relative",
-    "window.zoomLevel": 1,
+    "window.zoomLevel": 0,
     "editor.guides.indentation": false,
     "editor.occurrencesHighlight": "off",
     "editor.renderLineHighlight": "none",
@@ -69,29 +139,35 @@
     "editor.autoClosingQuotes": "never",
     "editor.cursorBlinking": "solid",
     "editor.acceptSuggestionOnEnter": "off",
-    "editor.wordBasedSuggestions": "off",
+    "editor.wordBasedSuggestions": "matchingDocuments",
     "editor.semanticHighlighting.enabled": true,
     "editor.detectIndentation": true,
     "redhat.telemetry.enabled": false,
-    "editor.minimap.enabled": false,
     "editor.hideCursorInOverviewRuler": true,
     "editor.scrollbar.horizontal": "hidden",
     "editor.scrollbar.vertical": "hidden",
     "editor.scrollbar.verticalScrollbarSize": 0,
     "editor.scrollbar.horizontalScrollbarSize": 0,
-    "workbench.colorTheme": "Kanagawa Dragon",
-    "editor.suggest.insertMode": "insert",
-    "editor.stickyScroll.enabled": false,
     "task.quickOpen.showAll": true,
-    "search.quickOpen.includeHistory": false,
+    "search.quickOpen.includeHistory": true,
     "editor.cursorSurroundingLines": 8,
-
+    "telemetry.telemetryLevel": "off",
+    "gitlens.telemetry.enabled": false,
+    "python.analysis.enablePerfTelemetry": false,
+    "github.copilot.chat.codeGeneration.useInstructionFiles": true,
+    "github.copilot.chat.codeGeneration.instructions": [
+        {
+            "file": ".vscode/copilot-instructions.md",
+        }
+    ],
+    "editor.experimental.treeSitterTelemetry": false,
+    "sonarlint.disableTelemetry": true,
     "vim.easymotion": true,
     "vim.incsearch": true,
     "vim.surround": true,
-    "vim.history": 100,
+    "vim.history": 2000,
     "vim.wrapscan": false,
-    "vim.useSystemClipboard": true,
+    "vim.useSystemClipboard": false,
     "vim.useCtrlKeys": true,
     "vim.hlsearch": false,
     "vim.insertModeKeyBindings": [
@@ -144,6 +220,11 @@
             "before": ["K"],
             "commands": ["editor.action.showDefinitionPreviewHover"]
         },
+        {
+            "before": ["<C-w>", "C"],
+            "commands": ["openEditors.closeAll"],
+            "silent": true,
+        },
         // {
         //     "before": [" ", " "],
         //     "commands": ["workbench.action.quickOpen"],
@@ -166,7 +247,59 @@
         "<C-n>": true,
         "<C-p>": false,
         "<C-w>": true,
-        "<C-k>": true,
+        "<C-k>": false
     },
-    "typescript.updateImportsOnFileMove.enabled": "always",
+    "sonarlint.connectedMode.connections.sonarqube": [
+        {
+            "serverUrl": "https://sonar.opswat.com",
+            "connectionId": "https-sonar-opswat-com-"
+        }
+    ],
+    "editor.wordWrap": "on",
+    "cmake.configureOnOpen": false,
+    "cmake.configureOnEdit": false,
+    "editor.suggest.insertMode": "insert",
+    "[shellscript]": {
+        "editor.wordBasedSuggestions": "allDocuments",
+    },
+    "[cpp]": {
+        "editor.wordBasedSuggestions": "allDocuments",
+        "editor.semanticHighlighting.enabled": true,
+        "editor.stickyScroll.defaultModel": "foldingProviderModel",
+        "editor.suggest.insertMode": "insert"
+    },
+    "[json]": {
+        "editor.suggest.insertMode": "insert"
+    },
+    "workbench.layoutControl.enabled": false,
+    "window.menuBarVisibility": "toggle",
+    "remote.SSH.remotePlatform": {
+        "192.168.10.122": "linux",
+        "dvtuong:192.168.10.122": "linux",
+        "root:192.168.10.122": "linux",
+        "dvtuong122": "linux",
+        "window": "windows",
+        "window152": "windows",
+        "window71": "windows",
+        "root142": "linux",
+        "root122": "linux"
+    },
+    "workbench.startupEditor": "none",
+    "extensions.ignoreRecommendations": true,
+    "sonarlint.rules": {
+        "cpp:S5421": {
+            "level": "off"
+        }
+    },
+    "editor.multiCursorModifier": "ctrlCmd",
+    "git.blame.statusBarItem.enabled": true,
+    "git.blame.editorDecoration.enabled": false,
+    "gitlens.currentLine.enabled": false,
+    "gitlens.hovers.currentLine.over": "line",
+    "workbench.colorTheme": "Visual Studio Dark",
+    "workbench.editorAssociations": {
+        "git-rebase-todo": "default"
+    },
+    "gitlens.graph.layout": "editor",
+    "editor.stickyScroll.enabled": false
 }

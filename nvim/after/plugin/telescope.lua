@@ -37,7 +37,7 @@ require('telescope').setup({
 })
 local actions = require('telescope.actions')
 local builtin = require('telescope.builtin')
-vim.keymap.set('n', '<M-/>', builtin.find_files, {silent = true})
+vim.keymap.set('n', '<M-f>', builtin.find_files, {silent = true})
 vim.keymap.set('n', '<M-b>', function()
     builtin.buffers({
         ignore_current_buffer = true,
