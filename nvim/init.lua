@@ -48,7 +48,7 @@ vim.keymap.set('n', '<leader>jc', function()
     end
 end, {})
 vim.api.nvim_create_user_command('Build', function(in_opt)
-    vim.opt.makeprg = in_opt.args
+    vim.opt.makeprg = "(" .. in_opt.args .. ")"
     vim.cmd "make"
 end, {nargs = "*", complete = "shellcmdline"})
 
@@ -81,7 +81,7 @@ vim.api.nvim_create_user_command('Color',
             function(data) vim.fn.SetColor(data.fargs[1]) end,
             {bang = true, bar = true, nargs = 1, complete = 'color'})
 
-vim.api.nvim_create_user_command('Scratch', function()
+vim.api.nvim_create_user_command('Temp', function()
     if vim.g.scratch_buffer == nil then
         vim.cmd(string.format("b %s", vim.api.nvim_create_buf(false, true)))
         vim.g.scratch_buffer = vim.fn.bufnr()

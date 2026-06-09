@@ -92,13 +92,14 @@ function! SetColor(name)
     hi! link StatusLineNC normal
     hi! clear CursorLine
     """ hi! MatchParen guifg=#ff0000 guibg=none
-    hi! clear Cursor
-    hi! Cursor guibg=#ffffff guifg=#000000
+    hi! Cursor guibg=#ffffff guifg=#000000 gui=None
     hi! clear TermCursor
     hi! link TermCursor Cursor
     hi! TermCursorNC guifg=#1c1917 guibg=#797f84
     """ hi Normal guifg=#ffffff
     hi! link VM_Mono Cursor
+    hi! link VM_Extend Visual
+    hi! link VM_Cursor Cursor
     hi! TodoFgTODO guifg=#8a8a8a
     hi! TodoFgNOTE guifg=#8a8a8a
     hi! TodoFgFIX guifg=#8a8a8a
@@ -211,9 +212,9 @@ augroup END
 
 " Tab switching with Alt + numbers (1-9)
 for i in range(1, 9)
-    execute 'nnoremap <M-' . i . '> ' . i . 'gt'
-    execute 'tnoremap <M-' . i . '> <C-\><C-n>' . i . 'gti'
-    execute 'inoremap <M-' . i . '> <Esc>' . i . 'gt'
+    execute 'nnoremap <C-' . i . '> ' . i . 'gt'
+    execute 'tnoremap <C-' . i . '> <C-\><C-n>' . i . 'gti'
+    execute 'inoremap <C-' . i . '> <Esc>' . i . 'gt'
 endfor
 
 " Terminal mode window navigation with Alt + hjkl
@@ -226,4 +227,4 @@ tnoremap <M-l> <C-\><C-n><C-w>l
 tnoremap <M-s> <C-\><C-n><cmd>split \| term<CR>i
 tnoremap <M-v> <C-\><C-n><cmd>vertical split \| term<CR>i
 
-call SetColor('simple_blue')
+call SetColor('vsdark')

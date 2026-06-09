@@ -255,7 +255,7 @@ exec_always sh -c 'setxkbmap -option ctrl:nocaps'
 exec_always sh -c 'xmodmap -e "remove Lock = Caps_Lock"'
 exec_always sh -c 'xmodmap -e "keysym Caps_Lock = Control_L"'
 exec_always sh -c 'xmodmap -e "add Lock = Caps_Lock"'
-exec picom -b
+exec picom --vsync -b
 exec fcitx5 -d
 exec --no-startup-id $terminal
 # to turn off capslock in extreme case

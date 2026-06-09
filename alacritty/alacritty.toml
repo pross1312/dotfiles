@@ -55,9 +55,6 @@ white   = "#c5c8c6"
 # 
 [keyboard]
 bindings = [
-    { key = "Q", mode = "Vi", action = "ToggleViMode" },
-    { key = "A", mode = "Vi", action = "ToggleViMode" },
-    { key = "I", mode = "Vi", action = "ToggleViMode" },
     { key = "K", mods = "Shift|Control", action = "ScrollHalfPageUp" },
     { key = "J", mods = "Shift|Control", action = "ScrollHalfPageDown" },
 ]

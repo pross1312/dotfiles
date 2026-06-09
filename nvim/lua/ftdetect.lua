@@ -22,11 +22,12 @@ vim.api.nvim_create_autocmd({"BufNewFile", "BufReadPost"}, {
     group = "filetypedetect"
 })
 
-vim.api.nvim_create_autocmd({"BufNewFile", "BufReadPost"}, {
+vim.api.nvim_create_autocmd({"BufNewFile", "BufRead"}, {
     pattern = {"*.odin"},
     callback = function()
-        vim.opt.efm = '%f(%l:%c) %m'
-        vim.opt.makeprg = 'odin build ' .. vim.fn.getcwd()
+        vim.opt_local.efm = '%f(%l:%c) %m'
+        vim.opt_local.filetype = 'odin'
+        vim.opt_local.commentstring = '// %s'
     end,
     group = "filetypedetect"
 })
