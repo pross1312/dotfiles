@@ -29,6 +29,7 @@ let s:orange      = '#CE9178'
 let s:red         = '#D16969'
 let s:green       = '#6A9955'
 let s:number      = '#B5CEA8'
+let s:darkgray    = '#4F5258'
 
 let s:error       = '#F44747'
 let s:warn        = '#CCA700'
@@ -75,7 +76,7 @@ function! s:hi(group, ...) abort
 
     if l:attr !=# s:none
         call add(l:cmd, 'gui=' . l:attr)
-        call add(l:cmd, 'cterm=' . l:attr)
+        " call add(l:cmd, 'cterm=' . l:attr)
     endif
 
     execute join(l:cmd, ' ')
@@ -107,6 +108,8 @@ call s:hi('IncSearch',     '#FFFFFF', s:incsearch)
 call s:hlink('CurSearch', 'IncSearch')
 
 call s:hi('MatchParen',    '#FFFFFF', s:incsearch)
+
+call s:hi('NonText', s:darkgray)
 
 " =========================
 " Popup Menu
@@ -165,61 +168,63 @@ call s:hi('Underlined',    s:none, s:none, 'underline')
 call s:hi('Error',         s:error)
 call s:hi('Todo',          '#FFFFFF', s:green, 'bold')
 
-" =========================
-" Treesitter
-" =========================
+if has('nvim')
+    " =========================
+    " Treesitter
+    " =========================
 
-call s:hlink('@comment',          'Comment')
-call s:hlink('@string',           'String')
-call s:hlink('@string.escape',    'SpecialChar')
-call s:hlink('@number',           'Number')
-call s:hlink('@boolean',          'Boolean')
+    call s:hlink('@comment',          'Comment')
+    call s:hlink('@string',           'String')
+    call s:hlink('@string.escape',    'SpecialChar')
+    call s:hlink('@number',           'Number')
+    call s:hlink('@boolean',          'Boolean')
 
-call s:hlink('@keyword',          'Keyword')
-call s:hlink('@keyword.function', 'Keyword')
-call s:hlink('@keyword.return',   'Keyword')
+    call s:hlink('@keyword',          'Keyword')
+    call s:hlink('@keyword.function', 'Keyword')
+    call s:hlink('@keyword.return',   'Keyword')
 
-call s:hlink('@operator',         'Operator')
+    call s:hlink('@operator',         'Operator')
 
-call s:hlink('@function',         'Function')
-call s:hlink('@function.call',    'Function')
-call s:hlink('@method',           'Function')
+    call s:hlink('@function',         'Function')
+    call s:hlink('@function.call',    'Function')
+    call s:hlink('@method',           'Function')
 
-call s:hlink('@variable',         'Identifier')
-call s:hlink('@property',         'Identifier')
-call s:hlink('@field',            'Identifier')
-call s:hlink('@parameter',        'Identifier')
+    call s:hlink('@variable',         'Identifier')
+    call s:hlink('@property',         'Identifier')
+    call s:hlink('@field',            'Identifier')
+    call s:hlink('@parameter',        'Identifier')
 
-call s:hlink('@type',             'Type')
-call s:hlink('@type.builtin',     'Type')
+    call s:hlink('@type',             'Type')
+    call s:hlink('@type.builtin',     'Type')
 
-call s:hlink('@constant',         'Constant')
-call s:hlink('@constant.builtin', 'Constant')
+    call s:hlink('@constant',         'Constant')
+    call s:hlink('@constant.builtin', 'Constant')
 
-call s:hlink('@tag',              'Tag')
-call s:hlink('@tag.attribute',    'Identifier')
+    call s:hlink('@tag',              'Tag')
+    call s:hlink('@tag.attribute',    'Identifier')
 
-" =========================
-" Telescope
-" =========================
+    " =========================
+    " Telescope
+    " =========================
 
-call s:hi('TelescopeNormal',        s:fg, s:bg, 'bold')
-call s:hi('TelescopeBorder',        s:border, s:bg, 'bold')
+    call s:hi('TelescopeNormal',        s:fg, s:bg, 'bold')
+    call s:hi('TelescopeBorder',        s:border, s:bg, 'bold')
 
-call s:hi('TelescopePromptNormal',  s:fg)
-call s:hi('TelescopePromptBorder',  s:border)
+    call s:hi('TelescopePromptNormal',  s:fg)
+    call s:hi('TelescopePromptBorder',  s:border)
 
-call s:hi('TelescopeResultsNormal', s:fg, s:bg)
-call s:hi('TelescopeResultsBorder', s:border, s:bg)
+    call s:hi('TelescopeResultsNormal', s:fg, s:bg)
+    call s:hi('TelescopeResultsBorder', s:border, s:bg)
 
-call s:hi('TelescopePreviewNormal', s:fg, s:bg)
-call s:hi('TelescopePreviewBorder', s:border, s:bg)
+    call s:hi('TelescopePreviewNormal', s:fg, s:bg)
+    call s:hi('TelescopePreviewBorder', s:border, s:bg)
 
-call s:hi('TelescopeSelection',     s:none, '#2A2D2E')
-call s:hi('TelescopeMatching',      s:light_blue, s:none, 'bold')
+    call s:hi('TelescopeSelection',     s:none, '#2A2D2E')
+    call s:hi('TelescopeMatching',      s:light_blue, s:none, 'bold')
 
-call s:hi('TelescopePromptPrefix',  s:blue)
-call s:hi('TelescopeTitle',         s:title, s:none, 'bold')
+    call s:hi('TelescopePromptPrefix',  s:blue)
+    call s:hi('TelescopeTitle',         s:title, s:none, 'bold')
+endif
 
 " =========================
 " Diagnostics
@@ -245,4 +250,5 @@ call s:hi('Removed', s:removed)
 call s:hlink('DiffAdd',         'Added')
 call s:hlink('DiffChange',      'Changed')
 call s:hlink('DiffDelete',      'Removed')
+
 

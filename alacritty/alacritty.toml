@@ -1,6 +1,3 @@
-[terminal]
-shell="pwsh.exe"
-
 [window]
 # decorations = "None"
 
@@ -19,12 +16,12 @@ size = 14
 vi_mode_cursor = { text = '#1c1c1c', cursor = '#bcbcbc'}
 cursor = { text = '#1c1c1c', cursor = '#bcbcbc'}
 
-[colors.primary]
-background = '0x181616'
-foreground = '0xc5c9c5'
 # [colors.primary]
-# foreground = "#c5c8c6"
-# background = "#1d1f21"
+# background = '0x181616'
+# foreground = '0xc5c9c5'
+[colors.primary]
+foreground = "#c5c8c6"
+background = "#1d1f21"
 
 [colors.normal]
 black   = "#282a2e"

@@ -1,6 +1,7 @@
 let g:ftplugin_sql_omni_key = '<C-1>'
 syntax on
 filetype plugin indent on
+set nofixendofline
 set ruler
 set number
 set relativenumber
